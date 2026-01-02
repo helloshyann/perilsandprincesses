@@ -42,7 +42,7 @@
 
 // Glass Card Utility (For Items, Gifts, or Spells)
 .glass-card {
-  @include glass-panel;
+  // @include glass-panel;
   position: relative;
   display: flex;        
   flex: 0 0 auto;
@@ -52,6 +52,8 @@
   padding: var(--space-sm);
   border-radius: var(--space-sm);        
   overflow: visible;
+  background-color: var(--pp-pink);
+  border: 3px double var(--pp-white);
   color: var(--pp-white);
   text-shadow: 0 0 8px var(--pp-brown) !important;
   h2, h3 {
@@ -138,7 +140,7 @@
   /* ACTOR SHEETS */
   &.sheet.actor {
     .window-content {
-      background: var(--pp-pink);
+      background: var(--pp-brown);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -260,7 +262,12 @@
       section.sheet-body {
         flex: 1;
         overflow-y: auto;
-        scrollbar-color: var(--pp-brown) transparent !important;
+        -ms-overflow-style: none;  /* Hide for IE and Edge */
+        scrollbar-width: none;     /* Hide for Firefox */        
+        &::-webkit-scrollbar {
+          display: none; /* Hide for Chrome, Safari and Opera */
+        }        
+
         h3{
             font-family: var(--secondary-font);
         }

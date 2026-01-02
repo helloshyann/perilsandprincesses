@@ -25,12 +25,6 @@
 
 /* --- 2. Mixins --- */
 .glass-card {
-  background: var(--pp-glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid var(--pp-glass-border);
-  -webkit-box-shadow: var(--pp-glass-shadow);
-          box-shadow: var(--pp-glass-shadow);
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,6 +38,8 @@
   padding: var(--space-sm);
   border-radius: var(--space-sm);
   overflow: visible;
+  background-color: var(--pp-pink);
+  border: 3px double var(--pp-white);
   color: var(--pp-white);
   text-shadow: 0 0 8px var(--pp-brown) !important;
 }
@@ -156,7 +152,7 @@
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
-  background: var(--pp-pink);
+  background: var(--pp-brown);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -287,7 +283,11 @@
       -ms-flex: 1;
           flex: 1;
   overflow-y: auto;
-  scrollbar-color: var(--pp-brown) transparent !important;
+  -ms-overflow-style: none; /* Hide for IE and Edge */
+  scrollbar-width: none; /* Hide for Firefox */
+}
+.perilsandprincesses.sheet.actor form.character section.sheet-body::-webkit-scrollbar {
+  display: none; /* Hide for Chrome, Safari and Opera */
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
   font-family: var(--secondary-font);
