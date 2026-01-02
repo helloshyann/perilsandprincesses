@@ -1,9 +1,18 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="description">Story</a>
+    <a class="item" data-tab="features">Virtues</a>
+    <a class="item" data-tab="spells">Gifts</a>
+    <a class="item" data-tab="items">Purse</a>
+  </nav>
+
   {{!-- Sheet Header --}}
   <header class="sheet-header flex-row">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-    <div class="header-fields flex-col">
+    <div class="header-fields flex-col glass-card">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       <div class="resources flex-row all-center">
         <div class="resource flex-col">          
@@ -20,14 +29,7 @@
     </div>
   </header>
 
-  {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs" data-group="primary">
-    {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="features">Features</a>
-    <a class="item" data-tab="spells">Gifts</a>
-    <a class="item" data-tab="items">Bag</a>
-  </nav>
+  
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
@@ -44,60 +46,71 @@
         {{/each}}
       </section>
 
-      <section class="flex-row">
+      <section class="grid grid-2">
         <div class="flex-col hp-section all-center">
-          <div class="heart-points-container flex-row all-center">
+          <div class="pink-card flex-col all-center">
             <h3>Heart Points</h3>
-            <div class="hp-current-main">
-              <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
-              <span>HP Current</span>
-            </div>
-            <div class="hp-max-satellite">
+            <div class="flex-row">
+              <div class="hp-current-main heart flex-col">
+                <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
+                <span>HP Current</span>
+              </div>
+            <div class="hp-max-satellite  flex-col">
               <input type="number" name="system.hp.max" value="{{system.hp.max}}"/>
               <span>HP Max</span>
             </div>
+            </div>
           </div>          
-          <div class="heart-dice-container flex-row all-center">
-            <h3>Heart Dice</h3>
-            <input type="checkbox" name="system.heartDice.heart1" {{checked system.heartDice.heart1}}/>
-            <input type="checkbox" name="system.heartDice.heart2" {{checked system.heartDice.heart2}}/>
-            <input type="checkbox" name="system.heartDice.heart3" {{checked system.heartDice.heart3}}/>
-            <input type="checkbox" name="system.heartDice.heart4" {{checked system.heartDice.heart4}}/>
-            <input type="checkbox" name="system.heartDice.extraHeart" {{checked system.heartDice.extraHeart}}/>        
+          <div class="pink-card heart-dice flex-col all-center">
+            <div class="flex-col all-center"><h3>Heart Dice</h3><span>One d4 per level. Spend in two ways: <ul><li>Heal HP during a Picnic</li><li>Subtract amount rolled from a friend's failed Virtue test</li></ul> Heart Dice replenish after a Rest.</span></div>
+            <div class="flex-row all-center">
+              <input type="checkbox" name="system.heartDice.heart1" {{checked system.heartDice.heart1}}/>
+              <input type="checkbox" name="system.heartDice.heart2" {{checked system.heartDice.heart2}}/>
+              <input type="checkbox" name="system.heartDice.heart3" {{checked system.heartDice.heart3}}/>
+              <input type="checkbox" name="system.heartDice.heart4" {{checked system.heartDice.heart4}}/>
+              <input type="checkbox" name="system.heartDice.extraHeart" {{checked system.heartDice.extraHeart}}/> 
+            </div>                   
           </div>
         </div>
-        <div class="flex-col defense-section all-center">
-          <div class="flex-col armor all-center">
-             <input type="number" name="system.armor.value" value="{{system.armor.value}}"/>
-             <label>Armor</label>
+        <div class="pink-card armor flex-col all-center">
+          <div class="flex-col all-center">
+            <h3>Armor</h3>
+            <input type="number" name="system.armor.value" value="{{system.armor.value}}"/>
+            <span>Armor reduces damage to your HP from physical sources. Subtract your Armor value from damage taken.</span>
           </div>
-          <div class="flex-row ailments all-center">
-            <div class="ailment">
+          <div class="flex-col ailments all-center">
+            <h3>Ailments</h3>
+            <div class="flex-row">
+              <div class="ailment flex-col all-center">
               <input type="checkbox" name="system.ailments.weary" {{checked system.ailments.weary}}/>
               <span>Weary</span>
             </div>
-            <div class="ailment">
+            <div class="ailment flex-col all-center">
               <input type="checkbox" name="system.ailments.woozy" {{checked system.ailments.woozy}}/>
               <span>Woozy</span>
             </div>
-            <div class="ailment">
+            <div class="ailment flex-col all-center">
               <input type="checkbox" name="system.ailments.befuddled" {{checked system.ailments.befuddled}}/>
               <span>Befuddled</span>
             </div>
+            </div>
           </div>
 
-          <div class="flex-row traumas all-center">
-            <div class="trauma">
-              <input type="checkbox" name="system.trauma.box1" {{checked system.trauma.box1}}/>
-              <span>Trauma I</span>
-            </div>
-            <div class="trauma">
-              <input type="checkbox" name="system.trauma.box2" {{checked system.trauma.box2}}/>
-              <span>Trauma II</span>
-            </div>
-            <div class="trauma">
-              <input type="checkbox" name="system.trauma.box3" {{checked system.trauma.box3}}/>
-              <span>Trauma III</span>
+          <div class="flex-col traumas all-center">
+            <h3>Trauma</h3>
+            <div class="flex-row">
+              <div class="trauma flex-col all-center">
+                <input type="checkbox" name="system.trauma.box1" {{checked system.trauma.box1}}/>
+                <span>I</span>
+              </div>
+              <div class="trauma flex-col all-center">
+                <input type="checkbox" name="system.trauma.box2" {{checked system.trauma.box2}}/>
+                <span>II</span>
+              </div>
+              <div class="trauma flex-col all-center">
+                <input type="checkbox" name="system.trauma.box3" {{checked system.trauma.box3}}/>
+                <span>III</span>
+              </div>
             </div>
           </div>
         </div>      
@@ -122,5 +135,6 @@
 
 
 
+    
   </section>
 </form>
