@@ -36,8 +36,26 @@
   background: var(--pp-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
+  border: 2px solid var(--pp-glass-border);
   box-shadow: var(--pp-glass-shadow);
+}
+
+// Glass Card Utility (For Items, Gifts, or Spells)
+.glass-card {
+  @include glass-panel;
+  position: relative;
+  display: flex;        
+  flex: 0 0 auto;
+  width: 100%;
+  max-height: 100%;        
+  margin: var(--space-xs) 0;
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);        
+  overflow: visible;
+  color: var(--pp-white);
+  h2, h3 {
+    border-bottom: 1px solid var(--pp-white) !important;
+  }
 }
 
 /* --- 3. System Layout utlities --- */
@@ -85,74 +103,36 @@
   }
 }
 
-// Glass Card Utility (For Items, Gifts, or Spells)
-.glass-card {
-  @include glass-panel;
-  padding: var(--space-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: var(--radius-md);
-}
-
-.pink-card {
-    background: var(--pp-pink);
-    border: 2px solid var(--pp-white);
-    border-radius: var(--space-md);
-    color: var(--pp-brown);
-    padding: var(--space-sm);
-    font-weight: 500;
-
-}
-
 // Simple Helpers
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+.tiny-text { font-size: var(--space-md); }
 }
 
 /* --- 4. The System Wrapper --- */
-.perilsandprincesses {
-
-    .armor {
-        background-image: url("../assets/armor.png") !important;
-        background-position: bottom right;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-
-    .heart {
-        background-image: url("../assets/heart.png") !important;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-    }
-
-    .heart-balloon {
-        background-image: url("../assets/heart-balloon.png") !important;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-    }
-
-    .heart-dice {
-        background-image: url("../assets/flowers.png") !important;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-    
+.perilsandprincesses {  
 
   // Global resets within the system
-  input[type="text"], input[type="number"] {
+  input[type="text"], input[type="number"], input[type="checkbox"] {
     background: transparent;
     border: none;
-    color: var(--pp-ink);
     &:focus { box-shadow: none; }
+  }
+
+  select, select option {
+    background: var(--pp-pink);
+
+  }
+
+  select:focus {
+    box-shadow: 0 0 5px var(--pp-deep-rose) !important;
   }
 
   /* ACTOR SHEETS */
   &.sheet.actor {
     .window-content {
-      background: url("../assets/background.jpg");
+      background: var(--pp-pink);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -170,14 +150,19 @@
         display: flex;
         flex: 0 0 auto;
         gap: var(--space-md);
-        padding-bottom: var(--space-md);
-        border-bottom: 2px solid var(--pp-sage-soft);
+
+        .picture-frame{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: var(--space-xs);
+        }
 
         .profile-img {
-          flex: 0 0 100px;
+          //flex: 0 0 100px;
           height: 100px;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--pp-gold);
+          border-radius: 100%;
+          border: 3px double var(--pp-brown);
           object-fit: cover;
         }
 
@@ -186,24 +171,20 @@
           .charname input {
             font-family: var(--secondary-font);
             font-size: 2rem;
-            color: var(--pp-rose-deep);
+            color: var(--pp-white);
             width: 100%;
+          }
+          .resource input {
+            color: var(--pp-white);
           }
         }
       }
 
       /* NAVIGATION (Glassmorphism) */
       nav.sheet-tabs {
-        @include glass-panel();      
-        flex: 0 0 auto;
-        display: flex;
-        margin: var(--space-md) 0;
-        padding: 0.25rem;
-        position: relative;
-        overflow: visible;
-        border: none;
-        border-radius: var(--space-sm);
-
+        @include glass-panel();
+        position: relative;       
+        padding: 0 0 !important;
         .item {
             flex: 1;
             text-align: center;
@@ -212,7 +193,7 @@
             font-size: 1.125rem;
             font-weight: 600;
             letter-spacing: 0.1em;
-            color: var(--pp-pink); // Default state is a calm sage
+            color: var(--pp-white); // Default
             border-radius: var(--space-xs);
             transition: all 0.3s ease;
             position: relative;
@@ -229,7 +210,7 @@
             background-image: url("../assets/turret.png");
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center bottom; // Anchored to the bottom of the bar
+            background-position: center bottom;
             opacity: 0;
             z-index: -1;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -238,20 +219,20 @@
 
             // Hover State
             &:hover {
-            color: var(--pp-white);
+            color: var(--pp-white) !important;
+            text-shadow: 0 0 8px var(--pp-brown) !important;
             &::after {
                 opacity: 0.4;
                 transform: translateY(0) scale(0.9);
-            }
+              }
             }
 
             // Active State
             &.active {
-            background: transparent; // Removed the solid pink fill
+            background: transparent;
             color: var(--pp-brown);
             
             /* The White Stroke & Glow */
-            /* Multiple shadows create a "halo" effect for legibility */
             text-shadow: 
                 -1px -1px 0 #fff,  
                 1px -1px 0 #fff,
@@ -261,8 +242,8 @@
 
             &::after {
                 opacity: 0.85;
-                transform: translateY(-5px) scale(1.125); // Turret rises higher when active
-                filter: drop-shadow(0 0 5px var(--pp-brown)); // Subtle glow on the turret itself
+                transform: translateY(-5px) scale(1.25);
+                //filter: drop-shadow(0 0 2px var(--pp-brown));
             }
             }
         }  
@@ -272,7 +253,7 @@
       section.sheet-body {
         flex: 1;
         overflow-y: auto;
-
+        scrollbar-color: var(--pp-brown) transparent !important;
         h3{
             font-family: var(--secondary-font);
         }
@@ -292,12 +273,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px double var(--pp-gold);
+            border: 3px double var(--pp-brown);
 
             input {
-              font-size: 1.8rem;
+              font-size: 2rem;
               text-align: center;
-              color: var(--pp-rose-deep);
+              color: var(--pp-white);
+              font-family: var(--secondary-font);
             }
           }
 
@@ -305,7 +287,6 @@
             font-family: var(--secondary-font);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--pp-sage-deep);
             letter-spacing: 0.05em;
           }
         }

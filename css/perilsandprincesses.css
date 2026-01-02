@@ -24,6 +24,32 @@
 }
 
 /* --- 2. Mixins --- */
+.glass-card {
+  background: var(--pp-glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--pp-glass-border);
+  -webkit-box-shadow: var(--pp-glass-shadow);
+          box-shadow: var(--pp-glass-shadow);
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 100%;
+  max-height: 100%;
+  margin: var(--space-xs) 0;
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);
+  overflow: visible;
+  color: var(--pp-white);
+}
+.glass-card h2, .glass-card h3 {
+  border-bottom: 1px solid var(--pp-white) !important;
+}
+
 /* --- 3. System Layout utlities --- */
 .perilsandprincesses .flex-row {
   display: -webkit-box;
@@ -90,28 +116,6 @@
           align-items: center;
   text-align: center;
 }
-.perilsandprincesses .glass-card {
-  background: var(--pp-glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
-  -webkit-box-shadow: var(--pp-glass-shadow);
-          box-shadow: var(--pp-glass-shadow);
-  padding: var(--space-sm);
-  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
-  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
-  border-radius: var(--radius-md);
-}
-.perilsandprincesses .pink-card {
-  background: var(--pp-pink);
-  border: 2px solid var(--pp-white);
-  border-radius: var(--space-md);
-  color: var(--pp-brown);
-  padding: var(--space-sm);
-  font-weight: 500;
-}
 .perilsandprincesses .text-center {
   text-align: center;
 }
@@ -122,46 +126,31 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+.perilsandprincesses .tiny-text {
+  font-size: var(--space-md);
+}
 
 /* --- 4. The System Wrapper --- */
-.perilsandprincesses .armor {
-  background-image: url("../assets/armor.png") !important;
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-.perilsandprincesses .heart {
-  background-image: url("../assets/heart.png") !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-}
-.perilsandprincesses .heart-balloon {
-  background-image: url("../assets/heart-balloon.png") !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-}
-.perilsandprincesses .heart-dice {
-  background-image: url("../assets/flowers.png") !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-.perilsandprincesses input[type=text], .perilsandprincesses input[type=number] {
+.perilsandprincesses input[type=text], .perilsandprincesses input[type=number], .perilsandprincesses input[type=checkbox] {
   background: transparent;
   border: none;
-  color: var(--pp-ink);
 }
-.perilsandprincesses input[type=text]:focus, .perilsandprincesses input[type=number]:focus {
+.perilsandprincesses input[type=text]:focus, .perilsandprincesses input[type=number]:focus, .perilsandprincesses input[type=checkbox]:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+.perilsandprincesses select, .perilsandprincesses select option {
+  background: var(--pp-pink);
+}
+.perilsandprincesses select:focus {
+  -webkit-box-shadow: 0 0 5px var(--pp-deep-rose) !important;
+          box-shadow: 0 0 5px var(--pp-deep-rose) !important;
 }
 .perilsandprincesses {
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
-  background: url("../assets/background.jpg");
+  background: var(--pp-pink);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -182,16 +171,23 @@
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   gap: var(--space-md);
-  padding-bottom: var(--space-md);
-  border-bottom: 2px solid var(--pp-sage-soft);
+}
+.perilsandprincesses.sheet.actor form.character .sheet-header .picture-frame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: var(--space-xs);
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .profile-img {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100px;
-          flex: 0 0 100px;
   height: 100px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--pp-gold);
+  border-radius: 100%;
+  border: 3px double var(--pp-brown);
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -203,8 +199,11 @@
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname input {
   font-family: var(--secondary-font);
   font-size: 2rem;
-  color: var(--pp-rose-deep);
+  color: var(--pp-white);
   width: 100%;
+}
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input {
+  color: var(--pp-white);
 }
 .perilsandprincesses.sheet.actor form.character {
   /* NAVIGATION (Glassmorphism) */
@@ -213,21 +212,11 @@
   background: var(--pp-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
+  border: 2px solid var(--pp-glass-border);
   -webkit-box-shadow: var(--pp-glass-shadow);
           box-shadow: var(--pp-glass-shadow);
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: var(--space-md) 0;
-  padding: 0.25rem;
   position: relative;
-  overflow: visible;
-  border: none;
-  border-radius: var(--space-sm);
+  padding: 0 0 !important;
 }
 .perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item {
   -webkit-box-flex: 1;
@@ -239,7 +228,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--pp-pink);
+  color: var(--pp-white);
   border-radius: var(--space-xs);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -265,7 +254,8 @@
           transform: translateY(15px) scale(0.7);
 }
 .perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item:hover {
-  color: var(--pp-white);
+  color: var(--pp-white) !important;
+  text-shadow: 0 0 8px var(--pp-brown) !important;
 }
 .perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item:hover::after {
   opacity: 0.4;
@@ -276,15 +266,12 @@
   background: transparent;
   color: var(--pp-brown);
   /* The White Stroke & Glow */
-  /* Multiple shadows create a "halo" effect for legibility */
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 .perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item.active::after {
   opacity: 0.85;
-  -webkit-transform: translateY(-5px) scale(1.125);
-          transform: translateY(-5px) scale(1.125);
-  -webkit-filter: drop-shadow(0 0 5px var(--pp-brown));
-          filter: drop-shadow(0 0 5px var(--pp-brown));
+  -webkit-transform: translateY(-5px) scale(1.25);
+          transform: translateY(-5px) scale(1.25);
 }
 .perilsandprincesses.sheet.actor form.character {
   /* BODY SECTION */
@@ -294,6 +281,7 @@
       -ms-flex: 1;
           flex: 1;
   overflow-y: auto;
+  scrollbar-color: var(--pp-brown) transparent !important;
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
   font-family: var(--secondary-font);
@@ -318,7 +306,7 @@
   background: var(--pp-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
+  border: 2px solid var(--pp-glass-border);
   -webkit-box-shadow: var(--pp-glass-shadow);
           box-shadow: var(--pp-glass-shadow);
   width: 4.5rem;
@@ -333,18 +321,18 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 2px double var(--pp-gold);
+  border: 3px double var(--pp-brown);
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container .fairytale-frame input {
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-align: center;
-  color: var(--pp-rose-deep);
+  color: var(--pp-white);
+  font-family: var(--secondary-font);
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container .virtue-banner {
   font-family: var(--secondary-font);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--pp-sage-deep);
   letter-spacing: 0.05em;
 }
 .perilsandprincesses {

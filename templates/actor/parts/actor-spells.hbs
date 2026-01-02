@@ -1,12 +1,12 @@
 {{#if activeGift}}
-<div class="gift-header">
+<div class="gift-header glass-card">
     <div class="gift-title-block">
       <h2>{{activeGift.title}}</h2>
       <p class="flavor-text">{{activeGift.description}}</p>
     </div>
   </div>
 <div class="gift-details">
-  <div class="grid grid-2col">
+  <div class="grid grid-2 glass-card">
     <div>
       <h3>Talents</h3>
       <p>{{#each activeGift.talents}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>
@@ -27,34 +27,34 @@
     </div>
   </div>
 
-  <hr>
+  <div class="glass-card flex-col">
+    <h3>Innate Abilities</h3>
+    {{#each activeGift.innate}}
+      <p><strong>{{this.name}}:</strong> {{this.text}}</p>
+    {{/each}}
+  </div>
 
-  <h3>Innate Abilities</h3>
-  {{#each activeGift.innate}}
-    <p><strong>{{this.name}}:</strong> {{this.text}}</p>
-  {{/each}}
-
-  <hr>
-
-  <h3>Special Abilities</h3>
-  {{#each activeGift.special}}
+  <div class="glass-card flex-col">
+    <h3>Special Abilities</h3>
+    {{#each activeGift.special}}
     <div class="special-ability">
       <span class="ability-level">{{this.level}}.</span>
       <strong>{{{this.name}}}:</strong> {{{this.text}}}
     </div>
-  {{/each}}
-
-  <hr>
-
-  <h3>Mishaps (Doubles)</h3>
-  <table class="mishap-table">
-    {{#each activeGift.mishaps}}
-      <tr>
-        <td>{{@index}}s</td>
-        <td>{{this}}</td>
-      </tr>
     {{/each}}
-  </table>
+  </div>
+
+  <div class="glass-card flex-col">
+    <h3>Mishaps (Doubles)</h3>
+    <table class="mishap-table">
+      {{#each activeGift.mishaps}}
+        <tr>
+          <td>{{@index}}s</td>
+          <td>{{this}}</td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
 </div>
 {{else}}
   <p class="hint">Select a Gift in the header to reveal your royal powers.</p>
