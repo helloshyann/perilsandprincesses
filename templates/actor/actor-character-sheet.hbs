@@ -36,9 +36,9 @@
 
     {{!-- Virtues Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="flexrow glass-card">
+      <section class="flexrow glass-card virtues">
         {{#each system.virtues as |virtue id|}}
-          <div class="virtue-container">
+          <div class="fairytale-container">
             <div class="fairytale-frame">
               <input type="number" name="system.virtues.{{id}}.value" value="{{virtue.value}}"/>
             </div>
@@ -50,20 +50,20 @@
       <section class="grid grid-2">
         {{!-- Heart Point Section --}}
         <div class="flex-col hp-section all-center">
-          <div class="glass-card flex-col all-center">
+          <div class="glass-card flex-col all-center heartpoints">
             <h3>Heart Points</h3>
             <div class="flex-row">
-              <div class="hp-current-main flex-col virtue-container">
+              <div class="hp-current-main flex-col fairytale-container">
                 <div class="fairytale-frame"><input type="number" name="system.hp.value" value="{{system.hp.value}}"/></div>
                 <span class="tiny-text">HP Current</span>
               </div>
-              <div class="hp-max-satellite flex-col virtue-container">
+              <div class="hp-max-satellite flex-col fairytale-container">
                 <div class="fairytale-frame"><input type="number" name="system.hp.max" value="{{system.hp.max}}"/></div>
                 <span class="tiny-text">HP Max</span>
               </div>
             </div>
           </div>          
-          <div class="glass-card flex-col all-center">
+          <div class="glass-card flex-col all-center heartdice">
             <div class="flex-col all-center"><h3>Heart Dice</h3><span class="tiny-text">One d4 per level. Spend in two ways: <ul><li>Heal HP during a Picnic</li><li>Subtract amount rolled from a friend's failed Virtue test</li></ul> Heart Dice replenish after a Rest.</span></div>
             <div class="flex-row all-center">
               <div class="hd flex-col all-center">
@@ -90,8 +90,8 @@
           </div>
         </div>
         {{!-- Armor, Ailment, Trauma Section --}}
-        <div class="glass-card flex-col all-center">
-          <div class="flex-col all-center virtue-container">
+        <div class="glass-card flex-col all-center armor">
+          <div class="flex-col all-center fairytale-container">
             <h3>Armor</h3>
             <div class="fairytale-frame">
               <input type="number" name="system.armor.value" value="{{system.armor.value}}"/>

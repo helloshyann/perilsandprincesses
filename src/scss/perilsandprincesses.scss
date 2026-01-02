@@ -53,9 +53,15 @@
   border-radius: var(--space-sm);        
   overflow: visible;
   color: var(--pp-white);
+  text-shadow: 0 0 8px var(--pp-brown) !important;
   h2, h3 {
     border-bottom: 1px solid var(--pp-white) !important;
   }
+}
+
+.gift-title {
+  font-family: var(--secondary-font);
+  font-size: 2rem;
 }
 
 /* --- 3. System Layout utlities --- */
@@ -150,6 +156,7 @@
         display: flex;
         flex: 0 0 auto;
         gap: var(--space-md);
+
 
         .picture-frame{
           display: flex;
@@ -258,8 +265,32 @@
             font-family: var(--secondary-font);
         }
 
+        .armor {
+          background-image: url("../assets/armor-bg.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: bottom right;
+        }
+
+        .heartdice {
+          background-image: url("../assets/heartdice-bg.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+
+        .heartpoints {
+          
+        }
+
+        .virtues {
+          background-image: url("../assets/virtues-bg.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+        }
+
         /* VIRTUE BLOCKS */
-        .virtue-container {
+        .fairytale-container {
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -285,6 +316,7 @@
 
           .virtue-banner {
             font-family: var(--secondary-font);
+            text-shadow: 0 0 8px var(--pp-brown) !important;
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 0.05em;

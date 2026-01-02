@@ -45,9 +45,15 @@
   border-radius: var(--space-sm);
   overflow: visible;
   color: var(--pp-white);
+  text-shadow: 0 0 8px var(--pp-brown) !important;
 }
 .glass-card h2, .glass-card h3 {
   border-bottom: 1px solid var(--pp-white) !important;
+}
+
+.gift-title {
+  font-family: var(--secondary-font);
+  font-size: 2rem;
 }
 
 /* --- 3. System Layout utlities --- */
@@ -286,10 +292,27 @@
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
   font-family: var(--secondary-font);
 }
+.perilsandprincesses.sheet.actor form.character section.sheet-body .armor {
+  background-image: url("../assets/armor-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+.perilsandprincesses.sheet.actor form.character section.sheet-body .heartdice {
+  background-image: url("../assets/heartdice-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.perilsandprincesses.sheet.actor form.character section.sheet-body .virtues {
+  background-image: url("../assets/virtues-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 .perilsandprincesses.sheet.actor form.character section.sheet-body {
   /* VIRTUE BLOCKS */
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container {
+.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,7 +325,7 @@
           align-items: center;
   gap: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container .fairytale-frame {
+.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .fairytale-frame {
   background: var(--pp-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -323,14 +346,15 @@
           justify-content: center;
   border: 3px double var(--pp-brown);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container .fairytale-frame input {
+.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .fairytale-frame input {
   font-size: 2rem;
   text-align: center;
   color: var(--pp-white);
   font-family: var(--secondary-font);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .virtue-container .virtue-banner {
+.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .virtue-banner {
   font-family: var(--secondary-font);
+  text-shadow: 0 0 8px var(--pp-brown) !important;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
