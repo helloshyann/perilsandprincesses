@@ -12,7 +12,7 @@
   {{!-- Sheet Header --}}
   <header class="sheet-header flex-row glass-card all-center">
     <div class="picture-frame">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="150" width="150"/>
     </div>
     <div class="header-fields flex-col">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
@@ -36,7 +36,7 @@
 
     {{!-- Virtues Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="flexrow glass-card virtues">
+      <section class="flexrow glass-card">
         {{#each system.virtues as |virtue id|}}
           <div class="fairytale-container">
             <div class="fairytale-frame">
@@ -50,7 +50,7 @@
       <section class="grid grid-2">
         {{!-- Heart Point Section --}}
         <div class="hp-section all-center">
-          <div class="glass-card flex-col all-center heartpoints">
+          <div class="glass-card flex-col all-center">
             <h3>Heart Points</h3>
             <div class="flex-row">
               <div class="hp-current-main flex-col fairytale-container">
@@ -63,7 +63,7 @@
               </div>
             </div>
           </div>          
-          <div class="glass-card flex-col all-center heartdice">
+          <div class="glass-card flex-col all-center">
             <div class="flex-col all-center"><h3>Heart Dice</h3><span class="tiny-text">One d4 per level. Spend in two ways: <ul><li>Heal HP during a Picnic</li><li>Subtract amount rolled from a friend's failed Virtue test</li></ul> Heart Dice replenish after a Rest.</span></div>
             <div class="flex-row all-center">
               <div class="hd flex-col all-center">
@@ -90,7 +90,7 @@
           </div>
         </div>
         {{!-- Armor, Ailment, Trauma Section --}}
-        <div class="glass-card flex-col all-center armor">
+        <div class="glass-card flex-col all-center">
           <div class="flex-col all-center fairytale-container">
             <h3>Armor</h3>
             <div class="fairytale-frame">

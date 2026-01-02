@@ -40,10 +40,10 @@
   overflow: visible;
   background-color: var(--pp-pink);
   border: 3px double var(--pp-white);
-  color: var(--pp-white);
+  color: var(--pp-brown);
 }
 .glass-card h2, .glass-card h3 {
-  border-bottom: 1px solid var(--pp-white) !important;
+  border-bottom: 1px solid var(--pp-brown) !important;
 }
 
 .gift-title {
@@ -129,6 +129,7 @@
 }
 .perilsandprincesses .tiny-text {
   font-size: var(--space-md);
+  font-weight: 600;
 }
 
 /* --- 4. The System Wrapper --- */
@@ -151,7 +152,7 @@
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
-  background: var(--pp-brown);
+  background: var(--pp-white);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -191,6 +192,7 @@
   border: 3px double var(--pp-white);
   -o-object-fit: cover;
      object-fit: cover;
+  background-color: var(--pp-brown);
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields {
   -webkit-box-flex: 1;
@@ -200,11 +202,11 @@
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname input {
   font-family: var(--secondary-font);
   font-size: 2rem;
-  color: var(--pp-white);
+  color: var(--pp-brown);
   width: 100%;
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input {
-  color: var(--pp-white);
+  color: var(--pp-brown);
 }
 .perilsandprincesses.sheet.actor form.character {
   /* NAVIGATION (Glassmorphism) */
@@ -229,7 +231,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--pp-white);
+  color: var(--pp-brown);
   border-radius: var(--space-xs);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -291,23 +293,6 @@
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
   font-family: var(--secondary-font);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .armor {
-  background-image: url("../assets/armor-bg.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-}
-.perilsandprincesses.sheet.actor form.character section.sheet-body .heartdice {
-  background-image: url("../assets/heartdice-bg.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.perilsandprincesses.sheet.actor form.character section.sheet-body .virtues {
-  background-image: url("../assets/virtues-bg.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
 .perilsandprincesses.sheet.actor form.character section.sheet-body {
   /* VIRTUE BLOCKS */
 }
@@ -325,12 +310,7 @@
   gap: var(--space-xs);
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .fairytale-frame {
-  background: var(--pp-glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
-  -webkit-box-shadow: var(--pp-glass-shadow);
-          box-shadow: var(--pp-glass-shadow);
+  background-color: var(--pp-brown);
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
@@ -353,7 +333,6 @@
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .virtue-banner {
   font-family: var(--secondary-font);
-  text-shadow: 0 0 8px var(--pp-brown) !important;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;

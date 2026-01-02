@@ -54,10 +54,10 @@
   overflow: visible;
   background-color: var(--pp-pink);
   border: 3px double var(--pp-white);
-  color: var(--pp-white);
+  color: var(--pp-brown);
   //text-shadow: 0 0 8px var(--pp-brown) !important;
   h2, h3 {
-    border-bottom: 1px solid var(--pp-white) !important;
+    border-bottom: 1px solid var(--pp-brown) !important;
   }
 }
 
@@ -115,7 +115,7 @@
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
-.tiny-text { font-size: var(--space-md); }
+.tiny-text { font-size: var(--space-md); font-weight: 600;}
 }
 
 /* --- 4. The System Wrapper --- */
@@ -140,7 +140,7 @@
   /* ACTOR SHEETS */
   &.sheet.actor {
     .window-content {
-      background: var(--pp-brown);
+      background: var(--pp-white);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -173,6 +173,7 @@
           border-radius: 100%;
           border: 3px double var(--pp-white);
           object-fit: cover;
+          background-color: var(--pp-brown);
         }
 
         .header-fields {
@@ -180,11 +181,11 @@
           .charname input {
             font-family: var(--secondary-font);
             font-size: 2rem;
-            color: var(--pp-white);
+            color: var(--pp-brown);
             width: 100%;
           }
           .resource input {
-            color: var(--pp-white);
+            color: var(--pp-brown);
           }
         }
       }
@@ -202,7 +203,7 @@
             font-size: 1.125rem;
             font-weight: 600;
             letter-spacing: 0.1em;
-            color: var(--pp-white); // Default
+            color: var(--pp-brown); // Default
             border-radius: var(--space-xs);
             transition: all 0.3s ease;
             position: relative;
@@ -272,29 +273,7 @@
             font-family: var(--secondary-font);
         }
 
-        .armor {
-          background-image: url("../assets/armor-bg.png");
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-          background-position: bottom right;
-        }
-
-        .heartdice {
-          background-image: url("../assets/heartdice-bg.png");
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-
-        .heartpoints {
-          
-        }
-
-        .virtues {
-          background-image: url("../assets/virtues-bg.png");
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-        }
+        
 
         /* VIRTUE BLOCKS */
         .fairytale-container {
@@ -304,7 +283,8 @@
           gap: var(--space-xs);
 
           .fairytale-frame {
-            @include glass-panel;
+            //@include glass-panel;
+            background-color: var(--pp-brown);
             width: 4.5rem;
             height: 4.5rem;
             border-radius: 50%;
@@ -323,7 +303,7 @@
 
           .virtue-banner {
             font-family: var(--secondary-font);
-            text-shadow: 0 0 8px var(--pp-brown) !important;
+            // text-shadow: 0 0 8px var(--pp-brown) !important;
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 0.05em;
