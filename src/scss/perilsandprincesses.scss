@@ -1,0 +1,231 @@
+/* --- 1. Variables & Root --- */
+:root {
+  font-size: 16px; 
+
+  // Spacing (rem)
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  
+  // Colors
+  --pp-parchment: #fcf8f0;
+  --pp-gold: #d4af37;
+  --pp-rose-deep: #8e444a;
+  --pp-rose-soft: #f2d5d7; // Lightened for better glass feel
+  --pp-sage-deep: #4a5d4e;
+  --pp-sage-soft: #dce3db; // Lightened for subtle backgrounds
+  --pp-ink: #1a1a1a;
+  --pp-glass-bg: rgba(255, 255, 255, 0.5);
+  --pp-glass-border: rgba(255, 255, 255, 0.7);
+  --pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 2. Mixins --- */
+@mixin glass-panel {
+  background: var(--pp-glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--pp-glass-border);
+  box-shadow: var(--pp-glass-shadow);
+}
+
+/* --- 3. System Layout utlities --- */
+.perilsandprincesses {
+// Flexbox Row (Perfect for Stat Lines or Header Fields)
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-md);
+  
+  &.gap-sm { gap: var(--space-sm); }
+  &.gap-lg { gap: var(--space-lg); }
+}
+
+// Flexbox Column (Perfect for Sidebar or Vertical Info)
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.all-center {
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+// The Grid System (Clean & Modern)
+.grid {
+  display: grid;
+  gap: var(--space-md);
+
+  &.grid-2 { grid-template-columns: repeat(2, 1fr); }
+  &.grid-3 { grid-template-columns: repeat(3, 1fr); }
+  &.grid-4 { grid-template-columns: repeat(4, 1fr); }
+  
+  // A special grid for "Virtues" or "Hearts" that centers everything
+  &.grid-center {
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+// Glass Card Utility (For Items, Gifts, or Spells)
+.glass-card {
+  @include glass-panel;
+  padding: var(--space-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--pp-rose-soft);
+  }
+}
+
+// Simple Helpers
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+}
+
+/* --- 4. The System Wrapper --- */
+.perilsandprincesses {
+
+  // Global resets within the system
+  input[type="text"], input[type="number"] {
+    background: transparent;
+    border: none;
+    color: var(--pp-ink);
+    &:focus { box-shadow: none; }
+  }
+
+  /* ACTOR SHEETS */
+  &.sheet.actor {
+    .window-content {
+      background: url("../assets/background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: var(--space-xs);
+      overflow: hidden;
+      font-family: 'EB Garamond', serif;
+    }
+
+    form.character {
+      padding: var(--space-md);
+      height: 100%;
+
+      /* HEADER SECTION */
+      .sheet-header {
+        display: flex;
+        flex: 0 0 auto;
+        gap: var(--space-md);
+        padding-bottom: var(--space-md);
+        border-bottom: 2px solid var(--pp-sage-soft);
+
+        .profile-img {
+          flex: 0 0 100px;
+          height: 100px;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--pp-gold);
+          object-fit: cover;
+        }
+
+        .header-fields {
+          flex: 1;
+          .charname input {
+            font-size: 2rem;
+            font-family: 'Cinzel', serif;
+            color: var(--pp-rose-deep);
+            width: 100%;
+          }
+        }
+      }
+
+      /* NAVIGATION (Glassmorphism) */
+      nav.sheet-tabs {
+        @include glass-panel;
+        flex: 0 0 auto;
+        display: flex;
+        margin: var(--space-md) 0;
+        border-radius: 50px; // Modern pill shape
+        padding: 0.2rem;
+        border: 1px solid var(--pp-rose-soft);
+
+        .item {
+          flex: 1;
+          text-align: center;
+          line-height: 2.2rem;
+          font-family: 'Cinzel', serif;
+          font-size: 0.75rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--pp-sage-deep);
+          border-radius: 50px;
+          transition: all 0.2s ease;
+
+          &.active {
+            background: var(--pp-rose-soft);
+            color: var(--pp-rose-deep);
+            box-shadow: inset 0 0 5px rgba(255,255,255,0.5);
+          }
+        }
+      }
+
+      /* BODY SECTION */
+      section.sheet-body {
+        flex: 1;
+        overflow-y: auto;
+
+        /* VIRTUE BLOCKS */
+        .virtue-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--space-xs);
+
+          .fairytale-frame {
+            @include glass-panel;
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px double var(--pp-gold);
+
+            input {
+              font-size: 1.8rem;
+              text-align: center;
+              font-family: 'Cinzel', serif;
+              color: var(--pp-rose-deep);
+            }
+          }
+
+          .virtue-banner {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--pp-sage-deep);
+            letter-spacing: 0.05em;
+          }
+        }
+      }
+    }
+  }
+
+  /* ITEM SHEETS */
+  &.sheet.item {
+    .window-content {
+      background: white !important;
+      border: 6px double var(--pp-sage-soft);
+      padding: var(--space-md);
+    }
+  }
+}

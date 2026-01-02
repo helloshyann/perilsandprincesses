@@ -1,0 +1,61 @@
+{{#if activeGift}}
+<div class="gift-header">
+    <div class="gift-title-block">
+      <h2>{{activeGift.title}}</h2>
+      <p class="flavor-text">{{activeGift.description}}</p>
+    </div>
+  </div>
+<div class="gift-details">
+  <div class="grid grid-2col">
+    <div>
+      <h3>Talents</h3>
+      <p>{{#each activeGift.talents}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>
+    </div>
+    <div class="gift-dice-pool">
+      <h3>Gift Dice</h3>
+      <div class="dice-checkboxes flexrow">
+        <input type="checkbox" name="system.giftDice.gift1" {{checked system.giftDice.gift1}}/>
+        <input type="checkbox" name="system.giftDice.gift2" {{checked system.giftDice.gift2}}/>
+        <input type="checkbox" name="system.giftDice.gift3" {{checked system.giftDice.gift3}}/>
+        <input type="checkbox" name="system.giftDice.gift4" {{checked system.giftDice.gift4}}/>
+        <span class="dice-divider"></span>
+        <div class="extra-die">
+           <input type="checkbox" name="system.giftDice.extraGift" {{checked system.giftDice.extraGift}}/>
+           <label>Extra</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Innate Abilities</h3>
+  {{#each activeGift.innate}}
+    <p><strong>{{this.name}}:</strong> {{this.text}}</p>
+  {{/each}}
+
+  <hr>
+
+  <h3>Special Abilities</h3>
+  {{#each activeGift.special}}
+    <div class="special-ability">
+      <span class="ability-level">{{this.level}}.</span>
+      <strong>{{{this.name}}}:</strong> {{{this.text}}}
+    </div>
+  {{/each}}
+
+  <hr>
+
+  <h3>Mishaps (Doubles)</h3>
+  <table class="mishap-table">
+    {{#each activeGift.mishaps}}
+      <tr>
+        <td>{{@index}}s</td>
+        <td>{{this}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</div>
+{{else}}
+  <p class="hint">Select a Gift in the header to reveal your royal powers.</p>
+{{/if}}

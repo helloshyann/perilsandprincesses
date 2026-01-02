@@ -1,0 +1,65 @@
+{
+  "Actor": {
+    "types": ["character", "npc"],
+    "templates": {
+      "baseStats": {
+        "virtues": {
+          "resolve": { "value": 8, "label": "Resolve" },
+          "grace": { "value": 8, "label": "Grace" },
+          "wits": { "value": 8, "label": "Wits" }
+        },
+        "hp": { "value": 5, "max": 5 },
+        "level": { "value": 1 },
+        "ailments": {
+        "weary": false,
+        "woozy": false,
+        "befuddled": false
+      },
+      "trauma": {
+        "box1": false,
+        "box2": false,
+        "box3": false
+      }
+      }
+    },
+    "character": {
+      "templates": ["baseStats"],
+      "heartDice": {
+        "heart1": false,
+        "heart2": false,
+        "heart3": false,
+        "heart4": false,
+        "extraHeart": false
+      },
+      "giftChoice": { "value": ""},
+      "giftDice": {
+        "gift1": false,
+        "gift2": false,
+        "gift3": false,
+        "gift4": false,
+        "extraGift": false
+      },
+      "details": {
+        "fairyGodmother": "",
+        "giftName": "",
+        "biography": ""
+      }
+    },
+    "npc": {
+      "templates": ["baseStats"],
+      "danger": { "value": 1 }
+    }
+  },
+  "Item": {
+    "types": ["item", "gift", "spell", "wound"],
+    "templates": {
+      "baseItem": {
+        "description": ""
+      }
+    },
+    "item": { "templates": ["baseItem"], "quantity": 1, "bulky": false },
+    "gift": { "templates": ["baseItem"], "level": 1 },
+    "spell": { "templates": ["baseItem"] },
+    "wound": { "templates": ["baseItem"], "severity": 1 }
+  }
+}
