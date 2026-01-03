@@ -1,61 +1,105 @@
 {{#if activeGift}}
-<div class="gift-header glass-card">
-    <div class="gift-title-block">
-      <h2 class="gift-title">{{activeGift.title}}</h2>
-      <p class="flavor-text">{{activeGift.description}}</p>
-    </div>
-  </div>
-<div class="gift-details">
-  <div class="grid grid-2 glass-card">
-    <div>
-      <h3>Talents</h3>
-      <p>{{#each activeGift.talents}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>
-    </div>
-    <div class="gift-dice-pool">
-      <h3>Gift Dice</h3>
-      <div class="dice-checkboxes flexrow">
-        <input type="checkbox" name="system.giftDice.gift1" {{checked system.giftDice.gift1}}/>
-        <input type="checkbox" name="system.giftDice.gift2" {{checked system.giftDice.gift2}}/>
-        <input type="checkbox" name="system.giftDice.gift3" {{checked system.giftDice.gift3}}/>
-        <input type="checkbox" name="system.giftDice.gift4" {{checked system.giftDice.gift4}}/>
-        <span class="dice-divider"></span>
-        <div class="extra-die">
-           <input type="checkbox" name="system.giftDice.extraGift" {{checked system.giftDice.extraGift}}/>
-           <label>Extra</label>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="gift-header pink-card">
+		<div class="gift-title-block">
+			<h2 class="gift-title">{{activeGift.title}}</h2>
+			<p class="flavor-text">{{activeGift.description}}</p>
+		</div>
+	</div>
+	<div class="gift-details">
+		<div class="grid grid-2 pink-card">
+			<div>
+				<h3>Talents</h3>
+				<p>{{#each activeGift.talents}}{{this}}{{#unless @last}},
+						{{/unless}}{{/each}}</p>
+			</div>
+			<div class="gift-dice-pool">
+				<h3>Gift Dice</h3>
+				<div class="dice-checkboxes flexrow all-center">
+					<div class="flex-col all-center">
+						<input
+							type="checkbox"
+							name="system.giftDice.gift1"
+							{{checked system.giftDice.gift1}}
+						/>
+						<label class="tiny-text">I</label>
+					</div>
+					<div class="flex-col all-center">
+						<input
+							type="checkbox"
+							name="system.giftDice.gift2"
+							{{checked system.giftDice.gift2}}
+						/>
+						<label class="tiny-text">II</label>
+					</div>
+					<div class="flex-col all-center">
+						<input
+							type="checkbox"
+							name="system.giftDice.gift3"
+							{{checked system.giftDice.gift3}}
+						/>
+						<label class="tiny-text">III</label>
+					</div>
+					<div class="flex-col all-center">
+						<input
+							type="checkbox"
+							name="system.giftDice.gift4"
+							{{checked system.giftDice.gift4}}
+						/>
+						<label class="tiny-text">IV</label>
+					</div>
+					<span class="dice-divider"></span>
+					<div class="flex-col all-center">
+						<input
+							type="checkbox"
+							name="system.giftDice.extraGift"
+							{{checked system.giftDice.extraGift}}
+						/>
+						<label class="tiny-text">Extra</label>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  <div class="glass-card flex-col">
-    <h3>Innate Abilities</h3>
-    {{#each activeGift.innate}}
-      <p><strong>{{this.name}}:</strong> {{this.text}}</p>
-    {{/each}}
-  </div>
+		<div class="pink-card flex-col">
+			<h3>Innate Abilities</h3>
+			{{#each activeGift.innate}}
+				<div class="innate-ability">
+					<div class="innate-ab-title"><strong>{{{this.name}}}</strong></div>
+					<div class="innate-ab-content">
+						{{{this.text}}}
+					</div>
+				</div>
+			{{/each}}
+		</div>
 
-  <div class="glass-card flex-col">
-    <h3>Special Abilities</h3>
-    {{#each activeGift.special}}
-    <div class="special-ability">
-      <span class="ability-level">{{this.level}}.</span>
-      <strong>{{{this.name}}}:</strong> {{{this.text}}}
-    </div>
-    {{/each}}
-  </div>
+		<div class="pink-card flex-col">
+			<h3>Special Abilities</h3>
+			{{#each activeGift.special}}
+				<div class="special-ability">
+					<div class="special-ab-title">
+						<span class="ability-level">Level {{this.level}}</span>
+						<strong>{{{this.name}}}</strong>
+					</div>
+					<div class="special-ab-content">
+						{{{this.text}}}
+					</div>
+				</div>
+			{{/each}}
+		</div>
 
-  <div class="glass-card flex-col">
-    <h3>Mishaps (Doubles)</h3>
-    <table class="mishap-table">
-      {{#each activeGift.mishaps}}
-        <tr>
-          <td>{{@index}}s</td>
-          <td>{{this}}</td>
-        </tr>
-      {{/each}}
-    </table>
-  </div>
-</div>
+		<div class="pink-card flex-col">
+			<h3>Mishaps (Doubles)</h3>
+			<table class="mishap-table">
+				{{#each activeGift.mishaps}}
+					<tr>
+						<td>{{@index}}s</td>
+						<td>{{this}}</td>
+					</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
 {{else}}
-  <p class="glass-card">Select a Gift in the header to reveal your Princess powers.</p>
+	<p class="pink-card">Select a Gift in the header to reveal your Princess
+		powers.</p>
 {{/if}}

@@ -19,13 +19,6 @@
 	--pp-brown: #4e3f3f;
 	--pp-white: #f8f6f8;
 	///
-	// --pp-parchment: #fcf8f0;
-	// --pp-gold: #d4af37;
-	// --pp-rose-deep: #9e5563;
-	// --pp-rose-soft: #f2d5d7; // Lightened for better glass feel
-	// --pp-sage-deep: #4a5d4e;
-	// --pp-sage-soft: #dce3db; // Lightened for subtle backgrounds
-	// --pp-ink: #1a1a1a;
 	--pp-glass-bg: rgba(255, 255, 255, 0.135);
 	--pp-glass-border: rgba(255, 255, 255, 0.135);
 	--pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -41,7 +34,7 @@
 }
 
 // Glass Card Utility (For Items, Gifts, or Spells)
-.glass-card {
+.pink-card {
 	// @include glass-panel;
 	position: relative;
 	display: flex;
@@ -152,6 +145,43 @@
 		.fairytale-frame {
 			width: 48px;
 			height: 48px;
+		}
+	}
+
+	.innate-ability {
+		border: 3px solid var(--pp-brown);
+		border-radius: var(--space-sm) var(--space-sm) 0 0;
+		.innate-ab-title {
+			background-color: var(--pp-brown);
+			border-radius: 2px 2px 0 0;
+			color: var(--pp-white);
+			padding: var(--space-sm);
+		}
+		.innate-ab-content {
+			padding: var(--space-sm);
+			background: rgba(208, 197, 209, 0.2);
+		}
+	}
+
+	.special-ability {
+		border: 3px solid var(--pp-brown);
+		border-radius: var(--space-sm) var(--space-sm) 0 0;
+		.special-ab-title {
+			background-color: var(--pp-brown);
+			border-radius: 2px 2px 0 0;
+			color: var(--pp-white);
+			padding: 0 var(--space-sm);
+			.ability-level {
+				font-size: 1.5rem;
+				font-family: var(--secondary-font);
+			}
+			strong {
+				padding: 0 var(--space-sm);
+			}
+		}
+		.special-ab-content {
+			padding: var(--space-sm);
+			background: rgba(208, 197, 209, 0.2);
 		}
 	}
 
@@ -316,6 +346,44 @@
 					.resource input {
 						color: var(--pp-brown);
 					}
+					.header-rollers {
+						margin-top: var(--space-xs);
+
+						.pp-roll-btn {
+							flex: 1;
+							cursor: pointer;
+							padding: var(--space-xs) var(--space-sm);
+							font-size: 0.8rem;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							gap: 5px;
+							transition: all 0.2s ease;
+							background: transparent;
+							width: 1.6rem;
+							height: 1.75rem;
+							border: none;
+							border-radius: 100%;
+							background-size: 100% 100%;
+							&:hover {
+								// background: var(--pp-rose-soft);
+								// border-color: var(--pp-gold);
+								transform: translateY(-2px);
+								box-shadow: 0 4px 10px rgba(142, 68, 74, 0.2);
+							}
+
+							// Specifically styling the d20 to stand out
+							&.d20 {
+								background-image: url("../assets/D20.png");
+							}
+							&.d6 {
+								background-image: url("../assets/D6.png");
+							}
+							&.d4 {
+								background-image: url("../assets/D4.png");
+							}
+						}
+					}
 				}
 			}
 
@@ -395,6 +463,7 @@
 
 				h3 {
 					font-family: var(--secondary-font);
+					font-size: 1.33rem;
 				}
 
 				ul {

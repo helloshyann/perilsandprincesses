@@ -1,7 +1,7 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
   {{!-- Sheet Navigation --}}
-  <nav class="sheet-tabs glass-card" data-group="primary">
+  <nav class="sheet-tabs pink-card" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
     <a class="item" data-tab="description">Story</a>
     <a class="item" data-tab="features">Virtues</a>
@@ -10,7 +10,7 @@
   </nav>
 
   {{!-- Sheet Header --}}
-  <header class="sheet-header flex-row glass-card all-center">
+  <header class="sheet-header flex-row pink-card all-center">
     <div class="picture-frame">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="150" width="150"/>
     </div>
@@ -33,7 +33,12 @@
             <select name="system.giftChoice.value">
               {{selectOptions giftOptions selected=system.giftChoice.value labelAttr="label"}}
             </select>          
-        </div>        
+        </div>
+        <div class="header-rollers flex-row">
+          <button type="button" class="pp-roll-btn d20" data-roll="d20" title="Roll d20"></button>
+          <button type="button" class="pp-roll-btn d6" data-roll="d6" title="Roll d6"></button>
+          <button type="button" class="pp-roll-btn d4" data-roll="d4" title="Roll d4"></button>
+        </div>
       </div>
     </div>
   </header>  
@@ -43,7 +48,7 @@
 
     {{!-- Virtues Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="flexrow glass-card">
+      <section class="flexrow pink-card">
         {{#each system.virtues as |virtue id|}}
           <div class="fairytale-container">
             <div class="fairytale-frame">
@@ -57,7 +62,7 @@
       <section class="grid grid-2">
         {{!-- Heart Point Section --}}
         <div class="hp-section all-center">
-          <div class="glass-card flex-col all-center">
+          <div class="pink-card flex-col all-center">
             <h3>Heart Points</h3>
             <div class="flex-row">
               <div class="hp-current-main flex-col fairytale-container">
@@ -70,7 +75,7 @@
               </div>
             </div>
           </div>          
-          <div class="glass-card flex-col all-center">
+          <div class="pink-card flex-col all-center">
             <div class="flex-col all-center"><h3>Heart Dice</h3><span class="tiny-text">One d4 per level. Spend in two ways: <ul><li>1. Heal HP during a Picnic</li><li>2. Subtract amount rolled from a friend's failed Virtue test</li></ul> Heart Dice replenish after a Rest.</span></div>
             <div class="flex-row all-center">
               <div class="hd flex-col all-center">
@@ -97,7 +102,7 @@
           </div>
         </div>
         {{!-- Armor, Ailment, Trauma Section --}}
-        <div class="glass-card flex-col all-center">
+        <div class="pink-card flex-col all-center">
           <div class="flex-col all-center fairytale-container">
             <h3>Armor</h3>
             <div class="fairytale-frame">
@@ -146,7 +151,7 @@
 
     {{!-- Story Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
-      <div class="glass-card">
+      <div class="pink-card">
         {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
       {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
       </div>
