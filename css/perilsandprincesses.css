@@ -6,18 +6,11 @@
   --secondary-font: "UnifrakturCook", cursive;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
-  --space-md: .75rem;
+  --space-md: 0.75rem;
   --space-lg: 1rem;
   --pp-pink: #c9919c;
   --pp-brown: #4e3f3f;
   --pp-white: #f8f6f8;
-  --pp-parchment: #fcf8f0;
-  --pp-gold: #d4af37;
-  --pp-rose-deep: #8e444a;
-  --pp-rose-soft: #f2d5d7;
-  --pp-sage-deep: #4a5d4e;
-  --pp-sage-soft: #dce3db;
-  --pp-ink: #1a1a1a;
   --pp-glass-bg: rgba(255, 255, 255, 0.135);
   --pp-glass-border: rgba(255, 255, 255, 0.135);
   --pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -39,10 +32,13 @@
   border-radius: var(--space-sm);
   overflow: visible;
   background-color: var(--pp-pink);
-  border: 3px double var(--pp-white);
+  background-position: center center;
+  background-size: cover;
+  border: 3px double var(--pp-brown);
   color: var(--pp-brown);
 }
-.glass-card h2, .glass-card h3 {
+.glass-card h2,
+.glass-card h3 {
   border-bottom: 1px solid var(--pp-brown) !important;
 }
 
@@ -81,18 +77,6 @@
           flex-direction: column;
   gap: var(--space-sm);
 }
-.perilsandprincesses .all-center {
-  justify-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  text-align: center;
-}
 .perilsandprincesses .grid {
   display: -ms-grid;
   display: grid;
@@ -117,6 +101,51 @@
           align-items: center;
   text-align: center;
 }
+.perilsandprincesses .fairytale-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: var(--space-xs);
+}
+.perilsandprincesses .fairytale-container .fairytale-frame {
+  background-color: var(--pp-brown);
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 3px double var(--pp-white);
+}
+.perilsandprincesses .fairytale-container .fairytale-frame input {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--pp-white);
+  font-family: var(--secondary-font);
+}
+.perilsandprincesses .fairytale-container .virtue-banner {
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.perilsandprincesses .level-container .fairytale-frame {
+  width: 48px;
+  height: 48px;
+}
 .perilsandprincesses .text-center {
   text-align: center;
 }
@@ -131,31 +160,96 @@
   font-size: var(--space-md);
   font-weight: 600;
 }
+.perilsandprincesses .level-text {
+  color: var(--pp-brown);
+  font-family: var(--secondary-font);
+  font-weight: 700;
+  border-bottom: 1px solid var(--pp-brown);
+}
+.perilsandprincesses .all-center {
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+}
 
 /* --- 4. The System Wrapper --- */
-.perilsandprincesses input[type=text], .perilsandprincesses input[type=number], .perilsandprincesses input[type=checkbox] {
+.perilsandprincesses input[type=text],
+.perilsandprincesses input[type=number],
+.perilsandprincesses input[type=checkbox] {
   background: transparent;
   border: none;
 }
-.perilsandprincesses input[type=text]:focus, .perilsandprincesses input[type=number]:focus, .perilsandprincesses input[type=checkbox]:focus {
+.perilsandprincesses input[type=text]:focus,
+.perilsandprincesses input[type=number]:focus,
+.perilsandprincesses input[type=checkbox]:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.perilsandprincesses select, .perilsandprincesses select option {
-  background: var(--pp-pink);
+.perilsandprincesses input[type=checkbox],
+.perilsandprincesses select,
+.perilsandprincesses select option {
+  background: var(--pp-brown) !important;
+  color: var(--pp-white);
+}
+.perilsandprincesses select {
+  border: 3px double var(--pp-brown);
 }
 .perilsandprincesses select:focus {
   -webkit-box-shadow: 0 0 5px var(--pp-deep-rose) !important;
           box-shadow: 0 0 5px var(--pp-deep-rose) !important;
+}
+.perilsandprincesses table {
+  margin: 0 0 !important;
+  width: 100%;
+  border-collapse: separate;
+  border: 3px double var(--pp-brown);
+  border-radius: var(--space-sm);
+}
+.perilsandprincesses table thead th {
+  color: var(--pp-brown);
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  padding: var(--space-sm);
+  border-bottom: 2px solid var(--pp-gold);
+  text-align: left;
+}
+.perilsandprincesses table tbody tr {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.perilsandprincesses table tbody tr:nth-child(even) {
+  background: rgba(208, 197, 209, 0.2);
+}
+.perilsandprincesses table td {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border: none;
+}
+.perilsandprincesses table td:first-child {
+  font-family: var(--pp-font-display);
+  color: var(--pp-white);
+  background: var(--pp-brown);
+  font-weight: bold;
+  width: 3rem;
+  text-align: center;
 }
 .perilsandprincesses {
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
   background: var(--pp-white);
-  background-size: cover;
+  background-image: url("../assets/brown-pencil.png");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   padding: var(--space-xs);
   overflow: hidden;
   font-family: var(--primary-font);
@@ -187,7 +281,8 @@
   padding: var(--space-xs);
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .profile-img {
-  height: 100px;
+  height: 8rem;
+  width: 8rem;
   border-radius: 100%;
   border: 3px double var(--pp-white);
   -o-object-fit: cover;
@@ -199,25 +294,32 @@
       -ms-flex: 1;
           flex: 1;
 }
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .name-level-container {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  text-align: left;
+}
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname label {
+  margin-left: var(--space-xs);
+}
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname input {
   font-family: var(--secondary-font);
   font-size: 2rem;
-  color: var(--pp-brown);
+  color: var(--pp-white);
+  background-color: var(--pp-brown);
+  border: 3px double var(--pp-white);
   width: 100%;
+  margin: 0;
+  padding-left: var(--space-sm);
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input {
   color: var(--pp-brown);
 }
 .perilsandprincesses.sheet.actor form.character {
-  /* NAVIGATION (Glassmorphism) */
+  /* NAVIGATION */
 }
 .perilsandprincesses.sheet.actor form.character nav.sheet-tabs {
-  background: var(--pp-glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
-  -webkit-box-shadow: var(--pp-glass-shadow);
-          box-shadow: var(--pp-glass-shadow);
   position: relative;
   padding: 0 0 !important;
 }
@@ -293,49 +395,12 @@
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
   font-family: var(--secondary-font);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body {
-  /* VIRTUE BLOCKS */
+.perilsandprincesses.sheet.actor form.character section.sheet-body ul {
+  padding: 0;
+  margin: var(--space-sm);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: var(--space-xs);
-}
-.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .fairytale-frame {
-  background-color: var(--pp-brown);
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border: 3px double var(--pp-white);
-}
-.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .fairytale-frame input {
-  font-size: 2rem;
-  text-align: center;
-  color: var(--pp-white);
-  font-family: var(--secondary-font);
-}
-.perilsandprincesses.sheet.actor form.character section.sheet-body .fairytale-container .virtue-banner {
-  font-family: var(--secondary-font);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+.perilsandprincesses.sheet.actor form.character section.sheet-body ul li::marker {
+  color: var(--pp-pink);
 }
 .perilsandprincesses {
   /* ITEM SHEETS */

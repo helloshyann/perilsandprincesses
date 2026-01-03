@@ -1,324 +1,421 @@
 /* --- 1. Variables & Root --- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=UnifrakturCook:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=UnifrakturCook:wght@700&display=swap");
 
 :root {
-  font-size: 16px;
+	font-size: 16px;
 
-  // Fonts
-  --primary-font: "Roboto Flex", sans-serif;
-  --secondary-font: "UnifrakturCook", cursive;
+	// Fonts
+	--primary-font: "Roboto Flex", sans-serif;
+	--secondary-font: "UnifrakturCook", cursive;
 
-  // Spacing (rem)
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: .75rem;
-  --space-lg: 1rem;
-  
-  // Colors
-  --pp-pink: #c9919c;
-  --pp-brown: #4e3f3f;
-  --pp-white: #f8f6f8;
-  ///
-  --pp-parchment: #fcf8f0;
-  --pp-gold: #d4af37;
-  --pp-rose-deep: #8e444a;
-  --pp-rose-soft: #f2d5d7; // Lightened for better glass feel
-  --pp-sage-deep: #4a5d4e;
-  --pp-sage-soft: #dce3db; // Lightened for subtle backgrounds
-  --pp-ink: #1a1a1a;
-  --pp-glass-bg: rgba(255, 255, 255, 0.135);
-  --pp-glass-border: rgba(255, 255, 255, 0.135);
-  --pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+	// Spacing (rem)
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 0.75rem;
+	--space-lg: 1rem;
+
+	// Colors
+	--pp-pink: #c9919c;
+	--pp-brown: #4e3f3f;
+	--pp-white: #f8f6f8;
+	///
+	// --pp-parchment: #fcf8f0;
+	// --pp-gold: #d4af37;
+	// --pp-rose-deep: #9e5563;
+	// --pp-rose-soft: #f2d5d7; // Lightened for better glass feel
+	// --pp-sage-deep: #4a5d4e;
+	// --pp-sage-soft: #dce3db; // Lightened for subtle backgrounds
+	// --pp-ink: #1a1a1a;
+	--pp-glass-bg: rgba(255, 255, 255, 0.135);
+	--pp-glass-border: rgba(255, 255, 255, 0.135);
+	--pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 /* --- 2. Mixins --- */
 @mixin glass-panel {
-  background: var(--pp-glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--pp-glass-border);
-  box-shadow: var(--pp-glass-shadow);
+	background: var(--pp-glass-bg);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid var(--pp-glass-border);
+	box-shadow: var(--pp-glass-shadow);
 }
 
 // Glass Card Utility (For Items, Gifts, or Spells)
 .glass-card {
-  // @include glass-panel;
-  position: relative;
-  display: flex;        
-  flex: 0 0 auto;
-  width: 100%;
-  max-height: 100%;        
-  margin: var(--space-xs) 0;
-  padding: var(--space-sm);
-  border-radius: var(--space-sm);        
-  overflow: visible;
-  background-color: var(--pp-pink);
-  border: 3px double var(--pp-white);
-  color: var(--pp-brown);
-  //text-shadow: 0 0 8px var(--pp-brown) !important;
-  h2, h3 {
-    border-bottom: 1px solid var(--pp-brown) !important;
-  }
+	// @include glass-panel;
+	position: relative;
+	display: flex;
+	flex: 0 0 auto;
+	width: 100%;
+	max-height: 100%;
+	margin: var(--space-xs) 0;
+	padding: var(--space-sm);
+	border-radius: var(--space-sm);
+	overflow: visible;
+	background-color: var(--pp-pink);
+	//background-image: url("../assets/lightpink-pencil.png");
+	background-position: center center;
+	background-size: cover;
+	border: 3px double var(--pp-brown);
+	color: var(--pp-brown);
+	//text-shadow: 0 0 8px var(--pp-brown) !important;
+	h2,
+	h3 {
+		border-bottom: 1px solid var(--pp-brown) !important;
+	}
 }
 
 .gift-title {
-  font-family: var(--secondary-font);
-  font-size: 2rem;
+	font-family: var(--secondary-font);
+	font-size: 2rem;
 }
 
 /* --- 3. System Layout utlities --- */
 .perilsandprincesses {
-// Flexbox Row (Perfect for Stat Lines or Header Fields)
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-md);
-  
-  &.gap-sm { gap: var(--space-sm); }
-  &.gap-lg { gap: var(--space-lg); }
-}
+	.flex-row {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--space-md);
 
-// Flexbox Column (Perfect for Sidebar or Vertical Info)
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
+		&.gap-sm {
+			gap: var(--space-sm);
+		}
+		&.gap-lg {
+			gap: var(--space-lg);
+		}
+	}
 
-.all-center {
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-}
+	.flex-col {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
 
-// The Grid System (Clean & Modern)
-.grid {
-  display: grid;
-  gap: var(--space-md);
+	.grid {
+		display: grid;
+		gap: var(--space-md);
 
-  &.grid-2 { grid-template-columns: repeat(2, 1fr); }
-  &.grid-3 { grid-template-columns: repeat(3, 1fr); }
-  &.grid-4 { grid-template-columns: repeat(4, 1fr); }
-  
-  // A special grid for "Virtues" or "Hearts" that centers everything
-  &.grid-center {
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-  }
-}
+		&.grid-2 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.grid-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		&.grid-4 {
+			grid-template-columns: repeat(4, 1fr);
+		}
 
-// Simple Helpers
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
-.tiny-text { font-size: var(--space-md); font-weight: 600;}
+		// A special grid for "Virtues" or "Hearts" that centers everything
+		&.grid-center {
+			justify-items: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	.fairytale-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-xs);
+
+		.fairytale-frame {
+			//@include glass-panel;
+			background-color: var(--pp-brown);
+			width: 4.5rem;
+			height: 4.5rem;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 3px double var(--pp-white);
+
+			input {
+				font-size: 2rem;
+				text-align: center;
+				color: var(--pp-white);
+				font-family: var(--secondary-font);
+			}
+		}
+
+		.virtue-banner {
+			font-family: var(--secondary-font);
+			// text-shadow: 0 0 8px var(--pp-brown) !important;
+			font-size: 1.5rem;
+			font-weight: 700;
+			letter-spacing: 0.05em;
+		}
+	}
+
+	.level-container {
+		.fairytale-frame {
+			width: 48px;
+			height: 48px;
+		}
+	}
+
+	// Simple Helpers
+	.text-center {
+		text-align: center;
+	}
+	.text-right {
+		text-align: right;
+	}
+	.uppercase {
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+	.tiny-text {
+		font-size: var(--space-md);
+		font-weight: 600;
+	}
+	.level-text {
+		color: var(--pp-brown);
+		font-family: var(--secondary-font);
+		font-weight: 700;
+		border-bottom: 1px solid var(--pp-brown);
+	}
+	.all-center {
+		justify-items: center;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+	}
 }
 
 /* --- 4. The System Wrapper --- */
-.perilsandprincesses {  
+.perilsandprincesses {
+	// Global resets within the system
+	input[type="text"],
+	input[type="number"],
+	input[type="checkbox"] {
+		background: transparent;
+		border: none;
+		&:focus {
+			box-shadow: none;
+		}
+	}
 
-  // Global resets within the system
-  input[type="text"], input[type="number"], input[type="checkbox"] {
-    background: transparent;
-    border: none;
-    &:focus { box-shadow: none; }
-  }
+	input[type="checkbox"],
+	select,
+	select option {
+		background: var(--pp-brown) !important;
+		color: var(--pp-white);
+	}
 
-  select, select option {
-    background: var(--pp-pink);
+	select {
+		border: 3px double var(--pp-brown);
+		&:focus {
+			box-shadow: 0 0 5px var(--pp-deep-rose) !important;
+		}
+	}
 
-  }
+	table {
+		margin: 0 0 !important;
+		width: 100%;
+		border-collapse: separate;
+		// border-spacing: 0 var(--space-xs); // Gives rows a slight "floating" gap
+		border: 3px double var(--pp-brown);
+		border-radius: var(--space-sm);
 
-  select:focus {
-    box-shadow: 0 0 5px var(--pp-deep-rose) !important;
-  }
+		thead th {
+			color: var(--pp-brown);
+			letter-spacing: 0.1em;
+			font-size: 0.8rem;
+			padding: var(--space-sm);
+			border-bottom: 2px solid var(--pp-gold);
+			text-align: left;
+		}
 
-  /* ACTOR SHEETS */
-  &.sheet.actor {
-    .window-content {
-      background: var(--pp-white);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      padding: var(--space-xs);
-      overflow: hidden;
-      font-family: var(--primary-font);
-    }
+		tbody tr {
+			transition: all 0.2s ease;
 
-    form.character {
-      padding: var(--space-md);
-      height: 100%;
+			&:nth-child(even) {
+				background: rgba(208, 197, 209, 0.2);
+			}
+		}
 
-      /* HEADER SECTION */
-      .sheet-header {
-        display: flex;
-        flex: 0 0 auto;
-        gap: var(--space-md);
+		td {
+			padding: var(--space-sm) var(--space-md);
+			font-size: 0.95rem;
+			line-height: 1.4;
+			border: none;
 
+			// Style for the "Result/Number" column (e.g., 0s, 1s)
+			&:first-child {
+				font-family: var(--pp-font-display);
+				color: var(--pp-white);
+				background: var(--pp-brown);
+				font-weight: bold;
+				width: 3rem;
+				text-align: center;
+			}
+		}
+	}
 
-        .picture-frame{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: var(--space-xs);
-        }
+	/* ACTOR SHEETS */
+	&.sheet.actor {
+		.window-content {
+			background: var(--pp-white);
+			background-image: url("../assets/brown-pencil.png");
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			padding: var(--space-xs);
+			overflow: hidden;
+			font-family: var(--primary-font);
+		}
 
-        .profile-img {
-          //flex: 0 0 100px;
-          height: 100px;
-          border-radius: 100%;
-          border: 3px double var(--pp-white);
-          object-fit: cover;
-          background-color: var(--pp-brown);
-        }
+		form.character {
+			padding: var(--space-md);
+			height: 100%;
 
-        .header-fields {
-          flex: 1;
-          .charname input {
-            font-family: var(--secondary-font);
-            font-size: 2rem;
-            color: var(--pp-brown);
-            width: 100%;
-          }
-          .resource input {
-            color: var(--pp-brown);
-          }
-        }
-      }
+			/* HEADER SECTION */
+			.sheet-header {
+				display: flex;
+				flex: 0 0 auto;
+				gap: var(--space-md);
 
-      /* NAVIGATION (Glassmorphism) */
-      nav.sheet-tabs {
-        @include glass-panel();
-        position: relative;       
-        padding: 0 0 !important;
-        .item {
-            flex: 1;
-            text-align: center;
-            line-height: 2.2rem;
-            font-family: var(--secondary-font);
-            font-size: 1.125rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: var(--pp-brown); // Default
-            border-radius: var(--space-xs);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
+				.picture-frame {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: var(--space-xs);
+				}
 
-            // The Turret Asset
-            &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("../assets/turret.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-            opacity: 0;
-            z-index: -1;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: translateY(15px) scale(0.7);
-            }
+				.profile-img {
+					height: 8rem;
+					width: 8rem;
+					border-radius: 100%;
+					border: 3px double var(--pp-white);
+					object-fit: cover;
+					background-color: var(--pp-brown);
+				}
 
-            // Hover State
-            &:hover {
-            color: var(--pp-white) !important;
-            text-shadow: 0 0 8px var(--pp-brown) !important;
-            &::after {
-                opacity: 0.4;
-                transform: translateY(0) scale(0.9);
-              }
-            }
+				.header-fields {
+					flex: 1;
+					.name-level-container {
+						align-items: end;
+						text-align: left;
+					}
+					.charname label {
+						margin-left: var(--space-xs);
+					}
+					.charname input {
+						font-family: var(--secondary-font);
+						font-size: 2rem;
+						color: var(--pp-white);
+						background-color: var(--pp-brown);
+						border: 3px double var(--pp-white);
+						width: 100%;
+						margin: 0;
+						padding-left: var(--space-sm);
+					}
+					.resource input {
+						color: var(--pp-brown);
+					}
+				}
+			}
 
-            // Active State
-            &.active {
-            background: transparent;
-            color: var(--pp-brown);
-            
-            /* The White Stroke & Glow */
-            text-shadow: 
-                -1px -1px 0 #fff,  
-                1px -1px 0 #fff,
-                -1px  1px 0 #fff,
-                1px  1px 0 #fff,
-                0px  0px 8px rgba(255, 255, 255, 0.8);
+			/* NAVIGATION */
+			nav.sheet-tabs {
+				position: relative;
+				padding: 0 0 !important;
+				.item {
+					flex: 1;
+					text-align: center;
+					line-height: 2.2rem;
+					font-family: var(--secondary-font);
+					font-size: 1.125rem;
+					font-weight: 600;
+					letter-spacing: 0.1em;
+					color: var(--pp-brown); // Default
+					border-radius: var(--space-xs);
+					transition: all 0.3s ease;
+					position: relative;
+					z-index: 1;
 
-            &::after {
-                opacity: 0.85;
-                transform: translateY(-5px) scale(1.25);
-                //filter: drop-shadow(0 0 2px var(--pp-brown));
-            }
-            }
-        }  
-      }
+					// The Turret Asset
+					&::after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background-image: url("../assets/turret.png");
+						background-size: contain;
+						background-repeat: no-repeat;
+						background-position: center bottom;
+						opacity: 0;
+						z-index: -1;
+						transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+						transform: translateY(15px) scale(0.7);
+					}
 
-      /* BODY SECTION */
-      section.sheet-body {
-        flex: 1;
-        overflow-y: auto;
-        -ms-overflow-style: none;  /* Hide for IE and Edge */
-        scrollbar-width: none;     /* Hide for Firefox */        
-        &::-webkit-scrollbar {
-          display: none; /* Hide for Chrome, Safari and Opera */
-        }        
+					// Hover State
+					&:hover {
+						color: var(--pp-white) !important;
+						text-shadow: 0 0 8px var(--pp-brown) !important;
+						&::after {
+							opacity: 0.4;
+							transform: translateY(0) scale(0.9);
+						}
+					}
 
-        h3{
-            font-family: var(--secondary-font);
-        }
+					// Active State
+					&.active {
+						background: transparent;
+						color: var(--pp-brown);
 
-        
+						/* The White Stroke & Glow */
+						text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+							1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
 
-        /* VIRTUE BLOCKS */
-        .fairytale-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--space-xs);
+						&::after {
+							opacity: 0.85;
+							transform: translateY(-5px) scale(1.25);
+							//filter: drop-shadow(0 0 2px var(--pp-brown));
+						}
+					}
+				}
+			}
 
-          .fairytale-frame {
-            //@include glass-panel;
-            background-color: var(--pp-brown);
-            width: 4.5rem;
-            height: 4.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px double var(--pp-white);
+			/* BODY SECTION */
+			section.sheet-body {
+				flex: 1;
+				overflow-y: auto;
+				-ms-overflow-style: none; /* Hide for IE and Edge */
+				scrollbar-width: none; /* Hide for Firefox */
+				&::-webkit-scrollbar {
+					display: none; /* Hide for Chrome, Safari and Opera */
+				}
 
-            input {
-              font-size: 2rem;
-              text-align: center;
-              color: var(--pp-white);
-              font-family: var(--secondary-font);
-            }
-          }
+				h3 {
+					font-family: var(--secondary-font);
+				}
 
-          .virtue-banner {
-            font-family: var(--secondary-font);
-            // text-shadow: 0 0 8px var(--pp-brown) !important;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-          }
-        }
-      }
-    }
-  }
+				ul {
+					padding: 0;
+					margin: var(--space-sm);
+					li {
+						&::marker {
+							color: var(--pp-pink);
+						}
+					}
+				}
+			}
+		}
+	}
 
-  /* ITEM SHEETS */
-  &.sheet.item {
-    .window-content {
-      background: white !important;
-      border: 6px double var(--pp-sage-soft);
-      padding: var(--space-md);
-    }
-  }
+	/* ITEM SHEETS */
+	&.sheet.item {
+		.window-content {
+			background: white !important;
+			border: 6px double var(--pp-sage-soft);
+			padding: var(--space-md);
+		}
+	}
 }

@@ -8,7 +8,7 @@ export const preloadHandlebarsTemplates = async function () {
     // Actor partials.
     'systems/perilsandprincesses/templates/actor/parts/actor-features.hbs',
     'systems/perilsandprincesses/templates/actor/parts/actor-items.hbs',
-    'systems/perilsandprincesses/templates/actor/parts/actor-spells.hbs',
+    'systems/perilsandprincesses/templates/actor/parts/actor-gifts.hbs',
     'systems/perilsandprincesses/templates/actor/parts/actor-effects.hbs',
     // Item partials
     'systems/perilsandprincesses/templates/item/parts/item-effects.hbs',

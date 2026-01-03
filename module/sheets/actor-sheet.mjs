@@ -55,6 +55,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
       this._prepareCharacterData(context);
 
       context.giftOptions = {
+      nothing: "No Gift Selected",
       wildheart: "Wild Heart",
       enchantvoice: "Enchanting Voice",
       spriteag: "Spritely Agility",
