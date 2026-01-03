@@ -2,6 +2,7 @@
 	"Actor": {
 		"types": ["character", "npc"],
 		"templates": {
+			"pronouns": "",
 			"baseStats": {
 				"virtues": {
 					"resolve": { "value": 8, "label": "Resolve" },

@@ -28,7 +28,13 @@
         </div>
       </div>
       
-      <div class="resources flex-row all-center">
+      <div class="resources flex-row all-center lower-header-container">
+        <div class="resource flex-col">
+          <div class="pronoun-container">
+            <label class="tiny-text level-text">Pronouns</label>     
+            <input name="system.pronouns.value" type="text" value="{{system.pronouns.value}}"/>
+          </div>          
+        </div>
         <div class="resource flex-col">
             <select name="system.giftChoice.value">
               {{selectOptions giftOptions selected=system.giftChoice.value labelAttr="label"}}

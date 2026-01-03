@@ -368,7 +368,8 @@
       -ms-flex: 1;
           flex: 1;
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .name-level-container {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .name-level-container,
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .lower-header-container {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
@@ -386,6 +387,14 @@
   width: 100%;
   margin: 0;
   padding-left: var(--space-sm);
+}
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .pronoun-container input {
+  color: var(--pp-white) !important;
+  background-color: var(--pp-brown);
+  border: 3px double var(--pp-white);
+}
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields select {
+  border: 3px double var(--pp-white);
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input {
   color: var(--pp-brown);
