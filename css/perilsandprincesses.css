@@ -47,6 +47,15 @@
   font-size: 2rem;
 }
 
+.gift-text {
+  border-radius: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--pp-brown);
+  color: var(--pp-white);
+  font-weight: 400;
+}
+
 .pp-chat-card {
   padding: var(--space-md);
   border-radius: var(--space-sm);
