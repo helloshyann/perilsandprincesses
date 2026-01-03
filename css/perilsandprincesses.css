@@ -47,6 +47,25 @@
   font-size: 2rem;
 }
 
+.pp-chat-card {
+  padding: var(--space-md);
+  border-radius: var(--space-sm);
+  border: 3px double var(--pp-brown);
+  background-color: var(--pp-pink);
+  margin-bottom: var(--space-sm);
+}
+.pp-chat-card .pp-font-display {
+  font-size: 1rem;
+  color: var(--pp-brown);
+}
+.pp-chat-card .result {
+  font-size: 2rem !important;
+  font-family: var(--secondary-font) !important;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
 /* --- 3. System Layout utlities --- */
 .perilsandprincesses .flex-row {
   display: -webkit-box;
@@ -141,6 +160,17 @@
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
+}
+.perilsandprincesses .fairytale-container .pp-virtue-roll {
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.perilsandprincesses .fairytale-container .pp-virtue-roll:hover {
+  color: var(--pp-white);
+  text-shadow: 0 0 8px var(--pp-brown);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 .perilsandprincesses .level-container .fairytale-frame {
   width: 48px;

@@ -646,6 +646,13 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 				this._onRollPoolDialog(type);
 			}
 		});
+
+		// Virtue Roll Listener
+		html.find(".pp-virtue-roll").click((ev) => {
+			const label = ev.currentTarget.dataset.label;
+			const targetValue = parseInt(ev.currentTarget.dataset.value);
+			this._onVirtueRollDialog(label, targetValue);
+		});
 	}
 
 	/* d20 Dialog */
@@ -766,5 +773,58 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 			});
 			return roll;
 		}
+	}
+
+	/**
+	 * Virtue Roll Dialog: Prompt for Advantage/Disadvantage and check vs Stat
+	 */
+	async _onVirtueRollDialog(label, targetValue) {
+		new Dialog({
+			title: `${label} Test`,
+			content: `<p class="pp-text-center">Testing <strong>${label}</strong> against a value of <strong>${targetValue}</strong>.</p>`,
+			buttons: {
+				adv: {
+					label: "Advantage",
+					callback: () => this._executeVirtueRoll("2d20kl", label, targetValue),
+				},
+				norm: {
+					label: "Normal",
+					callback: () => this._executeVirtueRoll("1d20", label, targetValue),
+				},
+				dis: {
+					label: "Disadvantage",
+					callback: () => this._executeVirtueRoll("2d20kh", label, targetValue),
+				},
+			},
+			default: "norm",
+		}).render(true);
+	}
+
+	/**
+	 * Execution function to handle the roll math and chat card
+	 */
+	async _executeVirtueRoll(formula, label, targetValue) {
+		let roll = await new Roll(formula).roll({ async: true });
+		const result = roll.total;
+
+		// Perils & Princesses Success Logic: Equal to or Under the Stat
+		const isSuccess = result <= targetValue;
+		const resultText = isSuccess ? "Success" : "Failure";
+		const resultColor = isSuccess ? "#4a5d4e" : "#8e444a"; // Sage for Success, Rose for Failure
+
+		// Create the Chat Card
+		let messageContent = `
+			<div class="pp-chat-card">
+			<h3 class="pp-font-display">Virtue Test: ${label}</h3>
+			<div class="result" style="color: ${resultColor};">
+				${resultText}
+			</div>
+			</div>
+		`;
+
+		roll.toMessage({
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			flavor: messageContent,
+		});
 	}
 }
