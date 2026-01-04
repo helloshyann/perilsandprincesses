@@ -11,6 +11,17 @@
   --pp-pink: #c9919c;
   --pp-brown: #4e3f3f;
   --pp-white: #f8f6f8;
+  /* Subcore Colors */
+  --pp-rose-deep: #8e444a; /* Bold headers, success/fail text, d20 icons */
+  --pp-rose-soft: #f4e7e8; /* Hover states, row backgrounds */
+  --pp-gold: #c5a059; /* Borders, dividers, roll icons, seals */
+  /* Sage / Nature Accents */
+  --pp-sage-deep: #4a5d4e; /* Success text, specialized roll results */
+  --pp-sage-soft: #c8d1c5; /* Zebra striping, mishap bubbles */
+  /* Text & Ink */
+  --pp-ink-story: #2c2421; /* Main body text (EB Garamond style) */
+  --pp-ink-faded: #5a504c; /* Labels, placeholders */
+  /* Glassmorphism Backgrounds */
   --pp-glass-bg: rgba(255, 255, 255, 0.135);
   --pp-glass-border: rgba(255, 255, 255, 0.135);
   --pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -123,8 +134,8 @@
   grid-template-columns: repeat(4, 1fr);
 }
 .perilsandprincesses .grid.grid-5 {
-  -ms-grid-columns: (1fr)[5];
-  grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: 1fr 0.25fr 0.25fr 0.25fr 0.1fr;
+  grid-template-columns: 1fr 0.25fr 0.25fr 0.25fr 0.1fr;
 }
 .perilsandprincesses .grid.grid-6 {
   -ms-grid-columns: (1fr)[6];
@@ -299,7 +310,6 @@
   letter-spacing: 0.1em;
   font-size: 0.8rem;
   padding: var(--space-sm);
-  border-bottom: 2px solid var(--pp-gold);
   text-align: left;
 }
 .perilsandprincesses table tbody tr {
@@ -322,84 +332,6 @@
   font-weight: bold;
   width: 3rem;
   text-align: center;
-}
-.perilsandprincesses .items-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.perilsandprincesses .items-list .pp-items-list-header {
-  padding: 0 var(--space-md);
-  border-bottom: 2px solid var(--pp-gold);
-  color: var(--pp-rose-deep);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-xs);
-}
-.perilsandprincesses .items-list .pp-items-list-header .item-controls .item-create {
-  color: var(--pp-sage-deep);
-}
-.perilsandprincesses .items-list .pp-items-list-header .item-controls .item-create:hover {
-  color: var(--pp-gold);
-}
-.perilsandprincesses .items-list .pp-item-row {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: var(--space-xs) var(--space-md);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-}
-.perilsandprincesses .items-list .pp-item-row:hover {
-  background: var(--pp-rose-soft);
-  border-color: var(--pp-gold);
-  -webkit-transform: translateX(5px);
-          transform: translateX(5px);
-  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-.perilsandprincesses .items-list .pp-item-row .item-name {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-}
-.perilsandprincesses .items-list .pp-item-row .item-name h4 {
-  margin: 0;
-  color: var(--pp-ink-story);
-  font-size: 1rem;
-}
-.perilsandprincesses .items-list .pp-item-row .item-image img {
-  border: 1px solid var(--pp-gold);
-  border-radius: 4px;
-  background: var(--pp-glass-bg);
-}
-.perilsandprincesses .items-list .pp-item-row .item-formula {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  color: var(--pp-sage-deep);
-  font-weight: bold;
-}
-.perilsandprincesses .items-list .pp-item-row .item-controls {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 60px;
-          flex: 0 0 60px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-.perilsandprincesses .items-list .pp-item-row .item-controls a {
-  color: var(--pp-sage-soft);
-  font-size: 0.9rem;
-}
-.perilsandprincesses .items-list .pp-item-row .item-controls a:hover {
-  color: var(--pp-rose-deep);
-}
-.perilsandprincesses .items-list .pp-item-row .item-controls .item-delete:hover {
-  color: #d9534f;
 }
 .perilsandprincesses {
   /* ACTOR SHEETS */
@@ -655,28 +587,33 @@
 .pp-item-table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 6px;
   margin-top: var(--space-sm);
 }
-.pp-item-table thead th {
+.pp-item-table thead th.purse {
   padding: var(--space-xs) var(--space-sm);
   color: var(--pp-white);
-  border-bottom: 2px solid var(--pp-gold);
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-align: center;
 }
-.pp-item-table thead th:first-child {
+.pp-item-table thead th.purse:first-child {
   text-align: left;
 }
 .pp-item-table .pp-item-row {
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  margin-top: var(--space-xs);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: var(--pp-white);
+  border: 1px solid var(--pp-white);
+  border-radius: 9px;
+}
+.pp-item-table .pp-item-row:first-child {
+  margin-top: 0;
 }
 .pp-item-table .pp-item-row td {
+  width: 100% !important;
   padding: var(--space-xs) var(--space-sm);
-  background: var(--pp-glass-bg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -688,18 +625,12 @@
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0 8px 8px 0;
 }
-.pp-item-table .pp-item-row:hover td {
-  background: var(--pp-rose-soft);
-  border-color: var(--pp-gold);
-  -webkit-transform: translateY(-1px);
-          transform: translateY(-1px);
-}
 .pp-item-table .pp-item-row .item-name h4 {
   margin: 0;
   line-height: 24px;
 }
 .pp-item-table .pp-item-row .item-name img {
-  border: 1px solid var(--pp-gold);
+  border: 1px solid var(--pp-brown);
   border-radius: 3px;
 }
 .pp-item-table .item-controls {
@@ -714,4 +645,27 @@
 .pp-item-table .item-controls i:hover {
   opacity: 1;
   color: var(--pp-rose-deep);
+}
+
+.pp-chat-roll-btn {
+  width: 100%;
+  background: var(--pp-rose-soft);
+  border: 1px solid var(--pp-gold);
+  color: var(--pp-rose-deep);
+  font-family: var(--pp-font-display);
+  font-weight: bold;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pp-chat-roll-btn:hover {
+  background: var(--pp-rose-deep);
+  color: white;
+  -webkit-box-shadow: 0 0 8px var(--pp-gold);
+          box-shadow: 0 0 8px var(--pp-gold);
+}
+.pp-chat-roll-btn i {
+  margin-right: 5px;
 }

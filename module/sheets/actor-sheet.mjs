@@ -624,6 +624,23 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 	activateListeners(html) {
 		super.activateListeners(html);
 
+		// Add this listener for the item images in your table
+		html.find(".pp-item-roll-trigger").click((ev) => {
+			// 1. Prevent the browser from doing anything else
+			ev.preventDefault();
+			ev.stopPropagation();
+			ev.stopImmediatePropagation();
+
+			// 2. Identify the item
+			const li = $(ev.currentTarget).parents(".item");
+			const item = this.actor.items.get(li.data("itemId"));
+
+			// 3. Only trigger if the item exists
+			if (item) this._onItemChat(item);
+
+			return false; // Final insurance against double-triggering
+		});
+
 		// Render the item sheet for viewing/editing prior to the editable check.
 		html.on("click", ".item-edit", (ev) => {
 			const li = $(ev.currentTarget).parents(".item");
@@ -859,6 +876,35 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor: messageContent,
+		});
+	}
+
+	async _onItemChat(item) {
+		const data = item.system;
+		const formula = `${data.roll.diceNum}${data.roll.diceSize}${
+			data.roll.diceBonus ? "+" + data.roll.diceBonus : ""
+		}`;
+
+		// This HTML contains the button that was missing
+		const chatContent = `
+    <div class="pp-chat-card">
+      <h3 class="pp-font-display" style="color: var(--pp-rose-deep); border-bottom: 1px solid var(--pp-gold); margin-bottom: 5px;">
+        ${item.name}
+      </h3>
+      <div class="pp-font-main" style="margin-bottom: 10px;">
+        ${data.description}
+      </div>
+      <button type="button" class="pp-chat-roll-btn" 
+              data-item-id="${item.id}" 
+              data-owner-id="${this.actor.id}">
+        <i class="fas fa-dice-d20"></i> Roll ${formula}
+      </button>
+    </div>
+  `;
+
+		return ChatMessage.create({
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			content: chatContent,
 		});
 	}
 }

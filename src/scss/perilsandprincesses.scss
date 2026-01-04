@@ -18,7 +18,18 @@
 	--pp-pink: #c9919c;
 	--pp-brown: #4e3f3f;
 	--pp-white: #f8f6f8;
-	///
+	/* Subcore Colors */
+	--pp-rose-deep: #8e444a; /* Bold headers, success/fail text, d20 icons */
+	--pp-rose-soft: #f4e7e8; /* Hover states, row backgrounds */
+	--pp-gold: #c5a059; /* Borders, dividers, roll icons, seals */
+	/* Sage / Nature Accents */
+	--pp-sage-deep: #4a5d4e; /* Success text, specialized roll results */
+	--pp-sage-soft: #c8d1c5; /* Zebra striping, mishap bubbles */
+	/* Text & Ink */
+	--pp-ink-story: #2c2421; /* Main body text (EB Garamond style) */
+	--pp-ink-faded: #5a504c; /* Labels, placeholders */
+
+	/* Glassmorphism Backgrounds */
 	--pp-glass-bg: rgba(255, 255, 255, 0.135);
 	--pp-glass-border: rgba(255, 255, 255, 0.135);
 	--pp-glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -127,7 +138,7 @@
 			grid-template-columns: repeat(4, 1fr);
 		}
 		&.grid-5 {
-			grid-template-columns: repeat(5, 1fr);
+			grid-template-columns: 1fr 0.25fr 0.25fr 0.25fr 0.1fr;
 		}
 		&.grid-6 {
 			grid-template-columns: repeat(6, 1fr);
@@ -300,7 +311,6 @@
 			letter-spacing: 0.1em;
 			font-size: 0.8rem;
 			padding: var(--space-sm);
-			border-bottom: 2px solid var(--pp-gold);
 			text-align: left;
 		}
 
@@ -326,86 +336,6 @@
 				font-weight: bold;
 				width: 3rem;
 				text-align: center;
-			}
-		}
-	}
-
-	.items-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		// Header Styling
-		.pp-items-list-header {
-			padding: 0 var(--space-md);
-			border-bottom: 2px solid var(--pp-gold);
-			color: var(--pp-rose-deep);
-			font-size: 0.8rem;
-			letter-spacing: 0.1em;
-			text-transform: uppercase;
-			margin-bottom: var(--space-xs);
-
-			.item-controls .item-create {
-				color: var(--pp-sage-deep);
-				&:hover {
-					color: var(--pp-gold);
-				}
-			}
-		}
-
-		// Individual Item Row
-		.pp-item-row {
-			align-items: center;
-			padding: var(--space-xs) var(--space-md);
-			transition: all 0.3s ease;
-			border: 1px solid transparent;
-
-			&:hover {
-				background: var(--pp-rose-soft); // Faint rose tint on hover
-				border-color: var(--pp-gold);
-				transform: translateX(5px); // Subtle "slide" effect
-				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-			}
-
-			.item-name {
-				flex: 2;
-				h4 {
-					margin: 0;
-					color: var(--pp-ink-story);
-					font-size: 1rem;
-				}
-			}
-
-			.item-image {
-				img {
-					border: 1px solid var(--pp-gold);
-					border-radius: 4px;
-					background: var(--pp-glass-bg);
-				}
-			}
-
-			.item-formula {
-				flex: 1;
-				text-align: center;
-				color: var(--pp-sage-deep);
-				font-weight: bold;
-			}
-
-			.item-controls {
-				flex: 0 0 60px;
-				justify-content: flex-end;
-
-				a {
-					color: var(--pp-sage-soft);
-					font-size: 0.9rem;
-					&:hover {
-						color: var(--pp-rose-deep);
-					}
-				}
-
-				.item-delete:hover {
-					color: #d9534f;
-				} // Specific red for delete
 			}
 		}
 	}
@@ -500,8 +430,6 @@
 							border-radius: 100%;
 							background-size: 100% 100%;
 							&:hover {
-								// background: var(--pp-rose-soft);
-								// border-color: var(--pp-gold);
 								transform: translateY(-2px);
 								box-shadow: 0 4px 10px rgba(142, 68, 74, 0.2);
 							}
@@ -648,13 +576,11 @@
 .pp-item-table {
 	width: 100%;
 	border-collapse: separate;
-	border-spacing: 0 6px; // Creates the "floating row" gap
 	margin-top: var(--space-sm);
 
-	thead th {
+	thead th.purse {
 		padding: var(--space-xs) var(--space-sm);
 		color: var(--pp-white);
-		border-bottom: 2px solid var(--pp-gold);
 		text-transform: uppercase;
 		font-size: 0.75rem;
 		letter-spacing: 0.1em;
@@ -666,11 +592,17 @@
 	}
 
 	.pp-item-row {
-		transition: all 0.2s ease;
-
+		margin-top: var(--space-xs);
+		transition: all 0.5s ease;
+		background: var(--pp-white);
+		border: 1px solid var(--pp-white);
+		border-radius: 9px;
+		&:first-child {
+			margin-top: 0;
+		}
 		td {
+			width: 100% !important;
 			padding: var(--space-xs) var(--space-sm);
-			background: var(--pp-glass-bg); // Apply your glass background
 			border-top: 1px solid rgba(255, 255, 255, 0.1);
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -685,19 +617,13 @@
 			}
 		}
 
-		&:hover td {
-			background: var(--pp-rose-soft);
-			border-color: var(--pp-gold);
-			transform: translateY(-1px);
-		}
-
 		.item-name {
 			h4 {
 				margin: 0;
 				line-height: 24px;
 			}
 			img {
-				border: 1px solid var(--pp-gold);
+				border: 1px solid var(--pp-brown);
 				border-radius: 3px;
 			}
 		}
@@ -714,5 +640,28 @@
 				color: var(--pp-rose-deep);
 			}
 		}
+	}
+}
+
+.pp-chat-roll-btn {
+	width: 100%;
+	background: var(--pp-rose-soft);
+	border: 1px solid var(--pp-gold);
+	color: var(--pp-rose-deep);
+	font-family: var(--pp-font-display);
+	font-weight: bold;
+	padding: 6px;
+	cursor: pointer;
+	border-radius: var(--radius-sm);
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: var(--pp-rose-deep);
+		color: white;
+		box-shadow: 0 0 8px var(--pp-gold);
+	}
+
+	i {
+		margin-right: 5px;
 	}
 }

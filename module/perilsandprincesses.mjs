@@ -1,62 +1,62 @@
 // Import document classes.
-import { PerilsAndPrincessesActor } from './documents/actor.mjs';
-import { PerilsAndPrincessesItem } from './documents/item.mjs';
+import { PerilsAndPrincessesActor } from "./documents/actor.mjs";
+import { PerilsAndPrincessesItem } from "./documents/item.mjs";
 // Import sheet classes.
-import { PerilsAndPrincessesActorSheet } from './sheets/actor-sheet.mjs';
-import { PerilsAndPrincessesItemSheet } from './sheets/item-sheet.mjs';
+import { PerilsAndPrincessesActorSheet } from "./sheets/actor-sheet.mjs";
+import { PerilsAndPrincessesItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
-import { PERILSANDPRINCESSES } from './helpers/config.mjs';
+import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
+import { PERILSANDPRINCESSES } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', function () {
-  // Add utility classes to the global game object so that they're more easily
-  // accessible in global contexts.
-  game.perilsandprincesses = {
-    PerilsAndPrincessesActor,
-    PerilsAndPrincessesItem,
-    rollItemMacro,
-  };
+Hooks.once("init", function () {
+	// Add utility classes to the global game object so that they're more easily
+	// accessible in global contexts.
+	game.perilsandprincesses = {
+		PerilsAndPrincessesActor,
+		PerilsAndPrincessesItem,
+		rollItemMacro,
+	};
 
-  // Add custom constants for configuration.
-  CONFIG.PERILSANDPRINCESSES = PERILSANDPRINCESSES;
+	// Add custom constants for configuration.
+	CONFIG.PERILSANDPRINCESSES = PERILSANDPRINCESSES;
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  // Set an initiative formula for the system
-  CONFIG.Combat.initiative = {
-    formula: "1d20 + @virtues.wits.value", // Adjust based on your preferred P&P house rule
-    decimals: 2,
-  };
+	/**
+	 * Set an initiative formula for the system
+	 * @type {String}
+	 */
+	// Set an initiative formula for the system
+	CONFIG.Combat.initiative = {
+		formula: "1d20 + @virtues.wits.value", // Adjust based on your preferred P&P house rule
+		decimals: 2,
+	};
 
-  // Define custom Document classes
-  CONFIG.Actor.documentClass = PerilsAndPrincessesActor;
-  CONFIG.Item.documentClass = PerilsAndPrincessesItem;
+	// Define custom Document classes
+	CONFIG.Actor.documentClass = PerilsAndPrincessesActor;
+	CONFIG.Item.documentClass = PerilsAndPrincessesItem;
 
-  // Active Effects are never copied to the Actor,
-  // but will still apply to the Actor from within the Item
-  // if the transfer property on the Active Effect is true.
-  CONFIG.ActiveEffect.legacyTransferral = false;
+	// Active Effects are never copied to the Actor,
+	// but will still apply to the Actor from within the Item
+	// if the transfer property on the Active Effect is true.
+	CONFIG.ActiveEffect.legacyTransferral = false;
 
-  // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('perilsandprincesses', PerilsAndPrincessesActorSheet, {
-    makeDefault: true,
-    label: 'PERILSANDPRINCESSES.SheetLabels.Actor',
-  });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('perilsandprincesses', PerilsAndPrincessesItemSheet, {
-    makeDefault: true,
-    label: 'PERILSANDPRINCESSES.SheetLabels.Item',
-  });
+	// Register sheet application classes
+	Actors.unregisterSheet("core", ActorSheet);
+	Actors.registerSheet("perilsandprincesses", PerilsAndPrincessesActorSheet, {
+		makeDefault: true,
+		label: "PERILSANDPRINCESSES.SheetLabels.Actor",
+	});
+	Items.unregisterSheet("core", ItemSheet);
+	Items.registerSheet("perilsandprincesses", PerilsAndPrincessesItemSheet, {
+		makeDefault: true,
+		label: "PERILSANDPRINCESSES.SheetLabels.Item",
+	});
 
-  // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
+	// Preload Handlebars templates.
+	return preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */
@@ -64,17 +64,17 @@ Hooks.once('init', function () {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here is a useful example:
-Handlebars.registerHelper('toLowerCase', function (str) {
-  return str.toLowerCase();
+Handlebars.registerHelper("toLowerCase", function (str) {
+	return str.toLowerCase();
 });
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once('ready', function () {
-  // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+Hooks.once("ready", function () {
+	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+	Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -89,33 +89,66 @@ Hooks.once('ready', function () {
  * @returns {Promise}
  */
 async function createItemMacro(data, slot) {
-  // First, determine if this is a valid owned item.
-  if (data.type !== 'Item') return;
-  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
-    return ui.notifications.warn(
-      'You can only create macro buttons for owned Items'
-    );
-  }
-  // If it is, retrieve it based on the uuid.
-  const item = await Item.fromDropData(data);
+	// First, determine if this is a valid owned item.
+	if (data.type !== "Item") return;
+	if (!data.uuid.includes("Actor.") && !data.uuid.includes("Token.")) {
+		return ui.notifications.warn(
+			"You can only create macro buttons for owned Items"
+		);
+	}
+	// If it is, retrieve it based on the uuid.
+	const item = await Item.fromDropData(data);
 
-  // Create the macro command using the uuid.
-  const command = `game.perilsandprincesses.rollItemMacro("${data.uuid}");`;
-  let macro = game.macros.find(
-    (m) => m.name === item.name && m.command === command
-  );
-  if (!macro) {
-    macro = await Macro.create({
-      name: item.name,
-      type: 'script',
-      img: item.img,
-      command: command,
-      flags: { 'perilsandprincesses.itemMacro': true },
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
+	// Create the macro command using the uuid.
+	const command = `game.perilsandprincesses.rollItemMacro("${data.uuid}");`;
+	let macro = game.macros.find(
+		(m) => m.name === item.name && m.command === command
+	);
+	if (!macro) {
+		macro = await Macro.create({
+			name: item.name,
+			type: "script",
+			img: item.img,
+			command: command,
+			flags: { "perilsandprincesses.itemMacro": true },
+		});
+	}
+	game.user.assignHotbarMacro(macro, slot);
+	return false;
 }
+
+/* Use renderChatMessageHTML for V13+ compatibility. 
+  Note: 'html' here is a native HTMLElement, not a jQuery object.
+*/
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
+	const rollBtn = html.querySelector(".pp-chat-roll-btn");
+	if (!rollBtn) return;
+
+	rollBtn.addEventListener("click", async (ev) => {
+		ev.preventDefault();
+
+		// Retrieve the Actor and Item
+		const actorId = rollBtn.dataset.ownerId;
+		const itemId = rollBtn.dataset.itemId;
+		const actor = game.actors.get(actorId);
+		const item = actor?.items.get(itemId);
+
+		if (item) {
+			const { diceNum, diceSize, diceBonus } = item.system.roll;
+			const formula = `${diceNum || 1}${diceSize || "d6"}${
+				diceBonus ? " + " + diceBonus : ""
+			}`;
+
+			const roll = await new Roll(formula).roll({ async: true });
+
+			// Send the actual roll to chat
+			roll.toMessage({
+				speaker: ChatMessage.getSpeaker({ actor: actor }),
+				flavor: `<span class="pp-font-display">Rolling ${item.name}</span>`,
+			});
+		}
+	});
+});
 
 /**
  * Create a Macro from an Item drop.
@@ -123,22 +156,22 @@ async function createItemMacro(data, slot) {
  * @param {string} itemUuid
  */
 function rollItemMacro(itemUuid) {
-  // Reconstruct the drop data so that we can load the item.
-  const dropData = {
-    type: 'Item',
-    uuid: itemUuid,
-  };
-  // Load the item from the uuid.
-  Item.fromDropData(dropData).then((item) => {
-    // Determine if the item loaded and if it's an owned item.
-    if (!item || !item.parent) {
-      const itemName = item?.name ?? itemUuid;
-      return ui.notifications.warn(
-        `Could not find item ${itemName}. You may need to delete and recreate this macro.`
-      );
-    }
+	// Reconstruct the drop data so that we can load the item.
+	const dropData = {
+		type: "Item",
+		uuid: itemUuid,
+	};
+	// Load the item from the uuid.
+	Item.fromDropData(dropData).then((item) => {
+		// Determine if the item loaded and if it's an owned item.
+		if (!item || !item.parent) {
+			const itemName = item?.name ?? itemUuid;
+			return ui.notifications.warn(
+				`Could not find item ${itemName}. You may need to delete and recreate this macro.`
+			);
+		}
 
-    // Trigger the item roll
-    item.roll();
-  });
+		// Trigger the item roll
+		item.roll();
+	});
 }

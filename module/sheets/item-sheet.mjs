@@ -107,4 +107,34 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 			});
 		});
 	}
+
+	// Example logic for when the item image is clicked
+	async _onItemChat(item) {
+		const rollData = item.getRollData();
+		const formula = `${item.system.roll.diceNum}${item.system.roll.diceSize}${
+			item.system.roll.diceBonus ? "+" + item.system.roll.diceBonus : ""
+		}`;
+
+		const chatContent = `
+    <div class="pp-chat-card pp-glass-card" data-item-id="${item.id}">
+      <h3 class="pp-font-display" style="color: var(--pp-rose-deep); border-bottom: 1px solid var(--pp-gold); margin-bottom: 5px;">
+        ${item.name}
+      </h3>
+      <div class="pp-font-main" style="margin-bottom: 10px;">
+        ${item.system.description}
+      </div>
+      <button type="button" class="pp-chat-roll-btn" 
+              data-item-id="${item.id}" 
+              data-owner-id="${this.actor.id}">
+        <i class="fas fa-dice-d20"></i> Roll ${formula}
+      </button>
+    </div>
+  `;
+
+		ChatMessage.create({
+			user: game.user.id,
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			content: chatContent,
+		});
+	}
 }

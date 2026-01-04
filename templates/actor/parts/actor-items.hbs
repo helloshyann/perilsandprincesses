@@ -15,11 +15,11 @@
 <table class="pp-item-table pink-card flex-col">
 	<thead>
 		<tr class="pp-items-list-header grid grid-5">
-			<th class="pp-font-display">{{localize "Name"}}</th>
-			<th class="pp-font-display">Wt</th>
-			<th class="pp-font-display">Qty</th>
-			<th class="pp-font-display">Roll</th>
-			<th class="item-controls">
+			<th class="purse">{{localize "Name"}}</th>
+			<th class="purse">Weight</th>
+			<th class="purse">Quantity</th>
+			<th class="purse">Roll</th>
+			<th class="item-controls purse">
 				<a
 					class="item-control item-create"
 					title="Create Item"
@@ -34,7 +34,7 @@
 		{{#each gear as |item id|}}
 			<tr class="item pp-item-row grid grid-5" data-item-id="{{item._id}}">
 				{{! Name & Image }}
-				<td class="item-name flex-row pp-gap-sm">
+				<td class="item-name flex-row">
 					<div class="item-image">
 						<a class="rollable pp-item-roll-trigger" data-roll-type="item">
 							<img
@@ -45,13 +45,13 @@
 							/>
 						</a>
 					</div>
-					<h4 class="pp-font-display">{{item.name}}</h4>
+					<h4 class="">{{item.name}}</h4>
 				</td>
 
 				{{! Properties }}
-				<td class="pp-text-center">{{item.system.weight}}</td>
-				<td class="pp-text-center">{{item.system.quantity}}</td>
-				<td class="pp-text-center pp-sage-deep" style="font-weight: bold;">
+				<td class="text-center">{{item.system.weight}}</td>
+				<td class="text-center">{{item.system.quantity}}</td>
+				<td class="text-center" style="font-weight: bold;">
 					{{#if item.system.roll.diceNum}}
 						{{item.system.roll.diceNum}}{{item.system.roll.diceSize}}
 					{{else}}
@@ -61,7 +61,7 @@
 
 				{{! Controls }}
 				<td class="item-controls">
-					<div class="flex-row pp-gap-xs">
+					<div class="flex-row">
 						<a class="item-control item-edit" title="Edit"><i
 								class="fas fa-feather-alt"
 							></i></a>
