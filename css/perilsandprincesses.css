@@ -122,6 +122,14 @@
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
 }
+.perilsandprincesses .grid.grid-5 {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.perilsandprincesses .grid.grid-6 {
+  -ms-grid-columns: (1fr)[6];
+  grid-template-columns: repeat(6, 1fr);
+}
 .perilsandprincesses .grid.grid-center {
   justify-items: center;
   -webkit-box-align: center;
@@ -617,10 +625,9 @@
   padding: var(--space-md);
 }
 
-/* Force the editor area to be visible */
 .editor {
   margin-top: -0.5rem;
-  min-height: 6rem; /* Adjust this value as needed */
+  min-height: 6rem;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -639,9 +646,72 @@
           flex: 1;
 }
 
-/* If you are using the 'button=true' option, ensure the preview area shows */
 .editor-container {
   min-height: 4rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 5px;
+}
+
+.pp-item-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  margin-top: var(--space-sm);
+}
+.pp-item-table thead th {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--pp-white);
+  border-bottom: 2px solid var(--pp-gold);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+.pp-item-table thead th:first-child {
+  text-align: left;
+}
+.pp-item-table .pp-item-row {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pp-item-table .pp-item-row td {
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--pp-glass-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pp-item-table .pp-item-row td:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px 0 0 8px;
+}
+.pp-item-table .pp-item-row td:last-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 8px 8px 0;
+}
+.pp-item-table .pp-item-row:hover td {
+  background: var(--pp-rose-soft);
+  border-color: var(--pp-gold);
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+.pp-item-table .pp-item-row .item-name h4 {
+  margin: 0;
+  line-height: 24px;
+}
+.pp-item-table .pp-item-row .item-name img {
+  border: 1px solid var(--pp-gold);
+  border-radius: 3px;
+}
+.pp-item-table .item-controls {
+  text-align: right;
+  width: 60px;
+}
+.pp-item-table .item-controls i {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.pp-item-table .item-controls i:hover {
+  opacity: 1;
+  color: var(--pp-rose-deep);
 }

@@ -126,6 +126,12 @@
 		&.grid-4 {
 			grid-template-columns: repeat(4, 1fr);
 		}
+		&.grid-5 {
+			grid-template-columns: repeat(5, 1fr);
+		}
+		&.grid-6 {
+			grid-template-columns: repeat(6, 1fr);
+		}
 
 		// A special grid for "Virtues" or "Hearts" that centers everything
 		&.grid-center {
@@ -618,10 +624,9 @@
 }
 
 // 5. Editor
-/* Force the editor area to be visible */
 .editor {
 	margin-top: -0.5rem;
-	min-height: 6rem; /* Adjust this value as needed */
+	min-height: 6rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -634,9 +639,80 @@
 	}
 }
 
-/* If you are using the 'button=true' option, ensure the preview area shows */
 .editor-container {
 	min-height: 4rem;
 	background: rgba(255, 255, 255, 0.05);
 	border-radius: 5px;
+}
+
+.pp-item-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 6px; // Creates the "floating row" gap
+	margin-top: var(--space-sm);
+
+	thead th {
+		padding: var(--space-xs) var(--space-sm);
+		color: var(--pp-white);
+		border-bottom: 2px solid var(--pp-gold);
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.1em;
+		text-align: center;
+
+		&:first-child {
+			text-align: left;
+		}
+	}
+
+	.pp-item-row {
+		transition: all 0.2s ease;
+
+		td {
+			padding: var(--space-xs) var(--space-sm);
+			background: var(--pp-glass-bg); // Apply your glass background
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+			// Round the corners of the floating row
+			&:first-child {
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 8px 0 0 8px;
+			}
+			&:last-child {
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 0 8px 8px 0;
+			}
+		}
+
+		&:hover td {
+			background: var(--pp-rose-soft);
+			border-color: var(--pp-gold);
+			transform: translateY(-1px);
+		}
+
+		.item-name {
+			h4 {
+				margin: 0;
+				line-height: 24px;
+			}
+			img {
+				border: 1px solid var(--pp-gold);
+				border-radius: 3px;
+			}
+		}
+	}
+
+	.item-controls {
+		text-align: right;
+		width: 60px;
+		i {
+			opacity: 0.7;
+			transition: opacity 0.2s;
+			&:hover {
+				opacity: 1;
+				color: var(--pp-rose-deep);
+			}
+		}
+	}
 }

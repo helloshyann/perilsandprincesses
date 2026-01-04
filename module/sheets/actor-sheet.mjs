@@ -724,7 +724,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 	/* d4/d6 Dialog */
 	async _onRollPoolDialog(die) {
 		const dialogContent = `
-    <form class="pp-flex-col pp-text-center">
+    <form class="flex-col pp-text-center">
       <div class="form-group">
         <label>Number of ${die} to roll:</label>
         <input type="number" id="dice-count" name="count" value="1" min="1" max="10" />

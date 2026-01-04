@@ -12,59 +12,65 @@
 
 </div>
 
-<ol class="items-list flex-col">
-	{{! Header Row }}
-	<li class="item flex-row items-header pp-items-list-header">
-		<div class="item-name">{{localize "Name"}}</div>
-		<div class="item-formula">{{localize "Roll Formula"}}</div>
-		<div class="item-controls">
-			<a
-				class="item-control item-create"
-				title="{{localize 'DOCUMENT.Create' type="Item"}}"
-				data-type="item"
-			>
-				<i class="fas fa-plus-circle"></i>
-				{{localize "Add"}}
-			</a>
-		</div>
-	</li>
+<table class="pp-item-table pink-card flex-col">
+	<thead>
+		<tr class="pp-items-list-header grid grid-5">
+			<th class="pp-font-display">{{localize "Name"}}</th>
+			<th class="pp-font-display">Wt</th>
+			<th class="pp-font-display">Qty</th>
+			<th class="pp-font-display">Roll</th>
+			<th class="item-controls">
+				<a
+					class="item-control item-create"
+					title="Create Item"
+					data-type="item"
+				>
+					<i class="fas fa-plus-circle"></i>
+				</a>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each gear as |item id|}}
+			<tr class="item pp-item-row grid grid-5" data-item-id="{{item._id}}">
+				{{! Name & Image }}
+				<td class="item-name flex-row pp-gap-sm">
+					<div class="item-image">
+						<a class="rollable pp-item-roll-trigger" data-roll-type="item">
+							<img
+								src="{{item.img}}"
+								title="{{item.name}}"
+								width="24"
+								height="24"
+							/>
+						</a>
+					</div>
+					<h4 class="pp-font-display">{{item.name}}</h4>
+				</td>
 
-	{{! Item Rows }}
-	{{#each gear as |item id|}}
-		<li class="item flex-row pink-card pp-item-row" data-item-id="{{item._id}}">
-			<div class="item-name flex-row">
-				<div class="item-image">
-					<a class="rollable pp-item-roll-trigger" data-roll-type="item">
-						<img
-							src="{{item.img}}"
-							title="{{item.name}}"
-							width="32"
-							height="32"
-						/>
-					</a>
-				</div>
-				<h4 class="pp-font-display">{{item.name}}</h4>
-			</div>
+				{{! Properties }}
+				<td class="pp-text-center">{{item.system.weight}}</td>
+				<td class="pp-text-center">{{item.system.quantity}}</td>
+				<td class="pp-text-center pp-sage-deep" style="font-weight: bold;">
+					{{#if item.system.roll.diceNum}}
+						{{item.system.roll.diceNum}}{{item.system.roll.diceSize}}
+					{{else}}
+						—
+					{{/if}}
+				</td>
 
-			<div class="item-formula item-prop">
-				{{#if item.system.roll.diceNum}}
-					{{item.system.roll.diceNum}}{{item.system.roll.diceSize}}
-					{{#if
-						item.system.roll.diceBonus
-					}}+{{item.system.roll.diceBonus}}{{/if}}
-				{{else}}
-					—
-				{{/if}}
-			</div>
-
-			<div class="item-controls flex-row">
-				<a class="item-control item-edit" title="Edit Item"><i
-						class="fas fa-feather-alt"
-					></i></a>
-				<a class="item-control item-delete" title="Delete Item"><i
-						class="fas fa-times"
-					></i></a>
-			</div>
-		</li>
-	{{/each}}
-</ol>
+				{{! Controls }}
+				<td class="item-controls">
+					<div class="flex-row pp-gap-xs">
+						<a class="item-control item-edit" title="Edit"><i
+								class="fas fa-feather-alt"
+							></i></a>
+						<a class="item-control item-delete" title="Delete"><i
+								class="fas fa-times"
+							></i></a>
+					</div>
+				</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
