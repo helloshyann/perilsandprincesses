@@ -4,13 +4,13 @@
  * @return {Promise}
  */
 export const preloadHandlebarsTemplates = async function () {
-  return loadTemplates([
-    // Actor partials.
-    'systems/perilsandprincesses/templates/actor/parts/actor-features.hbs',
-    'systems/perilsandprincesses/templates/actor/parts/actor-items.hbs',
-    'systems/perilsandprincesses/templates/actor/parts/actor-gifts.hbs',
-    'systems/perilsandprincesses/templates/actor/parts/actor-effects.hbs',
-    // Item partials
-    'systems/perilsandprincesses/templates/item/parts/item-effects.hbs',
-  ]);
+	return loadTemplates([
+		// Actor partials.
+		"systems/perilsandprincesses/templates/actor/parts/actor-features.hbs",
+		"systems/perilsandprincesses/templates/actor/parts/actor-items.hbs",
+		"systems/perilsandprincesses/templates/actor/parts/actor-gifts.hbs",
+		"systems/perilsandprincesses/templates/actor/parts/actor-story.hbs",
+		// Item partials
+		"systems/perilsandprincesses/templates/item/parts/item-effects.hbs",
+	]);
 };

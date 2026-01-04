@@ -315,6 +315,84 @@
   width: 3rem;
   text-align: center;
 }
+.perilsandprincesses .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.perilsandprincesses .items-list .pp-items-list-header {
+  padding: 0 var(--space-md);
+  border-bottom: 2px solid var(--pp-gold);
+  color: var(--pp-rose-deep);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+.perilsandprincesses .items-list .pp-items-list-header .item-controls .item-create {
+  color: var(--pp-sage-deep);
+}
+.perilsandprincesses .items-list .pp-items-list-header .item-controls .item-create:hover {
+  color: var(--pp-gold);
+}
+.perilsandprincesses .items-list .pp-item-row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.perilsandprincesses .items-list .pp-item-row:hover {
+  background: var(--pp-rose-soft);
+  border-color: var(--pp-gold);
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.perilsandprincesses .items-list .pp-item-row .item-name {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+.perilsandprincesses .items-list .pp-item-row .item-name h4 {
+  margin: 0;
+  color: var(--pp-ink-story);
+  font-size: 1rem;
+}
+.perilsandprincesses .items-list .pp-item-row .item-image img {
+  border: 1px solid var(--pp-gold);
+  border-radius: 4px;
+  background: var(--pp-glass-bg);
+}
+.perilsandprincesses .items-list .pp-item-row .item-formula {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  color: var(--pp-sage-deep);
+  font-weight: bold;
+}
+.perilsandprincesses .items-list .pp-item-row .item-controls {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.perilsandprincesses .items-list .pp-item-row .item-controls a {
+  color: var(--pp-sage-soft);
+  font-size: 0.9rem;
+}
+.perilsandprincesses .items-list .pp-item-row .item-controls a:hover {
+  color: var(--pp-rose-deep);
+}
+.perilsandprincesses .items-list .pp-item-row .item-controls .item-delete:hover {
+  color: #d9534f;
+}
 .perilsandprincesses {
   /* ACTOR SHEETS */
 }
@@ -537,4 +615,33 @@
   background: white !important;
   border: 6px double var(--pp-sage-soft);
   padding: var(--space-md);
+}
+
+/* Force the editor area to be visible */
+.editor {
+  margin-top: -0.5rem;
+  min-height: 6rem; /* Adjust this value as needed */
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.editor .editor-content,
+.editor .prosemirror {
+  min-height: 2rem;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* If you are using the 'button=true' option, ensure the preview area shows */
+.editor-container {
+  min-height: 4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
 }

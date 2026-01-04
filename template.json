@@ -44,7 +44,15 @@
 				"fairyGodmother": "",
 				"giftName": "",
 				"biography": ""
-			}
+			},
+			"otherTalents": "",
+			"appearance": "",
+			"cursesWounds": "",
+			"fairyGodmother": "",
+			"personalityQuestion1": "",
+			"personalityQuestion2": "",
+			"personalityQuestion3": "",
+			"personalityQuestion4": ""
 		},
 		"npc": {
 			"templates": ["baseStats"],

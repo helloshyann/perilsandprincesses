@@ -37,10 +37,11 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		// the context variable to see the structure, but some key properties for
 		// sheets are the actor object, the data object, whether or not it's
 		// editable, the items array, and the effects array.
-		const context = super.getData();
+		const context = await super.getData();
 
 		// Use a safe clone of the actor data for further operations.
 		const actorData = this.document.toObject(false);
+		const data = this.actor.system;
 
 		// Add the actor's data to context.data for easier access, as well as flags.
 		context.system = actorData.system;
@@ -503,19 +504,21 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 
 		// Enrich biography info for display
 		// Enrichment turns text like `[[/r 1d20]]` into buttons
-		context.enrichedBiography = await TextEditor.enrichHTML(
-			this.actor.system.biography,
-			{
-				// Whether to show secret blocks in the finished html
-				secrets: this.document.isOwner,
-				// Necessary in v11, can be removed in v12
-				async: true,
-				// Data to fill in for inline rolls
-				rollData: this.actor.getRollData(),
-				// Relative UUID resolution
-				relativeTo: this.actor,
-			}
-		);
+		// context.enrichedBiography = await TextEditor.enrichHTML(
+		// 	this.actor.system.biography,
+		// 	{
+		// 		// Whether to show secret blocks in the finished html
+		// 		secrets: this.document.isOwner,
+		// 		// Necessary in v11, can be removed in v12
+		// 		async: true,
+		// 		// Data to fill in for inline rolls
+		// 		rollData: this.actor.getRollData(),
+		// 		// Relative UUID resolution
+		// 		relativeTo: this.actor,
+		// 	}
+		// );
+
+		// Enriching each specific field
 
 		// Prepare active effects
 		context.effects = prepareActiveEffectCategories(
@@ -523,6 +526,37 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 			// as well as any items
 			this.actor.allApplicableEffects()
 		);
+
+		// Use the new namespaced path for Foundry V13+ compatibility
+		const enricher = foundry.applications.ux.TextEditor;
+
+		// Enriching multiple editors simultaneously
+		context.enriched = {
+			talents: await enricher.enrichHTML(data.otherTalents || "", {
+				async: true,
+			}),
+			appearances: await enricher.enrichHTML(data.appearance || "", {
+				async: true,
+			}),
+			fairygodmother: await enricher.enrichHTML(data.fairyGodmother || "", {
+				async: true,
+			}),
+			curses: await enricher.enrichHTML(data.cursesWounds || "", {
+				async: true,
+			}),
+			que1: await enricher.enrichHTML(data.personalityQuestion1 || "", {
+				async: true,
+			}),
+			que2: await enricher.enrichHTML(data.personalityQuestion2 || "", {
+				async: true,
+			}),
+			que3: await enricher.enrichHTML(data.personalityQuestion3 || "", {
+				async: true,
+			}),
+			que4: await enricher.enrichHTML(data.personalityQuestion4 || "", {
+				async: true,
+			}),
+		};
 
 		return context;
 	}

@@ -11,6 +11,19 @@
 				<h3>Talents</h3>
 				<p>{{#each activeGift.talents}}{{this}}{{#unless @last}},
 						{{/unless}}{{/each}}</p>
+
+				<div class="flex-col">
+					<strong>My other talents are...</strong>
+
+					{{editor
+						enriched.talents
+						target="system.otherTalents"
+						engine="prosemirror"
+						button=true
+						editable=editable
+					}}
+
+				</div>
 			</div>
 			<div class="gift-dice-pool">
 				<h3>Gift Dice</h3>

@@ -157,11 +157,7 @@
 
     {{!-- Story Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
-      <div class="pink-card">
-        {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
-      {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
-      </div>
-      
+      {{> "systems/perilsandprincesses/templates/actor/parts/actor-story.hbs"}}
     </div>
 
     {{!-- Purse Tab --}}
