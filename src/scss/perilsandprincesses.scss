@@ -115,19 +115,19 @@
 
 		.fairytale-frame {
 			//@include glass-panel;
-			background-color: var(--pp-brown);
+			background-color: var(--pp-white);
 			width: 4.5rem;
 			height: 4.5rem;
 			border-radius: 50%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border: 3px double var(--pp-white);
+			border: 3px double var(--pp-brown);
 
 			input {
 				font-size: 2rem;
 				text-align: center;
-				color: var(--pp-white);
+				color: var(--pp-brown);
 				font-family: var(--secondary-font);
 			}
 		}
@@ -242,8 +242,8 @@
 	input[type="checkbox"],
 	select,
 	select option {
-		background: var(--pp-brown) !important;
-		color: var(--pp-white);
+		background: var(--pp-white) !important;
+		color: var(--pp-brown);
 	}
 
 	select {
@@ -393,9 +393,9 @@
 					height: 8rem;
 					width: 8rem;
 					border-radius: 100%;
-					border: 3px double var(--pp-white);
+					border: 3px double var(--pp-brown);
 					object-fit: cover;
-					background-color: var(--pp-brown);
+					background-color: var(--pp-white);
 				}
 
 				.header-fields {
@@ -411,20 +411,20 @@
 					.charname input {
 						font-family: var(--secondary-font);
 						font-size: 2rem;
-						color: var(--pp-white);
-						background-color: var(--pp-brown);
-						border: 3px double var(--pp-white);
+						color: var(--pp-brown);
+						background-color: var(--pp-white);
+						border: 3px double var(--pp-brown);
 						width: 100%;
 						margin: 0;
 						padding-left: var(--space-sm);
 					}
 					.pronoun-container input {
-						color: var(--pp-white) !important;
-						background-color: var(--pp-brown);
-						border: 3px double var(--pp-white);
+						//color: var(--pp-brown) !important;
+						background-color: var(--pp-white);
+						border: 3px double var(--pp-brown);
 					}
 					select {
-						border: 3px double var(--pp-white);
+						border: 3px double var(--pp-brown);
 					}
 					.resource input {
 						color: var(--pp-brown);
