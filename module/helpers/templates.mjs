@@ -10,7 +10,6 @@ export const preloadHandlebarsTemplates = async function () {
 		"systems/perilsandprincesses/templates/actor/parts/actor-items.hbs",
 		"systems/perilsandprincesses/templates/actor/parts/actor-gifts.hbs",
 		"systems/perilsandprincesses/templates/actor/parts/actor-story.hbs",
-		// Item partials
-		"systems/perilsandprincesses/templates/item/parts/item-effects.hbs",
+		"systems/perilsandprincesses/templates/actor/parts/actor-special.hbs",
 	]);
 };

@@ -7,6 +7,7 @@
     <a class="item" data-tab="features">Virtues</a>
     <a class="item" data-tab="spells">Gifts</a>
     <a class="item" data-tab="items">Purse</a>
+    <a class="item" data-tab="special">Special</a>
   </nav>
 
   {{!-- Sheet Header --}}
@@ -162,12 +163,17 @@
 
     {{!-- Purse Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/perilsandprincesses/templates/actor/parts/actor-items.hbs"}}
+        {{> "systems/perilsandprincesses/templates/actor/parts/actor-items.hbs"}}
     </div>
 
     {{!-- Gifts Tab --}}
     <div class="tab spells" data-group="primary" data-tab="spells">
       {{> "systems/perilsandprincesses/templates/actor/parts/actor-gifts.hbs"}}
+    </div>
+
+    {{!-- Special Tab --}}
+    <div class="tab special" data-group="primary" data-tab="special">
+      {{> "systems/perilsandprincesses/templates/actor/parts/actor-special.hbs"}}
     </div>
 
   </section>

@@ -73,10 +73,17 @@
 			"weight": "",
 			"roll": {
 				"diceNum": 1,
-				"diceSize": "d6",
+				"diceSize": "d4",
 				"diceBonus": ""
 			}
 		},
-		"feature": { "templates": ["baseItem"] }
+		"feature": {
+			"templates": ["baseItem"],
+			"roll": {
+				"diceNum": 1,
+				"diceSize": "d4",
+				"diceBonus": ""
+			}
+		}
 	}
 }

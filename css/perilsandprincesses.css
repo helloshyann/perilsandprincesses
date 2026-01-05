@@ -28,65 +28,15 @@
 }
 
 /* --- 2. Mixins --- */
-.pink-card {
-  position: relative;
+/* --- 3. System Layout Utlities --- */
+.perilsandprincesses .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  width: 100%;
-  max-height: 100%;
-  margin: var(--space-xs) 0;
-  padding: var(--space-sm);
-  border-radius: var(--space-sm);
-  overflow: visible;
-  background-color: var(--pp-pink);
-  background-position: center center;
-  background-size: cover;
-  border: 3px double var(--pp-brown);
-  color: var(--pp-brown);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
-.pink-card h2,
-.pink-card h3 {
-  border-bottom: 1px solid var(--pp-brown) !important;
-}
-
-.gift-title {
-  font-family: var(--secondary-font);
-  font-size: 2rem;
-}
-
-.gift-text {
-  border-radius: var(--space-xs);
-  margin-top: var(--space-sm);
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--pp-brown);
-  color: var(--pp-white);
-  font-weight: 400;
-}
-
-.pp-chat-card {
-  padding: var(--space-md);
-  border-radius: var(--space-sm);
-  border: 3px double var(--pp-brown);
-  background-color: var(--pp-pink);
-  margin-bottom: var(--space-sm);
-}
-.pp-chat-card .pp-font-display {
-  font-size: 1rem;
-  color: var(--pp-brown);
-}
-.pp-chat-card .result {
-  font-size: 2rem !important;
-  font-family: var(--secondary-font) !important;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-/* --- 3. System Layout utlities --- */
 .perilsandprincesses .flex-row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -140,6 +90,18 @@
 .perilsandprincesses .grid.grid-6 {
   -ms-grid-columns: (1fr)[6];
   grid-template-columns: repeat(6, 1fr);
+}
+.perilsandprincesses .grid .grid-span-1 {
+  -ms-grid-column-span: 1;
+  grid-column: span 1;
+}
+.perilsandprincesses .grid .grid-span-2 {
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+}
+.perilsandprincesses .grid .grid-span-3 {
+  -ms-grid-column-span: 3;
+  grid-column: span 3;
 }
 .perilsandprincesses .grid.grid-center {
   justify-items: center;
@@ -334,6 +296,68 @@
   text-align: center;
 }
 .perilsandprincesses {
+  /* NAVIGATION */
+}
+.perilsandprincesses nav.sheet-tabs {
+  position: relative;
+  padding: 0 0 !important;
+}
+.perilsandprincesses nav.sheet-tabs .item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  line-height: 2.2rem;
+  font-family: var(--secondary-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--pp-brown);
+  border-radius: var(--space-xs);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+.perilsandprincesses nav.sheet-tabs .item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../assets/turret.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transform: translateY(15px) scale(0.7);
+          transform: translateY(15px) scale(0.7);
+}
+.perilsandprincesses nav.sheet-tabs .item:hover {
+  color: var(--pp-white) !important;
+  text-shadow: 0 0 8px var(--pp-brown) !important;
+}
+.perilsandprincesses nav.sheet-tabs .item:hover::after {
+  opacity: 0.4;
+  -webkit-transform: translateY(0) scale(0.9);
+          transform: translateY(0) scale(0.9);
+}
+.perilsandprincesses nav.sheet-tabs .item.active {
+  background: transparent;
+  color: var(--pp-brown);
+  /* The White Stroke & Glow */
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
+}
+.perilsandprincesses nav.sheet-tabs .item.active::after {
+  opacity: 0.85;
+  -webkit-transform: translateY(-5px) scale(1.25);
+          transform: translateY(-5px) scale(1.25);
+}
+.perilsandprincesses {
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
@@ -462,68 +486,6 @@
   background-image: url("../assets/D4.png");
 }
 .perilsandprincesses.sheet.actor form.character {
-  /* NAVIGATION */
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs {
-  position: relative;
-  padding: 0 0 !important;
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  line-height: 2.2rem;
-  font-family: var(--secondary-font);
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--pp-brown);
-  border-radius: var(--space-xs);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("../assets/turret.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  opacity: 0;
-  z-index: -1;
-  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-transform: translateY(15px) scale(0.7);
-          transform: translateY(15px) scale(0.7);
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item:hover {
-  color: var(--pp-white) !important;
-  text-shadow: 0 0 8px var(--pp-brown) !important;
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item:hover::after {
-  opacity: 0.4;
-  -webkit-transform: translateY(0) scale(0.9);
-          transform: translateY(0) scale(0.9);
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item.active {
-  background: transparent;
-  color: var(--pp-brown);
-  /* The White Stroke & Glow */
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
-}
-.perilsandprincesses.sheet.actor form.character nav.sheet-tabs .item.active::after {
-  opacity: 0.85;
-  -webkit-transform: translateY(-5px) scale(1.25);
-          transform: translateY(-5px) scale(1.25);
-}
-.perilsandprincesses.sheet.actor form.character {
   /* BODY SECTION */
 }
 .perilsandprincesses.sheet.actor form.character section.sheet-body {
@@ -551,12 +513,101 @@
 .perilsandprincesses {
   /* ITEM SHEETS */
 }
+.perilsandprincesses.sheet.item {
+  min-width: 450px;
+  min-height: 400px;
+}
 .perilsandprincesses.sheet.item .window-content {
-  background: white !important;
-  border: 6px double var(--pp-sage-soft);
-  padding: var(--space-md);
+  background: var(--pp-white);
+  padding: 0;
+  overflow: hidden;
+}
+.perilsandprincesses.sheet.item .pink-card {
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  background-image: url("../assets/white-pencil.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.perilsandprincesses.sheet.item .sheet-header {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  border-bottom: 2px solid var(--pp-brown);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+.perilsandprincesses.sheet.item .sheet-header .charname input {
+  font-family: var(--secondary-font);
+  font-size: 2.5rem;
+  color: var(--pp-brown);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--space-xs);
+}
+.perilsandprincesses.sheet.item .sheet-body {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.perilsandprincesses.sheet.item .resource-label {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--pp-brown);
+  display: block;
+  margin-bottom: 2px;
+}
+.perilsandprincesses.sheet.item .resource input {
+  background: var(--pp-white);
+  border: 1px solid var(--pp-brown);
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: var(--pp-brown);
+  text-align: center;
+}
+.perilsandprincesses.sheet.item nav.sheet-tabs {
+  border-top: none;
+  border-bottom: none;
+  background: var(--pp-white);
+  border-radius: var(--space-sm);
+  border: 3px double var(--pp-brown);
+  max-height: 2rem;
+}
+.perilsandprincesses.sheet.item nav.sheet-tabs .item.active::after {
+  -webkit-transform: translateY(-5px) scale(1);
+          transform: translateY(-5px) scale(1);
+}
+.perilsandprincesses.sheet.item .sheet-body {
+  margin: 1rem;
+}
+.perilsandprincesses.sheet.item .charname input {
+  font-family: var(--secondary-font);
+  background-color: var(--pp-brown) !important;
+  color: var(--pp-white) !important;
+  border: 3px double var(--pp-white);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.perilsandprincesses.sheet.item .resource input {
+  background-color: var(--pp-brown);
+  color: var(--pp-white);
+  border: 3px double var(--pp-white);
+  border-radius: 2px;
+  text-align: center;
+  height: 2rem;
+  font-family: var(--primary-font);
+}
+.perilsandprincesses.sheet.item .resource-label {
+  color: var(--pp-brown);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+  display: block;
 }
 
+/* --- 5. Rich Text Editors --- */
 .editor {
   margin-top: -0.5rem;
   min-height: 6rem;
@@ -582,6 +633,65 @@
   min-height: 4rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 5px;
+}
+
+/* --- 6. Misc --- */
+.pink-card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 100%;
+  max-height: 100%;
+  margin: var(--space-xs) 0;
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);
+  overflow: visible;
+  background-color: var(--pp-pink);
+  background-position: center center;
+  background-size: cover;
+  border: 3px double var(--pp-brown);
+  color: var(--pp-brown);
+}
+.pink-card h2,
+.pink-card h3 {
+  border-bottom: 1px solid var(--pp-brown) !important;
+}
+
+.gift-title {
+  font-family: var(--secondary-font);
+  font-size: 2rem;
+}
+
+.gift-text {
+  border-radius: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--pp-brown);
+  color: var(--pp-white);
+  font-weight: 400;
+}
+
+.pp-chat-card {
+  padding: var(--space-md);
+  border-radius: var(--space-sm);
+  border: 3px double var(--pp-brown);
+  background-color: var(--pp-pink);
+  margin-bottom: var(--space-sm);
+}
+.pp-chat-card .pp-font-display {
+  font-size: 1rem;
+  color: var(--pp-brown);
+}
+.pp-chat-card .result {
+  font-size: 2rem !important;
+  font-family: var(--secondary-font) !important;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .pp-item-table {
@@ -668,4 +778,43 @@
 }
 .pp-chat-roll-btn i {
   margin-right: 5px;
+}
+
+.pp-item-roll {
+  margin-top: var(--space-lg);
+  width: 100%;
+  height: 3rem;
+  background-color: var(--pp-white);
+  color: var(--pp-brown);
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+  border: 3px double var(--pp-brown);
+  border-radius: var(--space-sm);
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pp-item-roll:hover {
+  background-color: var(--pp-rose-deep);
+  color: var(--pp-white);
+  border: 3px double var(--pp-white);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.pp-item-roll i {
+  margin-right: 10px;
+}
+
+.mishaps-table {
+  counter-reset: mishap-count 0;
+}
+.mishaps-table tr {
+  counter-increment: mishap-count;
+}
+.mishaps-table tr .mishap-number::before {
+  content: counter(mishap-count) "s";
+  font-weight: bold;
+  color: var(--pp-white) !important;
 }

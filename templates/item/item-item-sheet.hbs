@@ -1,11 +1,13 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} pink-card flex-col" autocomplete="off">
 	<header class="sheet-header">
-		<img
-			class="profile-img"
-			src="{{item.img}}"
-			data-edit="img"
-			title="{{item.name}}"
-		/>
+		<div class="fairytale-container">
+			<img
+				class="fairytale-frame"
+				src="{{item.img}}"
+				data-edit="img"
+				title="{{item.name}}"
+			/>
+		</div>
 		<div class="header-fields">
 			<h1 class="charname"><input
 					name="name"
@@ -13,7 +15,7 @@
 					value="{{item.name}}"
 					placeholder="Name"
 				/></h1>
-			<div class="grid grid-2col">
+			<div class="grid grid-2">
 				<div class="resource">
 					<label class="resource-label">Quantity</label>
 					<input
@@ -60,8 +62,8 @@
 		{{! Attributes Tab }}
 		<div class="tab attributes" data-group="primary" data-tab="attributes">
 			{{! As you add new fields, add them in here! }}
-			<div class="resource">
-				<div class="grid grid-4col">
+			<div class="resource all-center">
+				<div class="grid grid-2">
 					<div class="grid-span-1">
 						<label class="resource-label">Number of Dice</label>
 						<input

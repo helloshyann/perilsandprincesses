@@ -43,6 +43,23 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		const actorData = this.document.toObject(false);
 		const data = this.actor.system;
 
+		// Initialize containers
+		const gear = [];
+		const features = [];
+
+		// Iterate through items, allocating to containers
+		for (let i of context.items) {
+			if (i.type === "item") {
+				gear.push(i);
+			} else if (i.type === "feature") {
+				features.push(i);
+			}
+		}
+
+		// Assign these lists back to the context so the template can see them
+		context.gear = gear;
+		context.features = features;
+
 		// Add the actor's data to context.data for easier access, as well as flags.
 		context.system = actorData.system;
 		context.flags = actorData.flags;
