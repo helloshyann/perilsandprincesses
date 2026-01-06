@@ -124,7 +124,6 @@
   gap: var(--space-xs);
 }
 .perilsandprincesses .fairytale-container .fairytale-frame {
-  background-color: var(--pp-white);
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
@@ -137,10 +136,11 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 3px double var(--pp-brown);
+  border: 6px double var(--pp-pink);
 }
 .perilsandprincesses .fairytale-container .fairytale-frame input {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
   text-align: center;
   color: var(--pp-brown);
   font-family: var(--secondary-font);
@@ -157,8 +157,7 @@
   transition: all 0.2s ease;
 }
 .perilsandprincesses .fairytale-container .pp-virtue-roll:hover {
-  color: var(--pp-white);
-  text-shadow: 0 0 8px var(--pp-brown);
+  color: var(--pp-pink);
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -167,13 +166,13 @@
   height: 48px;
 }
 .perilsandprincesses .innate-ability {
-  border: 3px solid var(--pp-brown);
+  border: 3px solid var(--pp-pink);
   border-radius: var(--space-sm) var(--space-sm) 0 0;
 }
 .perilsandprincesses .innate-ability .innate-ab-title {
-  background-color: var(--pp-brown);
+  background-color: var(--pp-pink);
   border-radius: 2px 2px 0 0;
-  color: var(--pp-white);
+  color: var(--pp-brown);
   padding: var(--space-sm);
 }
 .perilsandprincesses .innate-ability .innate-ab-content {
@@ -181,13 +180,13 @@
   background: rgba(208, 197, 209, 0.2);
 }
 .perilsandprincesses .special-ability {
-  border: 3px solid var(--pp-brown);
+  border: 3px solid var(--pp-pink);
   border-radius: var(--space-sm) var(--space-sm) 0 0;
 }
 .perilsandprincesses .special-ability .special-ab-title {
-  background-color: var(--pp-brown);
+  background-color: var(--pp-pink);
   border-radius: 2px 2px 0 0;
-  color: var(--pp-white);
+  color: var(--pp-brown);
   padding: 0 var(--space-sm);
 }
 .perilsandprincesses .special-ability .special-ab-title .ability-level {
@@ -212,14 +211,12 @@
   letter-spacing: 0.1em;
 }
 .perilsandprincesses .tiny-text {
-  font-size: var(--space-md);
+  font-size: 0.7rem;
   font-weight: 600;
 }
 .perilsandprincesses .level-text {
   color: var(--pp-brown);
-  font-family: var(--secondary-font);
   font-weight: 700;
-  border-bottom: 1px solid var(--pp-brown);
 }
 .perilsandprincesses .all-center {
   justify-items: center;
@@ -254,7 +251,7 @@
   color: var(--pp-brown);
 }
 .perilsandprincesses select {
-  border: 3px double var(--pp-brown);
+  border: 4px double var(--pp-pink);
 }
 .perilsandprincesses select:focus {
   -webkit-box-shadow: 0 0 5px var(--pp-deep-rose) !important;
@@ -264,7 +261,7 @@
   margin: 0 0 !important;
   width: 100%;
   border-collapse: separate;
-  border: 3px double var(--pp-brown);
+  border: 3px double var(--pp-pink);
   border-radius: var(--space-sm);
 }
 .perilsandprincesses table thead th {
@@ -289,8 +286,8 @@
 }
 .perilsandprincesses table td:first-child {
   font-family: var(--pp-font-display);
-  color: var(--pp-white);
-  background: var(--pp-brown);
+  color: var(--pp-brown);
+  background: var(--pp-pink);
   font-weight: bold;
   width: 3rem;
   text-align: center;
@@ -361,8 +358,8 @@
   /* ACTOR SHEETS */
 }
 .perilsandprincesses.sheet.actor .window-content {
-  background: var(--pp-white);
-  background-image: url("../assets/brown-pencil.png");
+  background: var(--pp-pink);
+  background-image: url("../assets/white-pencil.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -370,12 +367,14 @@
   overflow: hidden;
   font-family: var(--primary-font);
 }
-.perilsandprincesses.sheet.actor form.character {
+.perilsandprincesses.sheet.actor form.character,
+.perilsandprincesses.sheet.actor form.npc {
   padding: var(--space-md);
   height: 100%;
   /* HEADER SECTION */
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header {
+.perilsandprincesses.sheet.actor form.character .sheet-header,
+.perilsandprincesses.sheet.actor form.npc .sheet-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -384,7 +383,8 @@
           flex: 0 0 auto;
   gap: var(--space-md);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .picture-frame {
+.perilsandprincesses.sheet.actor form.character .sheet-header .picture-frame,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .picture-frame {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -396,54 +396,67 @@
           align-items: center;
   padding: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .profile-img {
+.perilsandprincesses.sheet.actor form.character .sheet-header .profile-img,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .profile-img {
   height: 8rem;
   width: 8rem;
   border-radius: 100%;
-  border: 3px double var(--pp-brown);
+  border: 6px double var(--pp-pink);
   -o-object-fit: cover;
      object-fit: cover;
-  background-color: var(--pp-white);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 .perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .name-level-container,
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .lower-header-container {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .lower-header-container,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .name-level-container,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .lower-header-container {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
   text-align: left;
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname label {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname label,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .charname label {
   margin-left: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname input {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .charname input,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .charname input {
   font-family: var(--secondary-font);
   font-size: 2rem;
   color: var(--pp-brown);
   background-color: var(--pp-white);
-  border: 3px double var(--pp-brown);
+  border: 2px solid var(--pp-pink);
   width: 100%;
   margin: 0;
   padding-left: var(--space-sm);
+  border-radius: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .pronoun-container input {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .pronoun-container input,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .pronoun-container input {
+  border-radius: var(--space-xs);
   background-color: var(--pp-white);
-  border: 3px double var(--pp-brown);
+  border: 2px solid var(--pp-pink);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields select {
-  border: 3px double var(--pp-brown);
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields select,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields select {
+  border: 2px solid var(--pp-pink);
+  border-radius: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .resource input,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .resource input {
   color: var(--pp-brown);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers {
   margin-top: var(--space-xs);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers .pp-roll-btn {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -469,25 +482,31 @@
   border-radius: 100%;
   background-size: 100% 100%;
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn:hover {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn:hover,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers .pp-roll-btn:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 4px 10px rgba(142, 68, 74, 0.2);
           box-shadow: 0 4px 10px rgba(142, 68, 74, 0.2);
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d20 {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d20,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers .pp-roll-btn.d20 {
   background-image: url("../assets/D20.png");
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d6 {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d6,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers .pp-roll-btn.d6 {
   background-image: url("../assets/D6.png");
 }
-.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d4 {
+.perilsandprincesses.sheet.actor form.character .sheet-header .header-fields .header-rollers .pp-roll-btn.d4,
+.perilsandprincesses.sheet.actor form.npc .sheet-header .header-fields .header-rollers .pp-roll-btn.d4 {
   background-image: url("../assets/D4.png");
 }
-.perilsandprincesses.sheet.actor form.character {
+.perilsandprincesses.sheet.actor form.character,
+.perilsandprincesses.sheet.actor form.npc {
   /* BODY SECTION */
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body {
+.perilsandprincesses.sheet.actor form.character section.sheet-body,
+.perilsandprincesses.sheet.actor form.npc section.sheet-body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -495,19 +514,23 @@
   -ms-overflow-style: none; /* Hide for IE and Edge */
   scrollbar-width: none; /* Hide for Firefox */
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body::-webkit-scrollbar {
+.perilsandprincesses.sheet.actor form.character section.sheet-body::-webkit-scrollbar,
+.perilsandprincesses.sheet.actor form.npc section.sheet-body::-webkit-scrollbar {
   display: none; /* Hide for Chrome, Safari and Opera */
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body h3 {
+.perilsandprincesses.sheet.actor form.character section.sheet-body h3,
+.perilsandprincesses.sheet.actor form.npc section.sheet-body h3 {
   font-family: var(--secondary-font);
   font-size: 1.33rem;
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body ul {
+.perilsandprincesses.sheet.actor form.character section.sheet-body ul,
+.perilsandprincesses.sheet.actor form.npc section.sheet-body ul {
   padding: 0;
   margin: var(--space-sm);
 }
-.perilsandprincesses.sheet.actor form.character section.sheet-body ul li::marker {
-  color: var(--pp-pink);
+.perilsandprincesses.sheet.actor form.character section.sheet-body ul li::marker,
+.perilsandprincesses.sheet.actor form.npc section.sheet-body ul li::marker {
+  color: var(--pp-white);
 }
 .perilsandprincesses {
   /* ITEM SHEETS */
@@ -525,6 +548,7 @@
   height: 100%;
   margin: 0;
   border-radius: 0;
+  background-color: var(--pp-pink) !important;
   background-image: url("../assets/white-pencil.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -570,7 +594,7 @@
   border-bottom: none;
   background: var(--pp-white);
   border-radius: var(--space-sm);
-  border: 3px double var(--pp-brown);
+  border: 4px double var(--pp-pink);
   max-height: 2rem;
 }
 .perilsandprincesses.sheet.item nav.sheet-tabs .item.active::after {
@@ -579,23 +603,6 @@
 }
 .perilsandprincesses.sheet.item .sheet-body {
   margin: 1rem;
-}
-.perilsandprincesses.sheet.item .charname input {
-  font-family: var(--secondary-font);
-  background-color: var(--pp-brown) !important;
-  color: var(--pp-white) !important;
-  border: 3px double var(--pp-white);
-  padding-left: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-.perilsandprincesses.sheet.item .resource input {
-  background-color: var(--pp-brown);
-  color: var(--pp-white);
-  border: 3px double var(--pp-white);
-  border-radius: 2px;
-  text-align: center;
-  height: 2rem;
-  font-family: var(--primary-font);
 }
 .perilsandprincesses.sheet.item .resource-label {
   color: var(--pp-brown);
@@ -649,10 +656,10 @@
   padding: var(--space-sm);
   border-radius: var(--space-sm);
   overflow: visible;
-  background-color: var(--pp-pink);
+  background-color: var(--pp-white);
   background-position: center center;
   background-size: cover;
-  border: 3px double var(--pp-brown);
+  border: 4px double var(--pp-pink);
   color: var(--pp-brown);
 }
 .pink-card h2,
@@ -669,15 +676,15 @@
   border-radius: var(--space-xs);
   margin-top: var(--space-sm);
   padding: var(--space-xs) var(--space-sm);
-  background-color: var(--pp-brown);
-  color: var(--pp-white);
+  background-color: var(--pp-pink);
+  color: var(--pp-brown);
   font-weight: 400;
 }
 
 .pp-chat-card {
   padding: var(--space-md);
   border-radius: var(--space-sm);
-  border: 3px double var(--pp-brown);
+  border: 6px double var(--pp-pink);
   background-color: var(--pp-pink);
   margin-bottom: var(--space-sm);
 }
@@ -714,7 +721,7 @@
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   background: var(--pp-white);
-  border: 1px solid var(--pp-white);
+  border: 1px solid var(--pp-brown);
   border-radius: 9px;
 }
 .pp-item-table .pp-item-row:first-child {
@@ -739,8 +746,7 @@
   line-height: 24px;
 }
 .pp-item-table .pp-item-row .item-name img {
-  border: 1px solid var(--pp-brown);
-  border-radius: 3px;
+  border: none;
 }
 .pp-item-table .item-controls {
   text-align: right;
@@ -787,7 +793,7 @@
   color: var(--pp-brown);
   font-family: var(--secondary-font);
   font-size: 1.5rem;
-  border: 3px double var(--pp-brown);
+  border: 4px double var(--pp-brown);
   border-radius: var(--space-sm);
   cursor: pointer;
   -webkit-transition: all 0.2s ease;
@@ -796,7 +802,7 @@
 .pp-item-roll:hover {
   background-color: var(--pp-rose-deep);
   color: var(--pp-white);
-  border: 3px double var(--pp-white);
+  border: 4px double var(--pp-white);
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -815,5 +821,5 @@
 .mishaps-table tr .mishap-number::before {
   content: counter(mishap-count) "s";
   font-weight: bold;
-  color: var(--pp-white) !important;
+  color: var(--pp-brown);
 }

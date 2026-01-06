@@ -10,6 +10,9 @@
 					"wits": { "value": 8, "label": "Wits" }
 				},
 				"hp": { "value": 5, "max": 5 },
+				"armor": {
+					"value": 0
+				},
 				"level": { "value": 1 },
 				"ailments": {
 					"weary": false,
@@ -25,6 +28,9 @@
 		},
 		"character": {
 			"templates": ["baseStats"],
+			"level": {
+				"value": "1"
+			},
 			"heartDice": {
 				"heart1": false,
 				"heart2": false,
@@ -56,7 +62,7 @@
 		},
 		"npc": {
 			"templates": ["baseStats"],
-			"danger": { "value": 1 }
+			"save": { "value": "1" }
 		}
 	},
 	"Item": {

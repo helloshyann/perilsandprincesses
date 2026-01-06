@@ -115,17 +115,18 @@
 
 		.fairytale-frame {
 			//@include glass-panel;
-			background-color: var(--pp-white);
+			//background-color: var(--pp-pink);
 			width: 4.5rem;
 			height: 4.5rem;
 			border-radius: 50%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border: 3px double var(--pp-brown);
+			border: 6px double var(--pp-pink);
 
 			input {
-				font-size: 2rem;
+				font-size: 2.5rem;
+				line-height: 2.5rem;
 				text-align: center;
 				color: var(--pp-brown);
 				font-family: var(--secondary-font);
@@ -145,8 +146,8 @@
 			transition: all 0.2s ease;
 
 			&:hover {
-				color: var(--pp-white);
-				text-shadow: 0 0 8px var(--pp-brown);
+				color: var(--pp-pink);
+				//text-shadow: 0 0 8px var(--pp-brown);
 				transform: scale(1.05);
 			}
 		}
@@ -160,12 +161,12 @@
 	}
 
 	.innate-ability {
-		border: 3px solid var(--pp-brown);
+		border: 3px solid var(--pp-pink);
 		border-radius: var(--space-sm) var(--space-sm) 0 0;
 		.innate-ab-title {
-			background-color: var(--pp-brown);
+			background-color: var(--pp-pink);
 			border-radius: 2px 2px 0 0;
-			color: var(--pp-white);
+			color: var(--pp-brown);
 			padding: var(--space-sm);
 		}
 		.innate-ab-content {
@@ -175,12 +176,12 @@
 	}
 
 	.special-ability {
-		border: 3px solid var(--pp-brown);
+		border: 3px solid var(--pp-pink);
 		border-radius: var(--space-sm) var(--space-sm) 0 0;
 		.special-ab-title {
-			background-color: var(--pp-brown);
+			background-color: var(--pp-pink);
 			border-radius: 2px 2px 0 0;
-			color: var(--pp-white);
+			color: var(--pp-brown);
 			padding: 0 var(--space-sm);
 			.ability-level {
 				font-size: 1.5rem;
@@ -208,14 +209,14 @@
 		letter-spacing: 0.1em;
 	}
 	.tiny-text {
-		font-size: var(--space-md);
+		font-size: 0.7rem;
 		font-weight: 600;
 	}
 	.level-text {
 		color: var(--pp-brown);
-		font-family: var(--secondary-font);
+		//font-family: var(--secondary-font);
 		font-weight: 700;
-		border-bottom: 1px solid var(--pp-brown);
+		//border-bottom: 1px solid var(--pp-brown);
 	}
 	.all-center {
 		justify-items: center;
@@ -247,7 +248,7 @@
 	}
 
 	select {
-		border: 3px double var(--pp-brown);
+		border: 4px double var(--pp-pink);
 		&:focus {
 			box-shadow: 0 0 5px var(--pp-deep-rose) !important;
 		}
@@ -257,8 +258,7 @@
 		margin: 0 0 !important;
 		width: 100%;
 		border-collapse: separate;
-		// border-spacing: 0 var(--space-xs); // Gives rows a slight "floating" gap
-		border: 3px double var(--pp-brown);
+		border: 3px double var(--pp-pink);
 		border-radius: var(--space-sm);
 
 		thead th {
@@ -286,8 +286,8 @@
 			// Style for the "Result/Number" column (e.g., 0s, 1s)
 			&:first-child {
 				font-family: var(--pp-font-display);
-				color: var(--pp-white);
-				background: var(--pp-brown);
+				color: var(--pp-brown);
+				background: var(--pp-pink);
 				font-weight: bold;
 				width: 3rem;
 				text-align: center;
@@ -362,8 +362,8 @@
 	/* ACTOR SHEETS */
 	&.sheet.actor {
 		.window-content {
-			background: var(--pp-white);
-			background-image: url("../assets/brown-pencil.png");
+			background: var(--pp-pink);
+			background-image: url("../assets/white-pencil.png");
 			background-size: 100% 100%;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -372,7 +372,8 @@
 			font-family: var(--primary-font);
 		}
 
-		form.character {
+		form.character,
+		form.npc {
 			padding: var(--space-md);
 			height: 100%;
 
@@ -393,9 +394,8 @@
 					height: 8rem;
 					width: 8rem;
 					border-radius: 100%;
-					border: 3px double var(--pp-brown);
+					border: 6px double var(--pp-pink);
 					object-fit: cover;
-					background-color: var(--pp-white);
 				}
 
 				.header-fields {
@@ -413,18 +413,20 @@
 						font-size: 2rem;
 						color: var(--pp-brown);
 						background-color: var(--pp-white);
-						border: 3px double var(--pp-brown);
+						border: 2px solid var(--pp-pink);
 						width: 100%;
 						margin: 0;
 						padding-left: var(--space-sm);
+						border-radius: var(--space-xs);
 					}
 					.pronoun-container input {
-						//color: var(--pp-brown) !important;
+						border-radius: var(--space-xs);
 						background-color: var(--pp-white);
-						border: 3px double var(--pp-brown);
+						border: 2px solid var(--pp-pink);
 					}
 					select {
-						border: 3px double var(--pp-brown);
+						border: 2px solid var(--pp-pink);
+						border-radius: var(--space-xs);
 					}
 					.resource input {
 						color: var(--pp-brown);
@@ -488,7 +490,7 @@
 					margin: var(--space-sm);
 					li {
 						&::marker {
-							color: var(--pp-pink);
+							color: var(--pp-white);
 						}
 					}
 				}
@@ -510,6 +512,7 @@
 			height: 100%;
 			margin: 0;
 			border-radius: 0;
+			background-color: var(--pp-pink) !important;
 			background-image: url("../assets/white-pencil.png");
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -558,7 +561,7 @@
 			border-bottom: none;
 			background: var(--pp-white);
 			border-radius: var(--space-sm);
-			border: 3px double var(--pp-brown);
+			border: 4px double var(--pp-pink);
 			max-height: 2rem;
 		}
 		nav.sheet-tabs .item.active::after {
@@ -567,23 +570,23 @@
 		.sheet-body {
 			margin: 1rem;
 		}
-		.charname input {
-			font-family: var(--secondary-font);
-			background-color: var(--pp-brown) !important;
-			color: var(--pp-white) !important;
-			border: 3px double var(--pp-white);
-			padding-left: var(--space-sm);
-			margin-bottom: var(--space-md);
-		}
-		.resource input {
-			background-color: var(--pp-brown);
-			color: var(--pp-white);
-			border: 3px double var(--pp-white);
-			border-radius: 2px;
-			text-align: center;
-			height: 2rem;
-			font-family: var(--primary-font);
-		}
+		// .charname input {
+		// 	font-family: var(--secondary-font);
+		// 	background-color: var(--pp-brown) !important;
+		// 	color: var(--pp-white) !important;
+		// 	border: 3px double var(--pp-white);
+		// 	padding-left: var(--space-sm);
+		// 	margin-bottom: var(--space-md);
+		// }
+		// .resource input {
+		// 	background-color: var(--pp-brown);
+		// 	color: var(--pp-white);
+		// 	border: 3px double var(--pp-white);
+		// 	border-radius: 2px;
+		// 	text-align: center;
+		// 	height: 2rem;
+		// 	font-family: var(--primary-font);
+		// }
 		.resource-label {
 			color: var(--pp-brown);
 			font-weight: bold;
@@ -629,11 +632,11 @@
 	padding: var(--space-sm);
 	border-radius: var(--space-sm);
 	overflow: visible;
-	background-color: var(--pp-pink);
+	background-color: var(--pp-white);
 	//background-image: url("../assets/lightpink-pencil.png");
 	background-position: center center;
 	background-size: cover;
-	border: 3px double var(--pp-brown);
+	border: 4px double var(--pp-pink);
 	color: var(--pp-brown);
 	//text-shadow: 0 0 8px var(--pp-brown) !important;
 	h2,
@@ -651,15 +654,15 @@
 	border-radius: var(--space-xs);
 	margin-top: var(--space-sm);
 	padding: var(--space-xs) var(--space-sm);
-	background-color: var(--pp-brown);
-	color: var(--pp-white);
+	background-color: var(--pp-pink);
+	color: var(--pp-brown);
 	font-weight: 400;
 }
 
 .pp-chat-card {
 	padding: var(--space-md);
 	border-radius: var(--space-sm);
-	border: 3px double var(--pp-brown);
+	border: 6px double var(--pp-pink);
 	background-color: var(--pp-pink);
 	margin-bottom: var(--space-sm);
 	.pp-font-display {
@@ -697,7 +700,7 @@
 		margin-top: var(--space-xs);
 		transition: all 0.5s ease;
 		background: var(--pp-white);
-		border: 1px solid var(--pp-white);
+		border: 1px solid var(--pp-brown);
 		border-radius: 9px;
 		&:first-child {
 			margin-top: 0;
@@ -725,8 +728,7 @@
 				line-height: 24px;
 			}
 			img {
-				border: 1px solid var(--pp-brown);
-				border-radius: 3px;
+				border: none;
 			}
 		}
 	}
@@ -776,7 +778,7 @@
 	color: var(--pp-brown);
 	font-family: var(--secondary-font);
 	font-size: 1.5rem;
-	border: 3px double var(--pp-brown);
+	border: 4px double var(--pp-brown);
 	border-radius: var(--space-sm);
 	cursor: pointer;
 	transition: all 0.2s ease;
@@ -784,7 +786,7 @@
 	&:hover {
 		background-color: var(--pp-rose-deep);
 		color: var(--pp-white);
-		border: 3px double var(--pp-white);
+		border: 4px double var(--pp-white);
 		transform: scale(1.02);
 		box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 	}
@@ -794,18 +796,16 @@
 	}
 }
 
-// Target the table containing your mishaps
 .mishaps-table {
-	// Ensure your <table> has this class
-	counter-reset: mishap-count 0; // Initialize counter at 0
+	counter-reset: mishap-count 0;
 
 	tr {
-		counter-increment: mishap-count; // Increment by 1 for every row
+		counter-increment: mishap-count;
 
 		.mishap-number::before {
-			content: counter(mishap-count) "s"; // Displays "1s", "2s", etc.
+			content: counter(mishap-count) "s";
 			font-weight: bold;
-			color: var(--pp-white) !important; // Matches your screenshot style
+			color: var(--pp-brown);
 		}
 	}
 }
