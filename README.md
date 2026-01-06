@@ -4,6 +4,8 @@
 
 > **Disclaimer:** This unofficial system for Foundry VTT is compatible with the Perils & Princesses game system, however, you must buy the Core Rulebook from an official source. The Unofficial Perils & Princess System for Foundry VTT is an independent production by Shyann and is not affiliated with Outrider Creative LLC. Perils & Princesses is copyrighted by Outrider Creative LLC. Permission was granted by Outrider Creative LLC to copy some text from the original source material for some content.
 
+> **Personal Art Asset License:** Art assets featured in this system are credited to https://creativemarket.com/ArtCreationsDesign and are being used with a valid personal license to support real human illustrators!
+
 ## System Parts
 
 There are two types of sheets in the system: "Actors" and "Items". Each sheet has two sub-types:
