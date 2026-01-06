@@ -62,7 +62,8 @@
 		},
 		"npc": {
 			"templates": ["baseStats"],
-			"save": { "value": "1" }
+			"save": { "value": "1" },
+			"notes": ""
 		}
 	},
 	"Item": {

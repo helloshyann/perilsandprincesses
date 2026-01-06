@@ -19,12 +19,6 @@
           <label class="tiny-text level-text">Name</label>     
           <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
         </h1>
-        <div class="fairytale-container level-container flex-col">
-          <label for="system.attributes.save.value" class="tiny-text level-text">Save</label>          
-          <div class="fairytale-frame">
-          <input type="text" name="system.attributes.save.value" value="{{system.save.value}}" data-dtype="Number"/>          
-          </div>
-        </div>
       </div>
       
       <div class="resources flex-row all-center lower-header-container">
@@ -59,32 +53,29 @@
                 <span class="tiny-text">HP Max</span>
               </div>
             </div>
-          </div>          
-          <div class="pink-card flex-col all-center">
-            <div class="flex-col all-center"><h3>Heart Dice</h3><span class="tiny-text">One d4 per level. Spend in two ways: <ul><li>1. Heal HP during a Picnic</li><li>2. Subtract amount rolled from a friend's failed Virtue test</li></ul> Heart Dice replenish after a Rest.</span></div>
-            <div class="flex-row all-center">
-              <div class="hd flex-col all-center">
-                <input type="checkbox" name="system.heartDice.heart1" {{checked system.heartDice.heart1}}/>
-                <span class="tiny-text">I</span>
-              </div>
-              <div class="hd flex-col all-center">
-                <input type="checkbox" name="system.heartDice.heart2" {{checked system.heartDice.heart2}}/>
-                <span class="tiny-text">II</span>
-              </div>
-              <div class="hd flex-col all-center">
-                <input type="checkbox" name="system.heartDice.heart3" {{checked system.heartDice.heart3}}/>
-                <span class="tiny-text">III</span>
-              </div>
-              <div class="hd flex-col all-center">
-                <input type="checkbox" name="system.heartDice.heart4" {{checked system.heartDice.heart4}}/>
-                <span class="tiny-text">IV</span>
-              </div>
-              <div class="hd flex-col all-center">
-                <input type="checkbox" name="system.heartDice.extraHeart" {{checked system.heartDice.extraHeart}}/>
-                <span class="tiny-text">Extra</span>
-              </div>
-            </div>                   
           </div>
+          <div class="pink-card flex-col all-center">
+            <h3>Save</h3>
+            <div class="flex-row">
+              <div class="fairytale-container">
+                <div class="fairytale-frame">
+                  <input type="text" name="system.attributes.save.value" value="{{system.save.value}}" data-dtype="Number"/>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pink-card flex-col">
+			<h3 class="pp-font-display">Additional Notes</h3>
+
+			{{editor
+				enriched.notes
+				target="system.notes"
+				engine="prosemirror"
+				button=true
+				editable=editable
+			}}
+
+		</div>
         </div>
         {{!-- Armor, Ailment, Trauma Section --}}
         <div class="pink-card flex-col all-center">

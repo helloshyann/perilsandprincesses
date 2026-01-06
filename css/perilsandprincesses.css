@@ -1,7 +1,7 @@
 /* --- 1. Variables & Root --- */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=UnifrakturCook:wght@700&display=swap");
 :root {
-  font-size: 16px;
+  font-size: 15px;
   --primary-font: "Roboto Flex", sans-serif;
   --secondary-font: "UnifrakturCook", cursive;
   --space-xs: 0.25rem;
@@ -161,6 +161,9 @@
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
+.perilsandprincesses .npc-frame-container .npc-frame input {
+  font-size: 1.75rem;
+}
 .perilsandprincesses .level-container .fairytale-frame {
   width: 48px;
   height: 48px;
@@ -253,10 +256,6 @@
 .perilsandprincesses select {
   border: 4px double var(--pp-pink);
 }
-.perilsandprincesses select:focus {
-  -webkit-box-shadow: 0 0 5px var(--pp-deep-rose) !important;
-          box-shadow: 0 0 5px var(--pp-deep-rose) !important;
-}
 .perilsandprincesses table {
   margin: 0 0 !important;
   width: 100%;
@@ -288,7 +287,7 @@
   font-family: var(--pp-font-display);
   color: var(--pp-brown);
   background: var(--pp-pink);
-  font-weight: bold;
+  font-weight: 700;
   width: 3rem;
   text-align: center;
 }
@@ -548,7 +547,8 @@
   height: 100%;
   margin: 0;
   border-radius: 0;
-  background-color: var(--pp-pink) !important;
+  border: 8px double var(--pp-pink);
+  background-color: var(--pp-white);
   background-image: url("../assets/white-pencil.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -568,19 +568,6 @@
   background: rgba(255, 255, 255, 0.2);
   border-radius: var(--space-xs);
 }
-.perilsandprincesses.sheet.item .sheet-body {
-  font-size: 1rem;
-  font-weight: 600;
-}
-.perilsandprincesses.sheet.item .resource-label {
-  font-family: var(--primary-font);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: var(--pp-brown);
-  display: block;
-  margin-bottom: 2px;
-}
 .perilsandprincesses.sheet.item .resource input {
   background: var(--pp-white);
   border: 1px solid var(--pp-brown);
@@ -592,10 +579,17 @@
 .perilsandprincesses.sheet.item nav.sheet-tabs {
   border-top: none;
   border-bottom: none;
-  background: var(--pp-white);
+  background: var(--pp-brown);
   border-radius: var(--space-sm);
   border: 4px double var(--pp-pink);
   max-height: 2rem;
+}
+.perilsandprincesses.sheet.item nav.sheet-tabs .item {
+  color: var(--pp-white);
+}
+.perilsandprincesses.sheet.item nav.sheet-tabs .item.active {
+  /* The White Stroke & Glow */
+  text-shadow: -1px -1px 0 var(--pp-brown), 1px -1px 0 var(--pp-brown), -1px 1px 0 var(--pp-brown), 1px 1px 0 var(--pp-brown), 0px 0px 8px rgba(20, 20, 20, 0.8);
 }
 .perilsandprincesses.sheet.item nav.sheet-tabs .item.active::after {
   -webkit-transform: translateY(-5px) scale(1);
@@ -603,6 +597,16 @@
 }
 .perilsandprincesses.sheet.item .sheet-body {
   margin: 1rem;
+  font-size: 1rem;
+}
+.perilsandprincesses.sheet.item .pp-item-roll {
+  background: var(--pp-brown);
+  color: var(--pp-white);
+}
+.perilsandprincesses.sheet.item .pp-item-roll:hover {
+  background: var(--pp-pink);
+  color: var(--pp-brown);
+  border-color: var(--pp-brown);
 }
 .perilsandprincesses.sheet.item .resource-label {
   color: var(--pp-brown);
@@ -684,12 +688,16 @@
 .pp-chat-card {
   padding: var(--space-md);
   border-radius: var(--space-sm);
-  border: 6px double var(--pp-pink);
+  border: 6px double var(--pp-brown);
   background-color: var(--pp-pink);
   margin-bottom: var(--space-sm);
 }
 .pp-chat-card .pp-font-display {
-  font-size: 1rem;
+  font-size: 1.125rem;
+  color: var(--pp-brown);
+  border-bottom: 4px double var(--pp-brown);
+}
+.pp-chat-card .pp-font-main {
   color: var(--pp-brown);
 }
 .pp-chat-card .result {
@@ -698,6 +706,7 @@
   text-align: center;
   font-weight: bold;
   letter-spacing: 2px;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 
 .pp-item-table {
@@ -764,22 +773,28 @@
 
 .pp-chat-roll-btn {
   width: 100%;
-  background: var(--pp-rose-soft);
-  border: 1px solid var(--pp-gold);
-  color: var(--pp-rose-deep);
-  font-family: var(--pp-font-display);
+  background: var(--pp-brown);
+  border: 6px double var(--pp-white);
+  color: var(--pp-white);
+  font-family: var(--primary-font);
   font-weight: bold;
   padding: 6px;
   cursor: pointer;
-  border-radius: var(--radius-sm);
+  border-radius: var(--space-sm);
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .pp-chat-roll-btn:hover {
-  background: var(--pp-rose-deep);
-  color: white;
-  -webkit-box-shadow: 0 0 8px var(--pp-gold);
-          box-shadow: 0 0 8px var(--pp-gold);
+  background: var(--pp-white);
+  color: var(--pp-brown);
+  border: 6px double var(--pp-brown);
+  -webkit-box-shadow: 0 0 4px var(--pp-brown);
+          box-shadow: 0 0 4px var(--pp-brown);
+}
+.pp-chat-roll-btn:focus {
+  outline: 1px solid var(--pp-pink);
+  -webkit-box-shadow: 0 0 4px var(--pp-pink);
+          box-shadow: 0 0 4px var(--pp-pink);
 }
 .pp-chat-roll-btn i {
   margin-right: 5px;
@@ -793,14 +808,14 @@
   color: var(--pp-brown);
   font-family: var(--secondary-font);
   font-size: 1.5rem;
-  border: 4px double var(--pp-brown);
+  border: 4px double var(--pp-pink);
   border-radius: var(--space-sm);
   cursor: pointer;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .pp-item-roll:hover {
-  background-color: var(--pp-rose-deep);
+  background-color: var(--pp-pink);
   color: var(--pp-white);
   border: 4px double var(--pp-white);
   -webkit-transform: scale(1.02);

@@ -116,8 +116,8 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 		}`;
 
 		const chatContent = `
-    <div class="pp-chat-card pp-glass-card" data-item-id="${item.id}">
-      <h3 class="pp-font-display" style="color: var(--pp-rose-deep); border-bottom: 1px solid var(--pp-gold); margin-bottom: 5px;">
+    <div class="pp-chat-card" data-item-id="${item.id}">
+      <h3 class="pp-font-display" style="margin-bottom: 5px;">
         ${item.name}
       </h3>
       <div class="pp-font-main" style="margin-bottom: 10px;">

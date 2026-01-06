@@ -573,6 +573,9 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 			que4: await enricher.enrichHTML(data.personalityQuestion4 || "", {
 				async: true,
 			}),
+			notes: await enricher.enrichHTML(data.notes || "", {
+				async: true,
+			}),
 		};
 
 		return context;
@@ -902,10 +905,9 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 			data.roll.diceBonus ? "+" + data.roll.diceBonus : ""
 		}`;
 
-		// This HTML contains the button that was missing
 		const chatContent = `
     <div class="pp-chat-card">
-      <h3 class="pp-font-display" style="color: var(--pp-rose-deep); border-bottom: 1px solid var(--pp-gold); margin-bottom: 5px;">
+      <h3 class="pp-font-display" style="margin-bottom: 5px;">
         ${item.name}
       </h3>
       <div class="pp-font-main" style="margin-bottom: 10px;">
