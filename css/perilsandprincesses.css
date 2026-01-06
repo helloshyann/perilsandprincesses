@@ -110,6 +110,37 @@
           align-items: center;
   text-align: center;
 }
+.perilsandprincesses .armor,
+.perilsandprincesses .curtains,
+.perilsandprincesses .inventory,
+.perilsandprincesses .gifts,
+.perilsandprincesses .virtue-row {
+  background-repeat: no-repeat;
+}
+.perilsandprincesses .armor {
+  background-image: url("../assets/hands-bg.png");
+  background-size: 65% 100%;
+  background-position: top right;
+}
+.perilsandprincesses .curtains {
+  background-image: url("../assets/curtain-bg.png");
+  background-size: 20% 100%;
+  background-position: top left;
+}
+.perilsandprincesses .inventory {
+  background-image: url("../assets/inventory-bg.png");
+  background-size: 20% 100%;
+  background-position: top right;
+}
+.perilsandprincesses .gifts {
+  background-image: url("../assets/gifts-bg.png");
+  background-size: 20% 100%;
+  background-position: bottom left;
+}
+.perilsandprincesses .virtue-row {
+  background-image: url("../assets/virtues-bg.png");
+  background-position: center;
+}
 .perilsandprincesses .fairytale-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -330,12 +361,11 @@
   z-index: -1;
   -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-transform: translateY(15px) scale(0.7);
-          transform: translateY(15px) scale(0.7);
+  -webkit-transform: translateY(15px) scale(0.8);
+          transform: translateY(15px) scale(0.8);
 }
 .perilsandprincesses nav.sheet-tabs .item:hover {
-  color: var(--pp-white) !important;
-  text-shadow: 0 0 8px var(--pp-brown) !important;
+  text-shadow: 0 0 0 var(--pp-white) !important;
 }
 .perilsandprincesses nav.sheet-tabs .item:hover::after {
   opacity: 0.4;
@@ -350,8 +380,8 @@
 }
 .perilsandprincesses nav.sheet-tabs .item.active::after {
   opacity: 0.85;
-  -webkit-transform: translateY(-5px) scale(1.25);
-          transform: translateY(-5px) scale(1.25);
+  -webkit-transform: translateY(-1px) scale(1.33);
+          transform: translateY(-1px) scale(1.33);
 }
 .perilsandprincesses {
   /* ACTOR SHEETS */
@@ -582,7 +612,6 @@
   background: var(--pp-brown);
   border-radius: var(--space-sm);
   border: 4px double var(--pp-pink);
-  max-height: 2rem;
 }
 .perilsandprincesses.sheet.item nav.sheet-tabs .item {
   color: var(--pp-white);

@@ -107,6 +107,44 @@
 		}
 	}
 
+	// Art asset Backgrounds
+	.armor,
+	.curtains,
+	.inventory,
+	.gifts,
+	.virtue-row {
+		background-repeat: no-repeat;
+	}
+
+	.armor {
+		background-image: url("../assets/hands-bg.png");
+		background-size: 65% 100%;
+		background-position: top right;
+	}
+
+	.curtains {
+		background-image: url("../assets/curtain-bg.png");
+		background-size: 20% 100%;
+		background-position: top left;
+	}
+
+	.inventory {
+		background-image: url("../assets/inventory-bg.png");
+		background-size: 20% 100%;
+		background-position: top right;
+	}
+
+	.gifts {
+		background-image: url("../assets/gifts-bg.png");
+		background-size: 20% 100%;
+		background-position: bottom left;
+	}
+
+	.virtue-row {
+		background-image: url("../assets/virtues-bg.png");
+		background-position: center;
+	}
+
 	.fairytale-container {
 		display: flex;
 		flex-direction: column;
@@ -135,7 +173,6 @@
 
 		.virtue-banner {
 			font-family: var(--secondary-font);
-			// text-shadow: 0 0 8px var(--pp-brown) !important;
 			font-size: 1.5rem;
 			font-weight: 700;
 			letter-spacing: 0.05em;
@@ -147,7 +184,6 @@
 
 			&:hover {
 				color: var(--pp-pink);
-				//text-shadow: 0 0 8px var(--pp-brown);
 				transform: scale(1.05);
 			}
 		}
@@ -222,9 +258,7 @@
 	}
 	.level-text {
 		color: var(--pp-brown);
-		//font-family: var(--secondary-font);
 		font-weight: 700;
-		//border-bottom: 1px solid var(--pp-brown);
 	}
 	.all-center {
 		justify-items: center;
@@ -332,13 +366,12 @@
 				opacity: 0;
 				z-index: -1;
 				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-				transform: translateY(15px) scale(0.7);
+				transform: translateY(15px) scale(0.8);
 			}
 
 			// Hover State
 			&:hover {
-				color: var(--pp-white) !important;
-				text-shadow: 0 0 8px var(--pp-brown) !important;
+				text-shadow: 0 0 0 var(--pp-white) !important;
 				&::after {
 					opacity: 0.4;
 					transform: translateY(0) scale(0.9);
@@ -356,7 +389,7 @@
 
 				&::after {
 					opacity: 0.85;
-					transform: translateY(-5px) scale(1.25);
+					transform: translateY(-1px) scale(1.33);
 					//filter: drop-shadow(0 0 2px var(--pp-brown));
 				}
 			}
@@ -552,7 +585,7 @@
 			background: var(--pp-brown);
 			border-radius: var(--space-sm);
 			border: 4px double var(--pp-pink);
-			max-height: 2rem;
+			//max-height: 2rem;
 			.item {
 				color: var(--pp-white);
 			}
