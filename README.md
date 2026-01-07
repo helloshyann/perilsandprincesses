@@ -2,7 +2,7 @@
 
 ![Foundry v11](https://img.shields.io/badge/foundry-v13-green)
 
-> **Disclaimer:** This unofficial system for Foundry VTT is compatible with the Perils & Princesses game system. It provides basic functionality with no compendium content beyond core rules for Gifts. You must buy the Core Rulebook from an official source. The Unofficial Perils & Princess System for Foundry VTT is an independent production by GM Shyann and is not affiliated with Outrider Creative LLC. Perils & Princesses is copyrighted by Outrider Creative LLC. Permission was granted by Outrider Creative LLC to copy some text from the original source material for core functionality purposes.
+> **Disclaimer:** This unofficial system for Foundry VTT is compatible with the Perils & Princesses game system. It provides basic functionality with no compendium content beyond core rules for Gifts. You must buy the Core Rulebook from an official source. The Unofficial Perils & Princess System for Foundry VTT is an independent and free production by me, a fan of the work, who is not affiliated with Outrider Creative LLC. Perils & Princesses is copyrighted by Outrider Creative LLC. Permission was granted by Outrider Creative LLC to copy some text from the original source material for core functionality purposes.
 
 > **Personal Art Asset License:** Art assets featured in this system are credited to https://creativemarket.com/ArtCreationsDesign and are being used with a valid personal license to support real human illustrators!
 
