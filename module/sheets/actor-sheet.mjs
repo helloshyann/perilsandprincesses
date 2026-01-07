@@ -909,17 +909,36 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 	// The helper function (within the ActorSheet class)
 	async _onItemChat(item) {
 		const r = item.system.roll;
-		const formula = `${r.diceNum || 1}${r.diceSize || "d6"}${
-			r.diceBonus ? " + " + r.diceBonus : ""
-		}`;
+
+		// Check if a roll should even exist.
+		// If diceSize is null/empty, we skip the button entirely.
+		const hasRoll = !!r.diceSize;
+
+		// Use nullish coalescing (??) instead of (||).
+		// (r.diceNum ?? 1) means: "If diceNum is null or undefined, use 1. If it's 0, use 0."
+		const dNum = r.diceNum ?? 1;
+		const dSize = r.diceSize || "";
+		const dBonus = r.diceBonus ? ` + ${r.diceBonus}` : "";
+
+		const formula = `${dNum}${dSize}${dBonus}`;
+
+		// Conditional HTML: Only show the button if hasRoll is true
+		const rollButtonHtml = hasRoll
+			? `
+      <button type="button" class="pp-chat-roll-btn">
+        <i class="fas fa-dice-d20"></i> Roll ${formula}
+      </button>`
+			: "";
 
 		const chatContent = `
     <div class="pp-chat-card" data-item-uuid="${item.uuid}">
-      <h3 class="pp-font-display">${item.name}</h3>
-      <div class="pp-font-main">${item.system.description || ""}</div>
-      <button type="button" class="pp-chat-roll-btn">
-        <i class="fas fa-dice-d20"></i> Roll ${formula}
-      </button>
+      <h3 class="pp-font-display" style="margin-bottom: 5px;">
+        ${item.name}
+      </h3>
+      <div class="pp-font-main" style="margin-bottom: 10px;">
+        ${item.system.description || ""}
+      </div>
+      ${rollButtonHtml}
     </div>`;
 
 		ChatMessage.create({

@@ -92,8 +92,8 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 
 		html.find(".pp-item-roll").click((ev) => {
 			const item = this.item;
-			const num = item.system.roll.diceNum || 1;
-			const size = item.system.roll.diceSize || "d6";
+			const num = item.system.roll.diceNum || 0;
+			const size = item.system.roll.diceSize || "0";
 			const bonus = item.system.roll.diceBonus
 				? ` + ${item.system.roll.diceBonus}`
 				: "";

@@ -59,23 +59,6 @@ Hooks.once("init", async function () {
 	return preloadHandlebarsTemplates();
 });
 
-// New HTML-specific hook
-// Hooks.on("renderChatMessageHTML", (message, html, data) => {
-// 	const jhtml = $(html);
-
-// 	jhtml.find(".pp-roll-btn").click(async (ev) => {
-// 		console.log("Button Clicked!");
-// 		ev.preventDefault();
-
-// 		// Find the actor associated with the message
-// 		const actor = game.actors.get(message.speaker.actor);
-// 		if (!actor) return;
-
-// 		// Trigger the function you just moved to actor.mjs
-// 		await actor._onRollD20Dialog();
-// 	});
-// });
-
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
@@ -138,7 +121,6 @@ async function createItemMacro(data, slot) {
   Note: 'html' here is a native HTMLElement, not a jQuery object.
 */
 Hooks.on("renderChatMessageHTML", (message, html, data) => {
-	// html is now a native HTMLElement in v13, not jQuery
 	const rollBtn = html.querySelector(".pp-chat-roll-btn");
 	if (!rollBtn) return;
 
@@ -148,22 +130,24 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
 		const card = ev.currentTarget.closest(".pp-chat-card");
 		const itemUuid = card.dataset.itemUuid;
 
-		// Fetch the item via UUID
 		const item = await fromUuid(itemUuid);
 		if (!item) return ui.notifications.error("Item not found!");
 
-		// Use the system data safely
-		const rollSystem = item.system.roll;
+		const r = item.system.roll;
 
-		// Fix: Ensure we have a valid dice size (e.g., "d6" vs just "6")
-		let dSize = rollSystem.diceSize || "d6";
-		if (!dSize.startsWith("d")) dSize = `d${dSize}`;
+		// 1. Guard clause: if there is no dice size, we can't roll.
+		if (!r.diceSize) return;
 
-		const formula = `${rollSystem.diceNum || 1}${dSize}${
-			rollSystem.diceBonus ? " + " + rollSystem.diceBonus : ""
-		}`;
+		// 2. Logic for 0 and null values:
+		// Use ?? (nullish coalescing) to allow 0.
+		// If diceNum is null/undefined, it defaults to 1.
+		const dNum = r.diceNum ?? 1;
+		const dSize = r.diceSize;
+		const dBonus = r.diceBonus ? ` + ${r.diceBonus}` : "";
 
-		// Create and execute the roll
+		const formula = `${dNum}${dSize}${dBonus}`;
+
+		// 3. Execute the roll
 		const roll = await new Roll(formula, item.getRollData()).roll();
 
 		return roll.toMessage({
