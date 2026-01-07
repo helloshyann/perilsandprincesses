@@ -668,6 +668,12 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 			item.sheet.render(true);
 		});
 
+		html.find(".item-chat-trigger").click((ev) => {
+			const li = $(ev.currentTarget).parents(".item");
+			const item = this.actor.items.get(li.data("itemId"));
+			this._onItemChat(item); // Call the helper function
+		});
+
 		// -------------------------------------------------------------
 		// Everything below here is only needed if the sheet is editable
 		if (!this.isEditable) return;
@@ -709,6 +715,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		// Test Dice Rollers
 		// Listen for clicks on our custom roll buttons
 		html.find(".pp-roll-btn").click((ev) => {
+			console.log("Button Clicked!");
 			const type = ev.currentTarget.dataset.roll;
 
 			if (type === "d20") {
@@ -899,29 +906,23 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		});
 	}
 
+	// The helper function (within the ActorSheet class)
 	async _onItemChat(item) {
-		const data = item.system;
-		const formula = `${data.roll.diceNum}${data.roll.diceSize}${
-			data.roll.diceBonus ? "+" + data.roll.diceBonus : ""
+		const r = item.system.roll;
+		const formula = `${r.diceNum || 1}${r.diceSize || "d6"}${
+			r.diceBonus ? " + " + r.diceBonus : ""
 		}`;
 
 		const chatContent = `
-    <div class="pp-chat-card">
-      <h3 class="pp-font-display" style="margin-bottom: 5px;">
-        ${item.name}
-      </h3>
-      <div class="pp-font-main" style="margin-bottom: 10px;">
-        ${data.description}
-      </div>
-      <button type="button" class="pp-chat-roll-btn" 
-              data-item-id="${item.id}" 
-              data-owner-id="${this.actor.id}">
+    <div class="pp-chat-card" data-item-uuid="${item.uuid}">
+      <h3 class="pp-font-display">${item.name}</h3>
+      <div class="pp-font-main">${item.system.description || ""}</div>
+      <button type="button" class="pp-chat-roll-btn">
         <i class="fas fa-dice-d20"></i> Roll ${formula}
       </button>
-    </div>
-  `;
+    </div>`;
 
-		return ChatMessage.create({
+		ChatMessage.create({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			content: chatContent,
 		});

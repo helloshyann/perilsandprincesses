@@ -59,6 +59,23 @@ Hooks.once("init", async function () {
 	return preloadHandlebarsTemplates();
 });
 
+// New HTML-specific hook
+// Hooks.on("renderChatMessageHTML", (message, html, data) => {
+// 	const jhtml = $(html);
+
+// 	jhtml.find(".pp-roll-btn").click(async (ev) => {
+// 		console.log("Button Clicked!");
+// 		ev.preventDefault();
+
+// 		// Find the actor associated with the message
+// 		const actor = game.actors.get(message.speaker.actor);
+// 		if (!actor) return;
+
+// 		// Trigger the function you just moved to actor.mjs
+// 		await actor._onRollD20Dialog();
+// 	});
+// });
+
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
@@ -121,32 +138,38 @@ async function createItemMacro(data, slot) {
   Note: 'html' here is a native HTMLElement, not a jQuery object.
 */
 Hooks.on("renderChatMessageHTML", (message, html, data) => {
+	// html is now a native HTMLElement in v13, not jQuery
 	const rollBtn = html.querySelector(".pp-chat-roll-btn");
 	if (!rollBtn) return;
 
 	rollBtn.addEventListener("click", async (ev) => {
 		ev.preventDefault();
 
-		// Retrieve the Actor and Item
-		const actorId = rollBtn.dataset.ownerId;
-		const itemId = rollBtn.dataset.itemId;
-		const actor = game.actors.get(actorId);
-		const item = actor?.items.get(itemId);
+		const card = ev.currentTarget.closest(".pp-chat-card");
+		const itemUuid = card.dataset.itemUuid;
 
-		if (item) {
-			const { diceNum, diceSize, diceBonus } = item.system.roll;
-			const formula = `${diceNum || 1}${diceSize || "d6"}${
-				diceBonus ? " + " + diceBonus : ""
-			}`;
+		// Fetch the item via UUID
+		const item = await fromUuid(itemUuid);
+		if (!item) return ui.notifications.error("Item not found!");
 
-			const roll = await new Roll(formula).roll({ async: true });
+		// Use the system data safely
+		const rollSystem = item.system.roll;
 
-			// Send the actual roll to chat
-			roll.toMessage({
-				speaker: ChatMessage.getSpeaker({ actor: actor }),
-				flavor: `<span class="pp-font-display">Rolling ${item.name}</span>`,
-			});
-		}
+		// Fix: Ensure we have a valid dice size (e.g., "d6" vs just "6")
+		let dSize = rollSystem.diceSize || "d6";
+		if (!dSize.startsWith("d")) dSize = `d${dSize}`;
+
+		const formula = `${rollSystem.diceNum || 1}${dSize}${
+			rollSystem.diceBonus ? " + " + rollSystem.diceBonus : ""
+		}`;
+
+		// Create and execute the roll
+		const roll = await new Roll(formula, item.getRollData()).roll();
+
+		return roll.toMessage({
+			speaker: ChatMessage.getSpeaker({ actor: item.actor }),
+			flavor: `<span class="pp-font-display">Rolling ${item.name}</span>`,
+		});
 	});
 });
 
