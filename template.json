@@ -31,6 +31,9 @@
 			"level": {
 				"value": "1"
 			},
+			"princessTheme": {
+				"value": ""
+			},
 			"heartDice": {
 				"heart1": false,
 				"heart2": false,

@@ -9,12 +9,14 @@
   --space-md: 0.75rem;
   --space-lg: 1rem;
   --pp-pink: #c9919c;
+  --pp-gold: #cec58e;
+  --pp-purp: #b3a7d7;
+  --pp-green: #b7d4c2;
   --pp-brown: #4e3f3f;
   --pp-white: #f8f6f8;
   /* Subcore Colors */
   --pp-rose-deep: #8e444a; /* Bold headers, success/fail text, d20 icons */
   --pp-rose-soft: #f4e7e8; /* Hover states, row backgrounds */
-  --pp-gold: #c5a059; /* Borders, dividers, roll icons, seals */
   /* Sage / Nature Accents */
   --pp-sage-deep: #4a5d4e; /* Success text, specialized roll results */
   --pp-sage-soft: #c8d1c5; /* Zebra striping, mishap bubbles */
@@ -28,7 +30,228 @@
 }
 
 /* --- 2. Mixins --- */
-/* --- 3. System Layout Utlities --- */
+/* --- 3. Global Styles --- */
+.editor {
+  margin-top: -0.5rem;
+  min-height: 6rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.editor .editor-content,
+.editor .prosemirror {
+  min-height: 2rem;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.editor-container {
+  min-height: 4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+}
+
+.mishaps-table {
+  counter-reset: mishap-count 0;
+}
+.mishaps-table tr {
+  counter-increment: mishap-count;
+}
+.mishaps-table tr .mishap-number::before {
+  content: counter(mishap-count) "s";
+  font-weight: bold;
+  color: var(--pp-brown);
+}
+
+.gift-title {
+  font-family: var(--secondary-font);
+  font-size: 2rem;
+}
+
+.pp-chat-card {
+  padding: var(--space-md);
+  border-radius: var(--space-sm);
+  border: 6px double var(--pp-brown);
+  background-color: var(--pp-pink);
+  margin-bottom: var(--space-sm);
+}
+.pp-chat-card .pp-font-display {
+  font-size: 1.125rem;
+  color: var(--pp-brown);
+  border-bottom: 4px double var(--pp-brown);
+}
+.pp-chat-card .pp-font-main {
+  color: var(--pp-brown);
+}
+.pp-chat-card .result {
+  font-size: 2rem !important;
+  font-family: var(--secondary-font) !important;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
+}
+
+.pp-item-table {
+  width: 100%;
+  border-collapse: separate;
+  margin-top: var(--space-sm);
+}
+.pp-item-table thead th.purse {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--pp-white);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+.pp-item-table thead th.purse:first-child {
+  text-align: left;
+}
+.pp-item-table .pp-item-row {
+  margin-top: var(--space-xs);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: var(--pp-white);
+  border: 1px solid var(--pp-brown);
+  border-radius: 9px;
+}
+.pp-item-table .pp-item-row:first-child {
+  margin-top: 0;
+}
+.pp-item-table .pp-item-row td {
+  width: 100% !important;
+  padding: var(--space-xs) var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pp-item-table .pp-item-row td:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px 0 0 8px;
+}
+.pp-item-table .pp-item-row td:last-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 8px 8px 0;
+}
+.pp-item-table .pp-item-row .item-name h4 {
+  margin: 0;
+  line-height: 24px;
+}
+.pp-item-table .pp-item-row .item-name img {
+  border: none;
+}
+.pp-item-table .item-controls {
+  text-align: right;
+  width: 60px;
+}
+.pp-item-table .item-controls i {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.pp-item-table .item-controls i:hover {
+  opacity: 1;
+  color: var(--pp-rose-deep);
+}
+
+.pp-chat-roll-btn {
+  width: 100%;
+  background: var(--pp-brown);
+  border: 6px double var(--pp-white);
+  color: var(--pp-white);
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: var(--space-sm);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pp-chat-roll-btn:hover {
+  background: var(--pp-white);
+  color: var(--pp-brown);
+  border: 6px double var(--pp-brown);
+  -webkit-box-shadow: 0 0 4px var(--pp-brown);
+          box-shadow: 0 0 4px var(--pp-brown);
+}
+.pp-chat-roll-btn:focus {
+  outline: 1px solid var(--pp-pink);
+  -webkit-box-shadow: 0 0 4px var(--pp-pink);
+          box-shadow: 0 0 4px var(--pp-pink);
+}
+.pp-chat-roll-btn i {
+  margin-right: 5px;
+}
+
+.pp-item-roll {
+  margin-top: var(--space-lg);
+  width: 100%;
+  height: 3rem;
+  background-color: var(--pp-white);
+  color: var(--pp-brown);
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+  border: 4px double var(--pp-pink);
+  border-radius: var(--space-sm);
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pp-item-roll:hover {
+  background-color: var(--pp-pink);
+  color: var(--pp-white);
+  border: 4px double var(--pp-white);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.pp-item-roll i {
+  margin-right: 10px;
+}
+
+.pink-card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 100%;
+  max-height: 100%;
+  margin: var(--space-xs) 0;
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);
+  overflow: visible;
+  background-color: var(--pp-white);
+  background-position: center center;
+  background-size: cover;
+  border: 4px double var(--pp-pink);
+  color: var(--pp-brown);
+}
+.pink-card h2,
+.pink-card h3 {
+  border-bottom: 1px solid var(--pp-brown) !important;
+}
+
+.gift-text {
+  border-radius: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--pp-pink);
+  color: var(--pp-brown);
+  font-weight: 400;
+}
+
+/* --- 4. System Layout Utlities --- */
 .perilsandprincesses .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -109,37 +332,6 @@
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-}
-.perilsandprincesses .armor,
-.perilsandprincesses .curtains,
-.perilsandprincesses .inventory,
-.perilsandprincesses .gifts,
-.perilsandprincesses .virtue-row {
-  background-repeat: no-repeat;
-}
-.perilsandprincesses .armor {
-  background-image: url("../assets/hands-bg.png");
-  background-size: 65% 100%;
-  background-position: top right;
-}
-.perilsandprincesses .curtains {
-  background-image: url("../assets/curtain-bg.png");
-  background-size: 20% 100%;
-  background-position: top left;
-}
-.perilsandprincesses .inventory {
-  background-image: url("../assets/inventory-bg.png");
-  background-size: 20% 100%;
-  background-position: top right;
-}
-.perilsandprincesses .gifts {
-  background-image: url("../assets/gifts-bg.png");
-  background-size: 20% 100%;
-  background-position: bottom left;
-}
-.perilsandprincesses .virtue-row {
-  background-image: url("../assets/virtues-bg.png");
-  background-position: center;
 }
 .perilsandprincesses .fairytale-container {
   display: -webkit-box;
@@ -265,7 +457,7 @@
   text-align: center;
 }
 
-/* --- 4. The System Wrapper --- */
+/* --- 5. The System Wrapper --- */
 .perilsandprincesses input[type=text],
 .perilsandprincesses input[type=number],
 .perilsandprincesses input[type=checkbox] {
@@ -395,6 +587,117 @@
   padding: var(--space-xs);
   overflow: hidden;
   font-family: var(--primary-font);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) {
+  background: var(--pp-gold);
+  background-image: url("../assets/white-pencil.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) nav.sheet-tabs .item::after {
+  background-image: url("../assets/turret-gold.png");
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .pink-card {
+  border: 4px double var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) form.character .sheet-header .profile-img {
+  border: 6px double var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) form.character .sheet-header .header-fields .charname input {
+  border: 2px solid var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) form.character .sheet-header .header-fields .pronoun-container input {
+  border: 2px solid var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) form.character .sheet-header .header-fields select {
+  border: 2px solid var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .fairytale-container .fairytale-frame {
+  border: 6px double var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .fairytale-container .pp-virtue-roll:hover {
+  color: var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) table {
+  border: 3px double var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) table td:first-child {
+  background: var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) {
+  background: var(--pp-purp);
+  background-image: url("../assets/white-pencil.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) nav.sheet-tabs .item::after {
+  background-image: url("../assets/turret-purp.png");
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .pink-card {
+  border: 4px double var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) form.character .sheet-header .profile-img {
+  border: 6px double var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) form.character .sheet-header .header-fields .charname input {
+  border: 2px solid var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) form.character .sheet-header .header-fields .pronoun-container input {
+  border: 2px solid var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) form.character .sheet-header .header-fields select {
+  border: 2px solid var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .fairytale-container .fairytale-frame {
+  border: 6px double var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .fairytale-container .pp-virtue-roll:hover {
+  color: var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) table {
+  border: 3px double var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) table td:first-child {
+  background: var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) {
+  background: var(--pp-green);
+  background-image: url("../assets/white-pencil.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) nav.sheet-tabs .item::after {
+  background-image: url("../assets/turret-green.png");
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .pink-card {
+  border: 4px double var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) form.character .sheet-header .profile-img {
+  border: 6px double var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) form.character .sheet-header .header-fields .charname input {
+  border: 2px solid var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) form.character .sheet-header .header-fields .pronoun-container input {
+  border: 2px solid var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) form.character .sheet-header .header-fields select {
+  border: 2px solid var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .fairytale-container .fairytale-frame {
+  border: 6px double var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .fairytale-container .pp-virtue-roll:hover {
+  color: var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) table {
+  border: 3px double var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) table td:first-child {
+  background: var(--pp-green);
 }
 .perilsandprincesses.sheet.actor form.character,
 .perilsandprincesses.sheet.actor form.npc {
@@ -638,226 +941,4 @@
   font-size: 0.75rem;
   margin-bottom: 2px;
   display: block;
-}
-
-/* --- 5. Rich Text Editors --- */
-.editor {
-  margin-top: -0.5rem;
-  min-height: 6rem;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.editor .editor-content,
-.editor .prosemirror {
-  min-height: 2rem;
-  height: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.editor-container {
-  min-height: 4rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 5px;
-}
-
-/* --- 6. Misc --- */
-.pink-card {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  width: 100%;
-  max-height: 100%;
-  margin: var(--space-xs) 0;
-  padding: var(--space-sm);
-  border-radius: var(--space-sm);
-  overflow: visible;
-  background-color: var(--pp-white);
-  background-position: center center;
-  background-size: cover;
-  border: 4px double var(--pp-pink);
-  color: var(--pp-brown);
-}
-.pink-card h2,
-.pink-card h3 {
-  border-bottom: 1px solid var(--pp-brown) !important;
-}
-
-.gift-title {
-  font-family: var(--secondary-font);
-  font-size: 2rem;
-}
-
-.gift-text {
-  border-radius: var(--space-xs);
-  margin-top: var(--space-sm);
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--pp-pink);
-  color: var(--pp-brown);
-  font-weight: 400;
-}
-
-.pp-chat-card {
-  padding: var(--space-md);
-  border-radius: var(--space-sm);
-  border: 6px double var(--pp-brown);
-  background-color: var(--pp-pink);
-  margin-bottom: var(--space-sm);
-}
-.pp-chat-card .pp-font-display {
-  font-size: 1.125rem;
-  color: var(--pp-brown);
-  border-bottom: 4px double var(--pp-brown);
-}
-.pp-chat-card .pp-font-main {
-  color: var(--pp-brown);
-}
-.pp-chat-card .result {
-  font-size: 2rem !important;
-  font-family: var(--secondary-font) !important;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
-}
-
-.pp-item-table {
-  width: 100%;
-  border-collapse: separate;
-  margin-top: var(--space-sm);
-}
-.pp-item-table thead th.purse {
-  padding: var(--space-xs) var(--space-sm);
-  color: var(--pp-white);
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-align: center;
-}
-.pp-item-table thead th.purse:first-child {
-  text-align: left;
-}
-.pp-item-table .pp-item-row {
-  margin-top: var(--space-xs);
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  background: var(--pp-white);
-  border: 1px solid var(--pp-brown);
-  border-radius: 9px;
-}
-.pp-item-table .pp-item-row:first-child {
-  margin-top: 0;
-}
-.pp-item-table .pp-item-row td {
-  width: 100% !important;
-  padding: var(--space-xs) var(--space-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.pp-item-table .pp-item-row td:first-child {
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px 0 0 8px;
-}
-.pp-item-table .pp-item-row td:last-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0 8px 8px 0;
-}
-.pp-item-table .pp-item-row .item-name h4 {
-  margin: 0;
-  line-height: 24px;
-}
-.pp-item-table .pp-item-row .item-name img {
-  border: none;
-}
-.pp-item-table .item-controls {
-  text-align: right;
-  width: 60px;
-}
-.pp-item-table .item-controls i {
-  opacity: 0.7;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-.pp-item-table .item-controls i:hover {
-  opacity: 1;
-  color: var(--pp-rose-deep);
-}
-
-.pp-chat-roll-btn {
-  width: 100%;
-  background: var(--pp-brown);
-  border: 6px double var(--pp-white);
-  color: var(--pp-white);
-  font-family: var(--primary-font);
-  font-weight: bold;
-  padding: 6px;
-  cursor: pointer;
-  border-radius: var(--space-sm);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-.pp-chat-roll-btn:hover {
-  background: var(--pp-white);
-  color: var(--pp-brown);
-  border: 6px double var(--pp-brown);
-  -webkit-box-shadow: 0 0 4px var(--pp-brown);
-          box-shadow: 0 0 4px var(--pp-brown);
-}
-.pp-chat-roll-btn:focus {
-  outline: 1px solid var(--pp-pink);
-  -webkit-box-shadow: 0 0 4px var(--pp-pink);
-          box-shadow: 0 0 4px var(--pp-pink);
-}
-.pp-chat-roll-btn i {
-  margin-right: 5px;
-}
-
-.pp-item-roll {
-  margin-top: var(--space-lg);
-  width: 100%;
-  height: 3rem;
-  background-color: var(--pp-white);
-  color: var(--pp-brown);
-  font-family: var(--secondary-font);
-  font-size: 1.5rem;
-  border: 4px double var(--pp-pink);
-  border-radius: var(--space-sm);
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-.pp-item-roll:hover {
-  background-color: var(--pp-pink);
-  color: var(--pp-white);
-  border: 4px double var(--pp-white);
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-.pp-item-roll i {
-  margin-right: 10px;
-}
-
-.mishaps-table {
-  counter-reset: mishap-count 0;
-}
-.mishaps-table tr {
-  counter-increment: mishap-count;
-}
-.mishaps-table tr .mishap-number::before {
-  content: counter(mishap-count) "s";
-  font-weight: bold;
-  color: var(--pp-brown);
 }

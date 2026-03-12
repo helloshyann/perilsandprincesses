@@ -512,6 +512,21 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 
 			// Find the data for the currently selected gift
 			context.activeGift = context.giftData[context.giftChoice];
+
+			context.princessThemeOptions = {
+				default: "Perils Pink",
+				market: "Market Gold",
+				candy: "Sweet Purple",
+				dragon: "Dragon Green",
+			};
+
+			context.princessTheme = actorData.system.princessTheme.value;
+
+			console.log("Princess Theme Options:", context.princessThemeOptions);
+			console.log("Selected Princess Theme:", context.princessTheme);
+
+			// Add a cssClass property based on the selected Princess Theme
+			context.cssClass = actorData.system.princessTheme.value;
 		}
 
 		// Prepare NPC data and items.
@@ -541,7 +556,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		context.effects = prepareActiveEffectCategories(
 			// A generator that returns all effects stored on the actor
 			// as well as any items
-			this.actor.allApplicableEffects()
+			this.actor.allApplicableEffects(),
 		);
 
 		// Use the new namespaced path for Foundry V13+ compatibility
