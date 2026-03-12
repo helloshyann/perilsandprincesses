@@ -625,6 +625,21 @@
 .perilsandprincesses.sheet.actor .window-content:has(.market) table td:first-child {
   background: var(--pp-gold);
 }
+.perilsandprincesses.sheet.actor .window-content:has(.market) .gift-text {
+  background-color: var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .innate-ability {
+  border: 3px solid var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .innate-ability .innate-ab-title {
+  background-color: var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .special-ability {
+  border: 3px solid var(--pp-gold);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.market) .special-ability .special-ab-title {
+  background-color: var(--pp-gold);
+}
 .perilsandprincesses.sheet.actor .window-content:has(.candy) {
   background: var(--pp-purp);
   background-image: url("../assets/white-pencil.png");
@@ -662,6 +677,21 @@
 .perilsandprincesses.sheet.actor .window-content:has(.candy) table td:first-child {
   background: var(--pp-purp);
 }
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .gift-text {
+  background-color: var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .innate-ability {
+  border: 3px solid var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .innate-ability .innate-ab-title {
+  background-color: var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .special-ability {
+  border: 3px solid var(--pp-purp);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.candy) .special-ability .special-ab-title {
+  background-color: var(--pp-purp);
+}
 .perilsandprincesses.sheet.actor .window-content:has(.dragon) {
   background: var(--pp-green);
   background-image: url("../assets/white-pencil.png");
@@ -698,6 +728,21 @@
 }
 .perilsandprincesses.sheet.actor .window-content:has(.dragon) table td:first-child {
   background: var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .gift-text {
+  background-color: var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .innate-ability {
+  border: 3px solid var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .innate-ability .innate-ab-title {
+  background-color: var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .special-ability {
+  border: 3px solid var(--pp-green);
+}
+.perilsandprincesses.sheet.actor .window-content:has(.dragon) .special-ability .special-ab-title {
+  background-color: var(--pp-green);
 }
 .perilsandprincesses.sheet.actor form.character,
 .perilsandprincesses.sheet.actor form.npc {

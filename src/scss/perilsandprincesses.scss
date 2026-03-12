@@ -660,6 +660,26 @@
 						}
 					}
 				}
+
+				.gift-text {
+					background-color: var(--pp-gold);
+				}
+
+				.innate-ability {
+					border: 3px solid var(--pp-gold);
+
+					.innate-ab-title {
+						background-color: var(--pp-gold);
+					}
+				}
+
+				.special-ability {
+					border: 3px solid var(--pp-gold);
+
+					.special-ab-title {
+						background-color: var(--pp-gold);
+					}
+				}
 			}
 
 			&:has(.candy) {
@@ -723,6 +743,26 @@
 						}
 					}
 				}
+
+				.gift-text {
+					background-color: var(--pp-purp);
+				}
+
+				.innate-ability {
+					border: 3px solid var(--pp-purp);
+
+					.innate-ab-title {
+						background-color: var(--pp-purp);
+					}
+				}
+
+				.special-ability {
+					border: 3px solid var(--pp-purp);
+
+					.special-ab-title {
+						background-color: var(--pp-purp);
+					}
+				}
 			}
 
 			&:has(.dragon) {
@@ -784,6 +824,26 @@
 						&:first-child {
 							background: var(--pp-green);
 						}
+					}
+				}
+
+				.gift-text {
+					background-color: var(--pp-green);
+				}
+
+				.innate-ability {
+					border: 3px solid var(--pp-green);
+
+					.innate-ab-title {
+						background-color: var(--pp-green);
+					}
+				}
+
+				.special-ability {
+					border: 3px solid var(--pp-green);
+
+					.special-ab-title {
+						background-color: var(--pp-green);
 					}
 				}
 			}
