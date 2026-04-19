@@ -82,7 +82,14 @@
 			"templates": ["base"],
 			"quantity": 1,
 			"cost": "",
-			"weight": "",
+			"weight": 0,
+			"relicDice": {
+				"relic1": false,
+				"relic2": false,
+				"relic3": false,
+				"relic4": false,
+				"extraRelic": false
+			},
 			"roll": {
 				"diceNum": 1,
 				"diceSize": "d4",

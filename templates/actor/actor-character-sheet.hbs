@@ -1,5 +1,9 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
-
+  <div class="header-image">
+    <img src="systems/perilsandprincesses/assets/PandP_LogoHorizontal.png" 
+         title="P&P Logo" 
+         alt="Logo" />
+  </div>
   {{!-- Sheet Navigation --}}
   <nav class="sheet-tabs pink-card" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
@@ -56,9 +60,15 @@
 
 
         <div class="resource flex-col">
+          <div class="pronoun-container">
+          <label
+            class="tiny-text level-text"
+            >Gift Selection</label
+          >
             <select name="system.giftChoice.value">
               {{selectOptions giftOptions selected=system.giftChoice.value labelAttr="label"}}
-            </select>          
+            </select>  
+            </div>        
         </div>
         <div class="header-rollers flex-row">
           <button type="button" class="pp-roll-btn d20" data-roll="d20" title="Roll d20"></button>

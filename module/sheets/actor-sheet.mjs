@@ -13,7 +13,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["perilsandprincesses", "sheet", "actor"],
 			width: 700,
-			height: 810,
+			height: 865,
 			tabs: [
 				{
 					navSelector: ".sheet-tabs",

@@ -13,7 +13,7 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["perilsandprincesses", "sheet", "item"],
 			width: 520,
-			height: 480,
+			height: 520,
 			tabs: [
 				{
 					navSelector: ".sheet-tabs",
@@ -58,7 +58,7 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 				rollData: this.item.getRollData(),
 				// Relative UUID resolution
 				relativeTo: this.item,
-			}
+			},
 		);
 
 		// Add the item's data to context.data for easier access, as well as flags.
@@ -87,7 +87,7 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 
 		// Active Effect management
 		html.on("click", ".effect-control", (ev) =>
-			onManageActiveEffect(ev, this.item)
+			onManageActiveEffect(ev, this.item),
 		);
 
 		html.find(".pp-item-roll").click((ev) => {

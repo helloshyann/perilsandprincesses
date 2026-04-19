@@ -49,7 +49,10 @@
 				</td>
 
 				{{! Properties }}
-				<td class="text-center">{{item.system.weight}}</td>
+				<td class="text-center">
+					{{!-- {{item.system.weight}} --}}
+					{{mult item.system.quantity item.system.weight}}
+				</td>
 				<td class="text-center">{{item.system.quantity}}</td>
 				<td class="text-center" style="font-weight: bold;">
 					{{#if item.system.roll.diceNum}}
