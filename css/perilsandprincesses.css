@@ -93,12 +93,15 @@
 }
 .mishaps-table tr .mishap-number::before {
   content: counter(mishap-count) "s";
+  font-family: var(--secondary-font);
+  font-size: 1.65rem;
   font-weight: bold;
   color: var(--pp-brown);
 }
 
 .gift-title {
   font-family: var(--secondary-font);
+  font-weight: 600;
   font-size: 2.5rem;
 }
 
@@ -267,6 +270,7 @@
 .pink-card h2,
 .pink-card h3 {
   border-bottom: 1px solid var(--pp-brown) !important;
+  color: var(--pp-brown);
 }
 
 .gift-text {
@@ -428,9 +432,11 @@
 }
 .perilsandprincesses .innate-ability .innate-ab-title {
   background-color: var(--pp-pink);
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
   border-radius: 2px 2px 0 0;
   color: var(--pp-brown);
-  padding: var(--space-sm);
+  padding: var(--space-xs);
 }
 .perilsandprincesses .innate-ability .innate-ab-content {
   padding: var(--space-sm);
@@ -441,13 +447,15 @@
   border-radius: var(--space-sm) var(--space-sm) 0 0;
 }
 .perilsandprincesses .special-ability .special-ab-title {
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
   background-color: var(--pp-pink);
   border-radius: 2px 2px 0 0;
   color: var(--pp-brown);
-  padding: 0 var(--space-sm);
+  padding: 0 var(--space-xs);
 }
 .perilsandprincesses .special-ability .special-ab-title .ability-level {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   font-family: var(--secondary-font);
 }
@@ -569,6 +577,7 @@
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 .perilsandprincesses nav.sheet-tabs .item::after {
   content: "";
@@ -588,9 +597,6 @@
   -webkit-transform: translateY(15px) scale(0.8);
           transform: translateY(15px) scale(0.8);
 }
-.perilsandprincesses nav.sheet-tabs .item:hover {
-  text-shadow: 0 0 0 var(--pp-white) !important;
-}
 .perilsandprincesses nav.sheet-tabs .item:hover::after {
   opacity: 0.4;
   -webkit-transform: translateY(0) scale(0.9);
@@ -599,8 +605,6 @@
 .perilsandprincesses nav.sheet-tabs .item.active {
   background: transparent;
   color: var(--pp-brown);
-  /* The White Stroke & Glow */
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 .perilsandprincesses nav.sheet-tabs .item.active::after {
   opacity: 0.85;
@@ -926,6 +930,7 @@
 .perilsandprincesses.sheet.actor form.character section.sheet-body h3,
 .perilsandprincesses.sheet.actor form.npc section.sheet-body h3 {
   font-family: var(--secondary-font);
+  color: var(--pp-brown);
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -987,16 +992,14 @@
 .perilsandprincesses.sheet.item nav.sheet-tabs {
   border-top: none;
   border-bottom: none;
-  background: var(--pp-brown);
+  background: var(--pp-white);
   border-radius: var(--space-sm);
   border: 4px double var(--pp-pink);
+  padding: var(--space-xs);
 }
 .perilsandprincesses.sheet.item nav.sheet-tabs .item {
-  color: var(--pp-white);
-}
-.perilsandprincesses.sheet.item nav.sheet-tabs .item.active {
-  /* The White Stroke & Glow */
-  text-shadow: -1px -1px 0 var(--pp-brown), 1px -1px 0 var(--pp-brown), -1px 1px 0 var(--pp-brown), 1px 1px 0 var(--pp-brown), 0px 0px 8px rgba(20, 20, 20, 0.8);
+  color: var(--pp-brown);
+  line-height: 2rem;
 }
 .perilsandprincesses.sheet.item nav.sheet-tabs .item.active::after {
   -webkit-transform: translateY(-5px) scale(1);
@@ -1007,6 +1010,15 @@
   font-size: 1rem;
 }
 .perilsandprincesses.sheet.item .pp-item-roll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: var(--pp-brown);
   color: var(--pp-white);
 }

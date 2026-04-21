@@ -74,15 +74,17 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 
 			context.giftOptions = {
 				nothing: "No Gift Selected",
-				wildheart: "Wild Heart",
-				enchantvoice: "Enchanting Voice",
-				spriteag: "Spritely Agility",
-				elementcon: "Elemental Connection",
-				kitchmag: "Kitchen Magic",
-				healtouch: "Healing Touch",
-				powfriend: "Powerful Friendship",
-				sageint: "Sage Intellect",
 				bogwis: "Bog Wisdom",
+				elementcon: "Elemental Connection",
+				enchantvoice: "Enchanting Voice",
+				glimaura: "Glimmering Aura",
+				healtouch: "Healing Touch",
+				kitchmag: "Kitchen Magic",
+				powfriend: "Powerful Friendship",
+				regpres: "Regal Presence",
+				sageint: "Sage Intellect",
+				spriteag: "Spritely Agility",
+				wildheart: "Wild Heart",
 			};
 
 			context.giftChoice = actorData.system.giftChoice.value;
@@ -118,12 +120,12 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 						},
 						{
 							level: 3,
-							name: "Swamp-Dweller’s Touch",
+							name: "Swamp-Dweller's Touch",
 							text: "At your touch, transform other creatures into humble, swampy forms—and vice versa! Unwilling targets must SAVE or be transformed into a frog, toad, newt, bug, or other boggy creature for [SUM] hours. If the target is already such a creature, you transform it into a larger, intelligent humanoid version that may speak to or even follow you for the duration. If the target was cursed to have its form, this ability breaks the curse.",
 						},
 						{
 							level: 4,
-							name: "Witch’s Hut",
+							name: "Witch's Hut",
 							text: "Call out a secret incantation to summon a magical hut for 8 hours. The hut’s magic grows depending on how many Gift Dice you spend: <ul><li>1 GD: The hut is intelligent, safe and secure, barring intruders from entry.</li><li>2 GD: As above, but bigger on the inside, rooms stocked with food and useful tools for the situation.</li><li>3 GD: As above, but with legs, allowing it to travel up to 48 miles whilst carrying up to 10 passengers.</li><li>4 GD: As above, and you can use your Action to pilot it in combat. The hut has [SUM] HP, 2 Armor, does d12 damage with its legs, and uses your Virtues, but attacks hit it automatically.</li></ul>",
 						},
 					],
@@ -506,6 +508,98 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 						"Puzzled: You become Befuddled until you Spend Time doing something silly.",
 						"Manic: You just have so many good ideas. You become Woozy until you Spend Time writing them all down in your journal.",
 						"Hidden Knowledge: An incantation you read aloud sometime in the past has come to fruition. You suffer a random Curse.",
+					],
+				},
+				glimaura: {
+					title: "Glimmering Aura",
+					description:
+						"You've got that magical glow about you. The epitome of charm, your allure radiates all around. Your heart is attuned to the inner beauty of the world, letting you unlock hidden potential, and shine upon dreams.",
+					talents: ["Courtly Etiquette", "Poetry", "Visual Art"],
+					innate: [
+						{
+							name: "As You Wish",
+							text: "You always look positively radiant. If you become disheveled or dirty it only makes you seem rugged and charming. Any scars you get only add to your mystery and appeal. Strangers are easily smitten and freely offer you small favors and discounts.",
+						},
+						{
+							name: "Tender",
+							text: "Your senses and intuition are extraordinarily sensitive. You have advantage on WITS tests to discern minute details. If sleeping anywhere other than a comfortable bed, test RESOLVE or become Weary the following day.",
+						},
+					],
+					special: [
+						{
+							level: 1,
+							name: "Glow Up",
+							text: "Improve the appearance and general quality of [SUM] objects or [DICE] willing creatures. You could mend a broken piece of equipment, help a ruffian become presentable to a royal court, make a shed feel like a cozy cottage or make a rusty old piece of treasure shine like new to fetch a better price.",
+						},
+						{
+							level: 2,
+							name: "Shimmer",
+							text: "Infuse [DICE] items you touch with your glimmering aura, causing them to illuminate the area Nearby until you Spend Time. Alternatively, you may have the item release all its shimmer in an instantaneous flash, visible in the distance and stunning anyone who sees it nearby for [DICE] rounds.",
+						},
+						{
+							level: 3,
+							name: "Upon A Dream",
+							text: "You appear as a vision in someone’s dream. You may choose the setting and overall tenor of the dream and act how you see fit, but must appear as yourself. The amount of [DICE] required depends on your connection with the dreamer. <ul><li>1 GD: A friend or family member. Someone with whom you have a close connection.</li><li>2 GD: An acquaintance—someone you’ve done business with, met at a ball, etc.</li><li>3 GD: Someone who has seen you or heard your voice.</li><li>4 GD: Someone you have never met.</li></ul>",
+						},
+						{
+							level: 4,
+							name: "Glamour",
+							text: "Magically transform [SUM] objects or willing creatures into improved, fantastic versions of themselves for [DICE] hours. Objects can become other objects (a pumpkin can become a grand carriage, a stick can be a masterwork sword). You can change people's garb, styling and hair to suit any occasion. Animals can become other animals, or take human form, but will still maintain their original mannerisms upon close inspection. ",
+						},
+					],
+					mishaps: [
+						"Glitter: Your natural glow is so strong that you begin to shed actual glitter. It’s beautiful but it gets everywhere.",
+						"Beauty is Pain: Take d4 damage.",
+						"Drained: Your social battery is tapped. Your Gift Dice only return on a 1–2 until you Spend Time recharging alone.",
+						"Vanity: Full of yourself. Become Woozy until you do something humbling.",
+						"Popular: Suffer the Popularity Curse <em>(Perils & Princesses page 79)</em>.",
+						"Fairest of Them All: A powerful adversary, seething with envy, has launched a plot against you.",
+					],
+				},
+				regpres: {
+					title: "Regal Presence",
+					description:
+						"You have been called to take up the mantle of your ancestors. Their resilience flows through you as you channel their strength to inspire the downtrodden and protect the realm.",
+					talents: ["Healing", "Horseback Riding", "Courtly Etiquette"],
+					innate: [
+						{
+							name: "Majestic",
+							text: "Your presence, demeanor and words inspire hope and awe. You have advantage on GRACE tests to rally folks to your cause and inspire hope.",
+						},
+						{
+							name: "Heart of a Warrior",
+							text: "You channel your inner strength directly through your hands. While using your ancestral weapon, you may spend a Heart Die to add damage to your attacks.",
+						},
+					],
+					special: [
+						{
+							level: 1,
+							name: "Seek Truth",
+							text: "[DICE] creatures SAVE or answer [SUM] questions truthfully, to the best of their knowledge. Their answers are relative to their idea of the truth.",
+						},
+						{
+							level: 2,
+							name: "Rouse",
+							text: "You give a rousing speech to your companions. For [DICE] rounds, they roll an extra d4 when dealing damage while fighting. Alternatively, each companion can replenish [DICE] Heart Dice, up to their current maximum. You can do this in advance of a situation if you have time to prepare, or use your Action in the middle of a fight.",
+						},
+						{
+							level: 3,
+							name: "Trusty Steed",
+							text: "You loudly whistle to summon a fairy spirit in the form of a majestic horse who comes to your aid for [SUM] hours. They are noticeably faster, more agile, and more beautiful than a normal horse.",
+						},
+						{
+							level: 4,
+							name: "Ancient Power",
+							text: "You unlock the ancient power of your lineage channeled through your ancestral weapon. By holding your weapon to the sky and speaking magic words, your presence is transformed for [SUM] rounds and you become a more impressive version of yourself. Your clothing, hair, and physical appearance look how you choose. Your weapon glows and radiates energy. The amount of [DICE] you roll adds the following cumulative effects. <ul><li>1 GD: Your armor value becomes 3 for all types of damage.</li><li>2 GD: You jump twice as high and lift twice as much weight as you normally can.</li><li>3 GD: You and your friends nearby instantly recover [DICE] HP.</li><li>4 GD: You may perform an additional action each round.</li></ul>",
+						},
+					],
+					mishaps: [
+						"Agonize: Your responsibilities weigh heavy on you and it’s beginning to show on your face. You receive a scar or a wrinkle on your face or a streak of your hair turns gray.",
+						"Indignity: Take d4 damage as something didn’t go quite as planned in an embarrassing fashion.",
+						"Aimless: Gift Dice only return on a 1–2 until you Spend Time contemplating your ancestors, your role as a royal and your path forward.",
+						"Downcast: Weary until a friend spends a Heart Die to help you succeed a Virtue Test.",
+						"Suspicious: You’re worried about constant threats of usurpers against you. Suffer the Paranoia Curse <em>(Perils & Princesses page 79)</em>.",
+						"Tribulation: Roll on the Wounded table.",
 					],
 				},
 			};
