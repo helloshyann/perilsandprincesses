@@ -33,6 +33,7 @@ There are two types of sheets in the system: "Actors" and "Items". Each sheet ha
 
 - **Items** - Physical items that will be sorted into your Purse that are physically tangible. Item sheets have a spot for the item's weight and a quanitity in it's header.
 - **Features** - Non-physical items, magic, or extra abilities that will be sorted into the Special tab on the character sheet. Feature sheets do not have an associated weight or quantity.
-- Items and Features both have an "Attributes" tab where you can set custom dice formulas to roll. Leave them blank to roll "0" and remove buttons from cards sent to chat logs.
+
+Items and Features both have an "Attributes" tab where you can set custom dice formulas to roll. Leave them blank to roll "0" and remove buttons from cards sent to chat logs.
 
 [![Watch the demo!](/assets/demo.png)](https://www.youtube.com/watch?v=hDUWcHTqc4o)
