@@ -7,7 +7,9 @@ import {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class PerilsAndPrincessesActorSheet extends ActorSheet {
+export class PerilsAndPrincessesActorSheet
+	extends foundry.appv1.sheets.ActorSheet
+{
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
@@ -62,19 +64,20 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 
 		// Enrich biography info for display
 		// Enrichment turns text like `[[/r 1d20]]` into buttons
-		context.enrichedBiography = await TextEditor.enrichHTML(
-			this.actor.system.biography,
-			{
-				// Whether to show secret blocks in the finished html
-				secrets: this.document.isOwner,
-				// Necessary in v11, can be removed in v12
-				async: true,
-				// Data to fill in for inline rolls
-				rollData: this.actor.getRollData(),
-				// Relative UUID resolution
-				relativeTo: this.actor,
-			},
-		);
+		context.enrichedBiography =
+			await foundry.applications.ux.TextEditor.enrichHTML(
+				this.actor.system.biography,
+				{
+					// Whether to show secret blocks in the finished html
+					secrets: this.document.isOwner,
+					// Necessary in v11, can be removed in v12
+					async: true,
+					// Data to fill in for inline rolls
+					rollData: this.actor.getRollData(),
+					// Relative UUID resolution
+					relativeTo: this.actor,
+				},
+			);
 
 		// Prepare active effects
 		context.effects = prepareActiveEffectCategories(
@@ -206,7 +209,7 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		// Get the type of item to create.
 		const type = header.dataset.type;
 		// Grab any data associated with this control.
-		const data = duplicate(header.dataset);
+		const data = foundry.utils.duplicate(header.dataset);
 		// Initialize a default name.
 		const name = `New ${type.capitalize()}`;
 		// Prepare the item object.
@@ -219,7 +222,10 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 		delete itemData.system["type"];
 
 		// Finally, create the item!
-		return await Item.create(itemData, { parent: this.actor });
+		// return await Item.create(itemData, { parent: this.actor });
+		setTimeout(async () => {
+			await Item.create(itemData, { parent: this.actor });
+		}, 0);
 	}
 
 	/**

@@ -7,7 +7,9 @@ import {
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class PerilsAndPrincessesItemSheet extends ItemSheet {
+export class PerilsAndPrincessesItemSheet
+	extends foundry.appv1.sheets.ItemSheet
+{
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
@@ -47,19 +49,20 @@ export class PerilsAndPrincessesItemSheet extends ItemSheet {
 
 		// Enrich description info for display
 		// Enrichment turns text like `[[/r 1d20]]` into buttons
-		context.enrichedDescription = await TextEditor.enrichHTML(
-			this.item.system.description,
-			{
-				// Whether to show secret blocks in the finished html
-				secrets: this.document.isOwner,
-				// Necessary in v11, can be removed in v12
-				async: true,
-				// Data to fill in for inline rolls
-				rollData: this.item.getRollData(),
-				// Relative UUID resolution
-				relativeTo: this.item,
-			},
-		);
+		context.enrichedDescription =
+			await foundry.applications.ux.TextEditor.enrichHTML(
+				this.item.system.description,
+				{
+					// Whether to show secret blocks in the finished html
+					secrets: this.document.isOwner,
+					// Necessary in v11, can be removed in v12
+					async: true,
+					// Data to fill in for inline rolls
+					rollData: this.item.getRollData(),
+					// Relative UUID resolution
+					relativeTo: this.item,
+				},
+			);
 
 		// Add the item's data to context.data for easier access, as well as flags.
 		context.system = itemData.system;

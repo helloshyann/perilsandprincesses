@@ -44,16 +44,30 @@ Hooks.once("init", async function () {
 	CONFIG.ActiveEffect.legacyTransferral = false;
 
 	// Register sheet application classes
-	Actors.unregisterSheet("core", ActorSheet);
-	Actors.registerSheet("perilsandprincesses", PerilsAndPrincessesActorSheet, {
-		makeDefault: true,
-		label: "PERILSANDPRINCESSES.SheetLabels.Actor",
-	});
-	Items.unregisterSheet("core", ItemSheet);
-	Items.registerSheet("perilsandprincesses", PerilsAndPrincessesItemSheet, {
-		makeDefault: true,
-		label: "PERILSANDPRINCESSES.SheetLabels.Item",
-	});
+	foundry.documents.collections.Actors.unregisterSheet(
+		"core",
+		foundry.appv1.sheets.ActorSheet,
+	);
+	foundry.documents.collections.Actors.registerSheet(
+		"perilsandprincesses",
+		PerilsAndPrincessesActorSheet,
+		{
+			makeDefault: true,
+			label: "PERILSANDPRINCESSES.SheetLabels.Actor",
+		},
+	);
+	foundry.documents.collections.Items.unregisterSheet(
+		"core",
+		foundry.appv1.sheets.ItemSheet,
+	);
+	foundry.documents.collections.Items.registerSheet(
+		"perilsandprincesses",
+		PerilsAndPrincessesItemSheet,
+		{
+			makeDefault: true,
+			label: "PERILSANDPRINCESSES.SheetLabels.Item",
+		},
+	);
 
 	// Preload Handlebars templates.
 	return preloadHandlebarsTemplates();

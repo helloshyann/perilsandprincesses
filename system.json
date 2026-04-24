@@ -12,10 +12,10 @@
 	"license": "LICENSE.txt",
 	"readme": "README.md",
 	"changelog": "CHANGELOG.md",
-	"version": "1.2",
+	"version": "1.2.1",
 	"compatibility": {
-		"minimum": "12",
-		"verified": "13.346"
+		"minimum": "13",
+		"verified": "14"
 	},
 	"esmodules": ["module/perilsandprincesses.mjs"],
 	"styles": ["css/perilsandprincesses.css"],
@@ -30,9 +30,9 @@
 	"packFolders": [],
 	"socket": false,
 	"manifest": "https://github.com/helloshyann/perilsandprincesses/releases/latest/download/system.json",
-	"download": "https://github.com/helloshyann/perilsandprincesses/releases/download/v1.2/system.zip",
-	"gridDistance": 5,
-	"gridUnits": "ft",
+	"download": "https://github.com/helloshyann/perilsandprincesses/releases/download/v1.2.1/system.zip",
+	"grid.distance": 5,
+	"grid.units": "ft",
 	"primaryTokenAttribute": "hearts",
 	"secondaryTokenAttribute": "gifts"
 }

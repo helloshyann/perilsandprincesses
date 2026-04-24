@@ -7,7 +7,9 @@ import {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class PerilsAndPrincessesActorSheet extends ActorSheet {
+export class PerilsAndPrincessesActorSheet
+	extends foundry.appv1.sheets.ActorSheet
+{
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
@@ -911,23 +913,19 @@ export class PerilsAndPrincessesActorSheet extends ActorSheet {
 	async _onItemCreate(event) {
 		event.preventDefault();
 		const header = event.currentTarget;
-		// Get the type of item to create.
 		const type = header.dataset.type;
-		// Grab any data associated with this control.
-		const data = duplicate(header.dataset);
-		// Initialize a default name.
+		const data = foundry.utils.duplicate(header.dataset);
 		const name = `New ${type.capitalize()}`;
-		// Prepare the item object.
 		const itemData = {
 			name: name,
 			type: type,
 			system: data,
 		};
-		// Remove the type from the dataset since it's in the itemData.type prop.
 		delete itemData.system["type"];
-
-		// Finally, create the item!
-		return await Item.create(itemData, { parent: this.actor });
+		// return await Item.create(itemData, { parent: this.actor });
+		setTimeout(async () => {
+			await Item.create(itemData, { parent: this.actor });
+		}, 0);
 	}
 
 	/**
